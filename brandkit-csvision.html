@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURUM Cinema — Identidade Visual / CS Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'CSVision';
+  src: url('./fonts/CSVision-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CSVision';
+  src: url('./fonts/CSVision-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+:root {
+  --primary: #060D1F;
+  --accent: #2B6BE8;
+  --gold: #E8C84A;
+  --light: #EEF2FF;
+  --mid: #0F1F45;
+  --bg: #060D1F;
+  --text: #EEF2FF;
+  --brand-font: 'CSVision', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #060D1F;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #EEF2FF;
+}
+
+/* NAV */
+nav.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px;
+  background: rgba(6,13,31,0.96);
+  border-bottom: 1px solid rgba(43,107,232,0.2);
+  backdrop-filter: blur(10px);
+}
+nav .nav-brand { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #EEF2FF; text-transform: uppercase; font-family: 'CSVision', sans-serif; }
+nav .nav-right { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #EEF2FF; opacity: 0.35; }
+
+/* PAGE HEADER */
+.page-header {
+  padding: 90px 48px 60px;
+  max-width: 900px;
+}
+.page-header h1 {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+  color: #EEF2FF;
+}
+.page-header h1 em { color: #E8C84A; font-style: normal; }
+.page-header .meta { font-size: 12px; letter-spacing: 0.2em; opacity: 0.35; text-transform: uppercase; }
+
+/* TEXT SECTIONS */
+.text-section {
+  padding: 52px 48px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  border-top: 1px solid rgba(43,107,232,0.15);
+}
+.section-label {
+  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  padding-top: 4px; opacity: 0.35; font-weight: 500; color: #EEF2FF;
+}
+.section-content p { font-size: 15px; font-weight: 300; line-height: 1.9; max-width: 560px; color: #EEF2FF; opacity: 0.85; }
+.section-content ul { list-style: none; }
+.section-content ul li {
+  font-size: 13px; padding: 4px 0; letter-spacing: 0.08em;
+  color: #EEF2FF; opacity: 0.6;
+  border-bottom: 1px solid rgba(43,107,232,0.12);
+  padding-bottom: 10px; margin-bottom: 4px;
+}
+
+/* GALLERY */
+.gallery { margin-top: 60px; }
+
+/* HERO PANEL */
+.panel-hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: #060D1F;
+  position: relative;
+  overflow: hidden;
+}
+.panel-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(43,107,232,0.12) 0%, transparent 55%),
+              radial-gradient(ellipse at 70% 50%, rgba(232,200,74,0.06) 0%, transparent 50%);
+}
+/* Scanline effect */
+.panel-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(43,107,232,0.02) 3px, rgba(43,107,232,0.02) 4px);
+  pointer-events: none;
+}
+.hero-logo-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  position: relative; z-index: 1;
+}
+.hero-wordmark {
+  font-family: 'CSVision', sans-serif;
+  font-size: clamp(72px, 11vw, 148px);
+  color: #E8C84A;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0 60px rgba(232,200,74,0.2), 0 0 120px rgba(232,200,74,0.08);
+}
+.hero-sub {
+  font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
+  color: #2B6BE8; opacity: 0.7; font-family: 'DM Sans', sans-serif;
+}
+.hero-tagline {
+  font-size: 14px; letter-spacing: 0.08em;
+  color: #EEF2FF; opacity: 0.4; font-family: 'DM Sans', sans-serif;
+  font-weight: 300; margin-top: 8px;
+}
+
+/* BRAND PANELS */
+.brand-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 90px 60px;
+  position: relative; overflow: hidden;
+}
+.brand-wordmark {
+  font-family: 'CSVision', sans-serif;
+  font-size: clamp(56px, 9vw, 110px);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-align: center;
+}
+.brand-wordmark-sm {
+  font-family: 'CSVision', sans-serif;
+  font-size: clamp(32px, 5vw, 58px);
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+.brand-cinema-label {
+  font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
+  margin-top: 14px; font-family: 'DM Sans', sans-serif; font-weight: 300;
+}
+
+/* PALETTE PANEL */
+.palette-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: flex;
+  height: 300px;
+}
+.swatch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 18px;
+  transition: flex 0.4s ease;
+  cursor: default;
+}
+.swatch:hover { flex: 1.7; }
+.swatch-name { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; margin-bottom: 5px; }
+.swatch-hex { font-size: 12px; letter-spacing: 0.08em; font-family: 'Courier New', monospace; opacity: 0.65; }
+.swatch-role { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.4; margin-top: 4px; }
+
+/* SVG PANELS */
+.svg-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  overflow: hidden;
+}
+.svg-panel svg { width: 100%; height: auto; display: block; }
+
+/* TYPOGRAPHY PANEL */
+.typo-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #0F1F45;
+  padding: 80px 60px;
+  border: 1px solid rgba(43,107,232,0.15);
+}
+.typo-header {
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  opacity: 0.3; margin-bottom: 48px; color: #EEF2FF;
+}
+.typo-row {
+  display: flex; align-items: baseline; gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(43,107,232,0.12);
+}
+.typo-row:last-child { border-bottom: none; }
+.typo-label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.3; width: 110px; flex-shrink: 0; padding-top: 4px; color: #EEF2FF; line-height: 1.6; }
+.typo-sample { font-family: 'CSVision', sans-serif; color: #EEF2FF; }
+.typo-sample-alt { font-family: 'DM Sans', sans-serif; color: #EEF2FF; }
+.typo-display { font-size: 88px; line-height: 1; letter-spacing: 0.08em; }
+.typo-title { font-size: 48px; line-height: 1.1; letter-spacing: 0.06em; }
+.typo-heading { font-size: 28px; line-height: 1.2; letter-spacing: 0.05em; }
+.typo-body-sz { font-size: 17px; line-height: 1.6; font-weight: 300; }
+.typo-caption-sz { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; }
+.typo-italic { font-style: italic; }
+
+/* BRAND VOICE PANEL */
+.voice-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #060D1F;
+  padding: 100px 60px;
+  border-top: 1px solid rgba(43,107,232,0.15);
+  border-bottom: 1px solid rgba(43,107,232,0.15);
+  position: relative;
+}
+.voice-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(43,107,232,0.015) 3px, rgba(43,107,232,0.015) 4px);
+  pointer-events: none;
+}
+.voice-header {
+  font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: #EEF2FF; opacity: 0.25; margin-bottom: 56px;
+}
+.voice-phrase {
+  font-family: 'CSVision', sans-serif;
+  color: #EEF2FF;
+  font-size: clamp(24px, 3.5vw, 46px);
+  line-height: 1.25;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(43,107,232,0.12);
+  letter-spacing: 0.04em;
+  position: relative; z-index: 1;
+}
+.voice-phrase:last-child { border-bottom: none; }
+.voice-phrase em { color: #E8C84A; font-style: normal; }
+.voice-phrase .blue { color: #2B6BE8; }
+
+/* MOCKUP PANELS */
+.mockup-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  position: relative;
+  overflow: hidden;
+  background: #060D1F;
+}
+.mockup-panel img { width: 100%; display: block; }
+.mockup-overlay {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.overlay-logo {
+  font-family: 'CSVision', sans-serif;
+  color: #E8C84A;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(232,200,74,0.4);
+}
+.overlay-tagline {
+  font-size: 9px; letter-spacing: 0.45em; text-transform: uppercase;
+  color: #EEF2FF; font-family: 'DM Sans', sans-serif; margin-top: 10px; opacity: 0.7;
+}
+.overlay-accent {
+  font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #2B6BE8; font-family: 'DM Sans', sans-serif; margin-top: 6px; opacity: 0.8;
+}
+
+/* LOGO VARIATIONS */
+.logo-grid {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(43,107,232,0.15);
+}
+.logo-cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 70px 40px;
+  gap: 12px;
+}
+
+/* MANIFESTO */
+.manifesto-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #060D1F;
+  padding: 130px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(43,107,232,0.15);
+}
+.manifesto-panel::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(232,200,74,0.07) 0%, transparent 55%),
+              radial-gradient(ellipse at 50% 0%, rgba(43,107,232,0.08) 0%, transparent 50%);
+}
+.manifesto-text {
+  font-family: 'CSVision', sans-serif;
+  font-size: clamp(22px, 3vw, 40px);
+  color: #EEF2FF;
+  line-height: 1.4;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+  letter-spacing: 0.04em;
+}
+.manifesto-text em { color: #E8C84A; font-style: normal; }
+.manifesto-rule {
+  width: 40px; height: 1px; background: #2B6BE8;
+  margin: 44px auto;
+  position: relative; z-index: 1;
+}
+.manifesto-sub {
+  font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
+  color: #2B6BE8; opacity: 0.6;
+  position: relative; z-index: 1;
+}
+
+/* DATA BAR - tech detail panel */
+.data-bar {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #0F1F45;
+  padding: 32px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  border: 1px solid rgba(43,107,232,0.15);
+}
+.data-item { text-align: center; }
+.data-num { font-family: 'CSVision', sans-serif; font-size: 28px; color: #E8C84A; letter-spacing: 0.08em; }
+.data-lbl { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: #EEF2FF; opacity: 0.3; margin-top: 4px; }
+.data-sep { width: 1px; height: 40px; background: rgba(43,107,232,0.25); }
+
+/* CTA */
+.cta-section {
+  padding: 120px 48px;
+  text-align: center;
+  border-top: 1px solid rgba(43,107,232,0.15);
+}
+.cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 12px; color: #EEF2FF; letter-spacing: -0.01em; }
+.cta-section p { font-size: 14px; opacity: 0.35; margin-bottom: 40px; letter-spacing: 0.05em; }
+.cta-link {
+  display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 14px 48px; border: 1px solid #2B6BE8; text-decoration: none; color: #2B6BE8;
+  transition: all 0.3s;
+}
+.cta-link:hover { background: #2B6BE8; color: #EEF2FF; }
+
+/* FOOTER */
+footer {
+  padding: 32px 48px;
+  border-top: 1px solid rgba(43,107,232,0.12);
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer .ft-left { font-size: 11px; letter-spacing: 0.15em; opacity: 0.25; text-transform: uppercase; color: #EEF2FF; }
+footer .ft-right { font-size: 11px; letter-spacing: 0.1em; opacity: 0.2; color: #EEF2FF; }
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.85s ease, transform 0.85s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav, nav.site-nav { padding: 14px 24px !important; }
+  .page-header, header.page-header { padding: 48px 24px 36px !important; }
+  .text-section { grid-template-columns: 1fr !important; gap: 12px !important; padding: 32px 24px !important; }
+  .g-panel, .g-full, .mockup-panel, .panel, .brand-panel { width: 100% !important; }
+  .palette-row, .palette-col-container { flex-wrap: wrap !important; }
+  .swatch { flex: 0 0 33.33% !important; min-height: 130px !important; }
+  .typo-panel { padding: 48px 24px !important; }
+  .typo-row { flex-wrap: wrap !important; gap: 6px !important; }
+  .typo-meta, .typo-label { width: auto !important; }
+  .typo-sample { font-size: clamp(1.4rem, 9vw, 4rem) !important; overflow: hidden !important; max-width: 100% !important; }
+  .lockup-grid, .logo-grid { grid-template-columns: 1fr 1fr !important; }
+  .lockup-cell, .logo-cell { min-height: 200px !important; }
+  .voice-panel, .manifesto-panel { padding: 60px 24px !important; gap: 16px !important; min-height: auto !important; }
+  .voice-line, .voice-phrase { font-size: clamp(1.1rem, 5vw, 2.8rem) !important; }
+  .closing-panel { padding: 48px 24px !important; }
+  .cta-section { padding: 80px 24px !important; }
+  footer { padding: 24px !important; flex-direction: column !important; gap: 8px !important; text-align: center !important; }
+  .hero-panel, .panel-hero { min-height: 80vh !important; }
+  .hero-wordmark, .hero-logo-text { font-size: clamp(3rem, 14vw, 7rem) !important; }
+}
+@media (max-width: 600px) {
+  nav, nav.site-nav { padding: 12px 16px !important; }
+  .nav-type, .nav-right { display: none !important; }
+  .page-header, header.page-header { padding: 36px 16px 24px !important; }
+  .text-section { padding: 24px 16px !important; }
+  .swatch { flex: 0 0 50% !important; min-height: 110px !important; }
+  .typo-panel { padding: 36px 16px !important; }
+  .palette-panel { padding: 32px 16px !important; }
+  .voice-panel { padding: 40px 16px !important; }
+  .cta-section { padding: 60px 16px !important; }
+  footer { padding: 20px 16px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <span class="nav-brand">AURUM Cinema</span>
+  <span class="nav-right">Brand Identity — CS Vision</span>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header reveal">
+  <h1>AURUM Cinema<br><em>Uma nova visão</em></h1>
+  <p class="meta">Preciso · Futurista · Luxo Digital · Técnico — Tipografia CS Vision</p>
+</header>
+
+<!-- ABOUT -->
+<section class="text-section reveal">
+  <div class="section-label">Sobre</div>
+  <div class="section-content">
+    <p>O futuro do cinema não está nas telas maiores. Está na visão mais precisa. O AURUM na fonte CS Vision nasce da interseção entre a tecnologia e o luxo — onde cada detalhe é calculado, cada luz é projetada, cada momento é arquitetado.</p>
+  </div>
+</section>
+
+<!-- CATEGORY -->
+<section class="text-section reveal">
+  <div class="section-label">Conceito</div>
+  <div class="section-content">
+    <ul>
+      <li>Precision — engenharia da experiência cinematográfica</li>
+      <li>Experience — luxo que se sente antes de se ver</li>
+      <li>Gold — o padrão mais alto do espectro visual</li>
+      <li>Digital — onde a tecnologia encontra a emoção</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+  <!-- 1. HERO: Logo on primary dark navy -->
+  <div class="panel-hero reveal">
+    <div class="hero-logo-wrap">
+      <div class="hero-wordmark">AURUM</div>
+      <div class="hero-sub">Cinema</div>
+      <div class="hero-tagline">Precision. Experience. Gold.</div>
+    </div>
+  </div>
+
+  <!-- 2. Logo on accent blue bg -->
+  <div class="brand-panel reveal" style="background:#2B6BE8; width:68%; margin:0 auto 1px;">
+    <div class="brand-wordmark" style="color:#E8C84A;">AURUM</div>
+    <div class="brand-cinema-label" style="color:#EEF2FF; opacity:0.7;">Cinema</div>
+  </div>
+
+  <!-- 3. CONSTRUCTION GRID 1 — Light bg, geometric construction -->
+  <div class="svg-panel reveal">
+    <svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif">
+      <defs>
+        <pattern id="dotgrid-v" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="1" fill="#A0AECC" opacity="0.25"/>
+        </pattern>
+        <marker id="arr-v-up" markerWidth="7" markerHeight="7" refX="3" refY="0" orient="auto">
+          <path d="M3,0 L0,6 L6,6 Z" fill="#6B9DC2"/>
+        </marker>
+        <marker id="arr-v-dn" markerWidth="7" markerHeight="7" refX="3" refY="6" orient="auto">
+          <path d="M3,6 L0,0 L6,0 Z" fill="#6B9DC2"/>
+        </marker>
+      </defs>
+
+      <!-- Background -->
+      <rect width="1400" height="700" fill="#F0F4FF"/>
+      <rect width="1400" height="700" fill="url(#dotgrid-v)"/>
+
+      <!-- Corner registration marks -->
+      <line x1="55" y1="42" x2="95" y2="42" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <line x1="55" y1="42" x2="55" y2="82" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="55" cy="42" r="4" fill="none" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <line x1="1345" y1="42" x2="1305" y2="42" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <line x1="1345" y1="42" x2="1345" y2="82" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="1345" cy="42" r="4" fill="none" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <line x1="55" y1="658" x2="95" y2="658" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <line x1="55" y1="658" x2="55" y2="618" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="55" cy="658" r="4" fill="none" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <line x1="1345" y1="658" x2="1305" y2="658" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <line x1="1345" y1="658" x2="1345" y2="618" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="1345" cy="658" r="4" fill="none" stroke="#060D1F" stroke-width="0.8" opacity="0.3"/>
+
+      <!-- Horizontal guides -->
+      <line x1="115" y1="155" x2="1285" y2="155" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="7,5" opacity="0.7"/>
+      <line x1="115" y1="515" x2="1285" y2="515" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="7,5" opacity="0.7"/>
+      <line x1="115" y1="335" x2="1285" y2="335" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="5,7" opacity="0.4"/>
+
+      <!-- Vertical center axis -->
+      <line x1="700" y1="55" x2="700" y2="645" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="9,6" opacity="0.45"/>
+
+      <!-- AURUM wordmark — geometric, CSVision style -->
+      <text x="700" y="515" font-family="'CSVision', sans-serif" font-size="270" fill="#060D1F" text-anchor="middle" dominant-baseline="auto" opacity="0.9" letter-spacing="15">AURUM</text>
+
+      <!-- Construction circles on geometric forms -->
+      <circle cx="290" cy="250" r="105" fill="none" stroke="#E8804A" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.5"/>
+      <circle cx="700" cy="370" r="80" fill="none" stroke="#E8804A" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.45"/>
+      <circle cx="1075" cy="280" r="98" fill="none" stroke="#E8804A" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.5"/>
+
+      <!-- Structural grid lines for letters -->
+      <line x1="195" y1="155" x2="195" y2="515" stroke="#6B9DC2" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.3"/>
+      <line x1="395" y1="155" x2="395" y2="515" stroke="#6B9DC2" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.3"/>
+
+      <!-- Crosshair marks × at key points -->
+      <line x1="288" y1="152" x2="298" y2="162" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="298" y1="152" x2="288" y2="162" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="203" y1="512" x2="213" y2="522" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="213" y1="512" x2="203" y2="522" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="373" y1="512" x2="383" y2="522" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="383" y1="512" x2="373" y2="522" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="697" y1="462" x2="707" y2="472" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="707" y1="462" x2="697" y2="472" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="885" y1="320" x2="895" y2="330" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="895" y1="320" x2="885" y2="330" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="1140" y1="152" x2="1150" y2="162" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+      <line x1="1150" y1="152" x2="1140" y2="162" stroke="#060D1F" stroke-width="1.2" opacity="0.45"/>
+
+      <!-- Dimension arrow: cap height -->
+      <line x1="96" y1="155" x2="96" y2="515" stroke="#6B9DC2" stroke-width="0.8" marker-start="url(#arr-v-up)" marker-end="url(#arr-v-dn)"/>
+      <line x1="86" y1="155" x2="110" y2="155" stroke="#6B9DC2" stroke-width="0.8" opacity="0.6"/>
+      <line x1="86" y1="515" x2="110" y2="515" stroke="#6B9DC2" stroke-width="0.8" opacity="0.6"/>
+
+      <!-- Labels -->
+      <text x="125" y="160" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif">CAP HEIGHT</text>
+      <text x="125" y="519" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif">BASELINE</text>
+      <text x="125" y="339" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif" opacity="0.55">MIDLINE</text>
+      <text x="706" y="74" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif" text-anchor="middle">EIXO CENTRAL</text>
+      <text x="80" y="340" font-size="9" fill="#6B9DC2" text-anchor="middle" font-family="'DM Sans', sans-serif" transform="rotate(-90, 80, 340)">360 px</text>
+
+      <!-- Bottom font label -->
+      <text x="700" y="638" font-size="9" fill="#060D1F" text-anchor="middle" letter-spacing="4" font-family="'DM Sans', sans-serif" opacity="0.3">CS VISION — GEOMETRIC DISPLAY — LOGOTIPO PRINCIPAL</text>
+    </svg>
+  </div>
+
+  <!-- 4. COLOR PALETTE -->
+  <div class="palette-panel reveal">
+    <div class="swatch" style="background:#060D1F; border: 1px solid rgba(43,107,232,0.2);">
+      <div class="swatch-name" style="color:#EEF2FF;">Primary</div>
+      <div class="swatch-hex" style="color:#EEF2FF;">#060D1F</div>
+      <div class="swatch-role" style="color:#EEF2FF;">Midnight Navy</div>
+    </div>
+    <div class="swatch" style="background:#2B6BE8;">
+      <div class="swatch-name" style="color:#EEF2FF;">Accent</div>
+      <div class="swatch-hex" style="color:#EEF2FF;">#2B6BE8</div>
+      <div class="swatch-role" style="color:#EEF2FF;">Electric Cobalt</div>
+    </div>
+    <div class="swatch" style="background:#E8C84A;">
+      <div class="swatch-name" style="color:#060D1F;">Gold</div>
+      <div class="swatch-hex" style="color:#060D1F;">#E8C84A</div>
+      <div class="swatch-role" style="color:#060D1F;">Electric Gold</div>
+    </div>
+    <div class="swatch" style="background:#EEF2FF; border: 1px solid rgba(43,107,232,0.2);">
+      <div class="swatch-name" style="color:#060D1F;">Light</div>
+      <div class="swatch-hex" style="color:#060D1F;">#EEF2FF</div>
+      <div class="swatch-role" style="color:#060D1F;">Ice White</div>
+    </div>
+    <div class="swatch" style="background:#0F1F45;">
+      <div class="swatch-name" style="color:#EEF2FF;">Mid</div>
+      <div class="swatch-hex" style="color:#EEF2FF;">#0F1F45</div>
+      <div class="swatch-role" style="color:#EEF2FF;">Deep Blue-Black</div>
+    </div>
+  </div>
+
+  <!-- 5. CONSTRUCTION GRID 2 — Dark bg, clear space zone -->
+  <div class="svg-panel reveal">
+    <svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif">
+      <defs>
+        <pattern id="dotgrid-v2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="0.8" fill="#2B6BE8" opacity="0.1"/>
+        </pattern>
+        <marker id="arrend-v" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#E8C84A" opacity="0.7"/>
+        </marker>
+        <marker id="arrstart-v" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto-start-reverse">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#E8C84A" opacity="0.7"/>
+        </marker>
+      </defs>
+
+      <rect width="1400" height="700" fill="#060D1F"/>
+      <rect width="1400" height="700" fill="url(#dotgrid-v2)"/>
+
+      <!-- Subtle scanlines -->
+      <rect width="1400" height="700" fill="url(#scanlines)" opacity="0.04"/>
+
+      <!-- AURUM in gold -->
+      <text x="700" y="435" font-family="'CSVision', sans-serif" font-size="230" fill="#E8C84A" text-anchor="middle" dominant-baseline="auto" opacity="0.92" letter-spacing="12">AURUM</text>
+
+      <!-- Tight logo bounding box -->
+      <rect x="175" y="215" width="1050" height="235" fill="none" stroke="#E8C84A" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
+
+      <!-- Clear space outer box (1X padding ~262px each side) -->
+      <rect x="55" y="95" width="1290" height="470" fill="none" stroke="#E8C84A" stroke-width="0.8" stroke-dasharray="10,6" opacity="0.25"/>
+
+      <!-- Clear space arrows — top -->
+      <line x1="700" y1="95" x2="700" y2="215" stroke="#E8C84A" stroke-width="0.8" opacity="0.4"/>
+      <text x="716" y="162" font-size="11" fill="#E8C84A" letter-spacing="2" opacity="0.6" font-family="'DM Sans', sans-serif">1X</text>
+
+      <!-- Bottom arrow -->
+      <line x1="700" y1="450" x2="700" y2="565" stroke="#E8C84A" stroke-width="0.8" opacity="0.4"/>
+      <text x="716" y="516" font-size="11" fill="#E8C84A" letter-spacing="2" opacity="0.6" font-family="'DM Sans', sans-serif">1X</text>
+
+      <!-- Left arrow -->
+      <line x1="55" y1="332" x2="175" y2="332" stroke="#E8C84A" stroke-width="0.8" opacity="0.4"/>
+      <text x="92" y="325" font-size="11" fill="#E8C84A" letter-spacing="2" opacity="0.6" font-family="'DM Sans', sans-serif">1X</text>
+
+      <!-- Right arrow -->
+      <line x1="1225" y1="332" x2="1345" y2="332" stroke="#E8C84A" stroke-width="0.8" opacity="0.4"/>
+      <text x="1260" y="325" font-size="11" fill="#E8C84A" letter-spacing="2" opacity="0.6" font-family="'DM Sans', sans-serif">1X</text>
+
+      <!-- ÁREA DE PROTEÇÃO label -->
+      <text x="700" y="598" font-size="9" fill="#E8C84A" text-anchor="middle" letter-spacing="5" font-family="'DM Sans', sans-serif" opacity="0.45">ÁREA DE PROTEÇÃO</text>
+
+      <!-- Minimum size bottom right -->
+      <text x="1130" y="672" font-family="'CSVision', sans-serif" font-size="52" fill="#E8C84A" text-anchor="middle" opacity="0.4" letter-spacing="3">AURUM</text>
+      <text x="1130" y="687" font-size="8" fill="#E8C84A" text-anchor="middle" letter-spacing="3" font-family="'DM Sans', sans-serif" opacity="0.35">TAMANHO MÍN.</text>
+
+      <!-- Corner marks gold -->
+      <line x1="55" y1="38" x2="95" y2="38" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+      <line x1="55" y1="38" x2="55" y2="78" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+      <line x1="1345" y1="38" x2="1305" y2="38" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+      <line x1="1345" y1="38" x2="1345" y2="78" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+      <line x1="55" y1="662" x2="95" y2="662" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+      <line x1="55" y1="662" x2="55" y2="622" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+      <line x1="1345" y1="662" x2="1305" y2="662" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+      <line x1="1345" y1="662" x2="1345" y2="622" stroke="#E8C84A" stroke-width="0.7" opacity="0.25"/>
+    </svg>
+  </div>
+
+  <!-- 6. TYPOGRAPHY SHOWCASE -->
+  <div class="typo-panel reveal">
+    <div class="typo-header">Tipografia — Sistema Visual</div>
+    <div class="typo-row">
+      <div class="typo-label">Display<br>88 px<br>CS Vision</div>
+      <div class="typo-sample typo-display">Aa</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Title<br>48 px<br>CS Vision</div>
+      <div class="typo-sample typo-title">AURUM Cinema</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Heading<br>28 px<br>CS Vision Italic</div>
+      <div class="typo-sample typo-heading typo-italic">Uma nova visão do cinema</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Body<br>15 px<br>DM Sans Light</div>
+      <div class="typo-sample-alt typo-body-sz">Precision. Experience. Gold. Onde a tecnologia encontra a emoção cinematográfica.</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Caption<br>11 px<br>DM Sans</div>
+      <div class="typo-sample-alt typo-caption-sz" style="color:#2B6BE8; opacity:0.7;">Brand Identity · Digital Luxury · Cinema</div>
+    </div>
+  </div>
+
+  <!-- DATA BAR — tech detail -->
+  <div class="data-bar reveal">
+    <div class="data-item">
+      <div class="data-num">4K</div>
+      <div class="data-lbl">Resolução</div>
+    </div>
+    <div class="data-sep"></div>
+    <div class="data-item">
+      <div class="data-num">HDR</div>
+      <div class="data-lbl">Formato</div>
+    </div>
+    <div class="data-sep"></div>
+    <div class="data-item">
+      <div class="data-num">Dolby</div>
+      <div class="data-lbl">Áudio</div>
+    </div>
+    <div class="data-sep"></div>
+    <div class="data-item">
+      <div class="data-num">24fps</div>
+      <div class="data-lbl">Padrão</div>
+    </div>
+    <div class="data-sep"></div>
+    <div class="data-item">
+      <div class="data-num">∞</div>
+      <div class="data-lbl">Experiência</div>
+    </div>
+  </div>
+
+  <!-- 7. BRAND VOICE PANEL -->
+  <div class="voice-panel reveal">
+    <div class="voice-header">Voz da Marca</div>
+    <div class="voice-phrase">Uma nova <em>visão</em> do cinema.</div>
+    <div class="voice-phrase"><em>Precision.</em> Experience. <em>Gold.</em></div>
+    <div class="voice-phrase">O futuro não está nas<br>telas maiores —<br>está na visão <em>mais precisa</em>.</div>
+    <div class="voice-phrase">Cada detalhe <span class="blue">calculado</span>.<br>Cada luz <em>projetada</em>.</div>
+  </div>
+
+  <!-- ═══ MOCKUPS CINEMA ═══ -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/CINEMA-SCREEN-1.png" alt="Tela AURUM CS Vision">
+    <div class="mockup-overlay" style="top:10%;left:15%;width:70%;height:65%;">
+      <span class="overlay-logo" style="font-size:clamp(2rem,5vw,4.5rem);mix-blend-mode:screen;text-shadow:0 0 60px rgba(43,107,232,0.55);">AURUM</span>
+      <span class="overlay-tagline" style="mix-blend-mode:screen;">Cinema</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Popcorn-Bucket-Mockup.png" alt="Balde de pipoca AURUM CS Vision">
+    <div class="mockup-overlay" style="top:22%;left:25%;width:50%;height:50%;">
+      <span class="overlay-logo" style="font-size:clamp(1.2rem,3.5vw,2.8rem);color:#2B6BE8;mix-blend-mode:multiply;">AURUM</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Psd-01.png" alt="Ingressos AURUM CS Vision">
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Billboard-Mockup.png" alt="Billboard AURUM CS Vision">
+    <div class="mockup-overlay" style="top:15%;left:12%;width:76%;height:65%;">
+      <span class="overlay-logo" style="font-size:clamp(1.5rem,4vw,3.5rem);mix-blend-mode:screen;text-shadow:0 0 40px rgba(43,107,232,0.45);">AURUM</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Signage-Mockup.png" alt="Sinalização AURUM CS Vision">
+    <div class="mockup-overlay" style="top:20%;left:15%;width:70%;height:55%;">
+      <span class="overlay-logo" style="font-size:clamp(1.2rem,3.5vw,2.8rem);mix-blend-mode:screen;color:#2B6BE8;">AURUM</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/UNIFORME_MOCKUP.png" alt="Uniforme AURUM CS Vision">
+  </div>
+
+  <!-- 12. LOGO LOCKUP VARIATIONS -->
+  <div class="logo-grid reveal">
+    <div class="logo-cell" style="background:#060D1F;">
+      <div class="brand-wordmark-sm" style="color:#E8C84A;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#2B6BE8; opacity:0.8;">Cinema</div>
+    </div>
+    <div class="logo-cell" style="background:#2B6BE8;">
+      <div class="brand-wordmark-sm" style="color:#E8C84A;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#EEF2FF; opacity:0.7;">Cinema</div>
+    </div>
+    <div class="logo-cell" style="background:#EEF2FF;">
+      <div class="brand-wordmark-sm" style="color:#060D1F;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#2B6BE8; opacity:0.8;">Cinema</div>
+    </div>
+    <div class="logo-cell" style="background:#E8C84A;">
+      <div class="brand-wordmark-sm" style="color:#060D1F;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#060D1F; opacity:0.5;">Cinema</div>
+    </div>
+  </div>
+
+  <!-- 13. MANIFESTO PANEL -->
+  <div class="manifesto-panel reveal">
+    <div class="manifesto-rule"></div>
+    <p class="manifesto-text">
+      "O cinema do futuro não se vê.<br>
+      <em>Sente-se.</em>"
+    </p>
+    <div class="manifesto-rule"></div>
+    <div class="manifesto-sub">Precision · Experience · Gold · CS Vision · 2025</div>
+  </div>
+
+</div><!-- /gallery -->
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <h2>Quer criar uma experiência assim?</h2>
+  <p>Identidade visual de luxo digital para marcas que pensam no futuro.</p>
+  <a href="mailto:contato@aurum.cinema" class="cta-link">Entre em contato</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-left">AURUM Cinema — Identidade Visual 2025</div>
+  <div class="ft-right">Tipografia: CS Vision · Luxo Digital · Preciso</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

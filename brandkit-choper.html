@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURUM Cinema — Identidade Visual / Choper Display</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'ChoperDisplay';
+  src: url('./fonts/ChoperDisplay.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary: #F2F0EC;
+  --accent: #1A1A1A;
+  --red: #B91C1C;
+  --stone: #8C7B6B;
+  --paper: #E8E4DC;
+  --bg: #F2F0EC;
+  --text: #1A1A1A;
+  --brand-font: 'ChoperDisplay', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #F2F0EC;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1A1A1A;
+}
+
+/* NAV */
+nav.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px;
+  background: #F2F0EC;
+  border-bottom: 1px solid rgba(26,26,26,0.1);
+}
+nav .nav-brand {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+  color: #1A1A1A; text-transform: uppercase;
+  font-family: 'ChoperDisplay', serif;
+}
+nav .nav-right { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #1A1A1A; opacity: 0.38; }
+
+/* PAGE HEADER */
+.page-header {
+  padding: 90px 48px 60px;
+  max-width: 900px;
+}
+.page-header h1 {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+  color: #1A1A1A;
+}
+.page-header h1 em { color: #B91C1C; font-style: normal; }
+.page-header .meta { font-size: 12px; letter-spacing: 0.2em; opacity: 0.38; text-transform: uppercase; }
+
+/* TEXT SECTIONS */
+.text-section {
+  padding: 52px 48px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  border-top: 1px solid rgba(26,26,26,0.08);
+}
+.section-label {
+  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  padding-top: 4px; opacity: 0.35; font-weight: 500; color: #1A1A1A;
+}
+.section-content p { font-size: 15px; font-weight: 300; line-height: 1.9; max-width: 560px; color: #1A1A1A; }
+.section-content ul { list-style: none; }
+.section-content ul li {
+  font-size: 13px; letter-spacing: 0.08em;
+  color: #1A1A1A; opacity: 0.6;
+  border-bottom: 1px solid rgba(26,26,26,0.08);
+  padding: 6px 0 10px; margin-bottom: 2px;
+}
+
+/* GALLERY */
+.gallery { margin-top: 60px; }
+
+/* HERO PANEL — EDITORIAL BOLD */
+.panel-hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: #F2F0EC;
+  position: relative;
+  overflow: hidden;
+}
+.panel-hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: #1A1A1A;
+}
+.hero-logo-wrap {
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: 0 48px;
+  width: 100%;
+  max-width: 1400px;
+}
+.hero-wordmark {
+  font-family: 'ChoperDisplay', serif;
+  font-size: clamp(100px, 16vw, 220px);
+  color: #1A1A1A;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-align: left;
+}
+.hero-tagline {
+  font-size: clamp(14px, 1.5vw, 20px);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  opacity: 0.4;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  margin-top: 28px;
+}
+.hero-dash {
+  width: 60px; height: 2px; background: #B91C1C; margin-top: 32px;
+}
+
+/* BRAND PANELS */
+.brand-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 90px 60px;
+  position: relative; overflow: hidden;
+}
+
+.brand-wordmark {
+  font-family: 'ChoperDisplay', serif;
+  font-size: clamp(60px, 9vw, 120px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: center;
+}
+.brand-wordmark-sm {
+  font-family: 'ChoperDisplay', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.brand-cinema-label {
+  font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
+  margin-top: 16px; font-family: 'DM Sans', sans-serif; font-weight: 300;
+}
+
+/* PALETTE PANEL */
+.palette-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: flex;
+  height: 280px;
+}
+.swatch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 18px;
+  transition: flex 0.4s ease;
+  cursor: default;
+}
+.swatch:hover { flex: 1.7; }
+.swatch-name { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; margin-bottom: 4px; }
+.swatch-hex { font-size: 12px; letter-spacing: 0.08em; font-family: 'Courier New', monospace; opacity: 0.65; }
+.swatch-role { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.38; margin-top: 3px; }
+
+/* SVG PANELS */
+.svg-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  overflow: hidden;
+}
+.svg-panel svg { width: 100%; height: auto; display: block; }
+
+/* TYPOGRAPHY PANEL */
+.typo-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #E8E4DC;
+  padding: 80px 60px;
+}
+.typo-header {
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  opacity: 0.35; margin-bottom: 48px; color: #1A1A1A;
+}
+.typo-row {
+  display: flex; align-items: baseline; gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(26,26,26,0.08);
+}
+.typo-row:last-child { border-bottom: none; }
+.typo-label {
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+  opacity: 0.3; width: 110px; flex-shrink: 0; padding-top: 4px; color: #1A1A1A; line-height: 1.7;
+}
+.typo-sample { font-family: 'ChoperDisplay', serif; color: #1A1A1A; }
+.typo-sample-alt { font-family: 'DM Sans', sans-serif; color: #1A1A1A; }
+.typo-display { font-size: 96px; line-height: 0.95; letter-spacing: -0.02em; }
+.typo-title { font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; }
+.typo-heading { font-size: 28px; line-height: 1.2; }
+.typo-body-sz { font-size: 16px; line-height: 1.65; font-weight: 300; }
+.typo-caption-sz { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; }
+
+/* VOICE PANEL — DARK EDITORIAL */
+.voice-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #1A1A1A;
+  padding: 100px 60px;
+}
+.voice-header {
+  font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: #F2F0EC; opacity: 0.25; margin-bottom: 56px;
+}
+.voice-phrase {
+  font-family: 'ChoperDisplay', serif;
+  color: #F2F0EC;
+  font-size: clamp(28px, 4vw, 54px);
+  line-height: 1.15;
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(242,240,236,0.08);
+  letter-spacing: -0.01em;
+}
+.voice-phrase:last-child { border-bottom: none; }
+.voice-phrase em { color: #B91C1C; font-style: normal; }
+
+/* STATEMENT PANEL */
+.statement-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #B91C1C;
+  padding: 80px 60px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+.statement-text {
+  font-family: 'ChoperDisplay', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  color: #F2F0EC;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 600px;
+}
+.statement-aside {
+  font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: #F2F0EC; opacity: 0.5; writing-mode: vertical-rl; flex-shrink: 0;
+}
+
+/* MOCKUP PANELS */
+.mockup-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  position: relative;
+  overflow: hidden;
+  background: #1A1A1A;
+}
+.mockup-panel img { width: 100%; display: block; }
+.mockup-overlay {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.overlay-logo {
+  font-family: 'ChoperDisplay', serif;
+  color: #F2F0EC;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.overlay-tagline {
+  font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: #F2F0EC; font-family: 'DM Sans', sans-serif; margin-top: 10px; opacity: 0.6;
+}
+.overlay-red {
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #B91C1C; font-family: 'DM Sans', sans-serif; margin-top: 6px;
+}
+
+/* LOGO VARIATIONS */
+.logo-grid {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(26,26,26,0.12);
+}
+.logo-cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 70px 40px;
+  gap: 12px;
+}
+
+/* MANIFESTO */
+.manifesto-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #1A1A1A;
+  padding: 130px 60px;
+  text-align: center;
+  position: relative;
+}
+.manifesto-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: #B91C1C;
+}
+.manifesto-text {
+  font-family: 'ChoperDisplay', serif;
+  font-size: clamp(26px, 4vw, 52px);
+  color: #F2F0EC;
+  line-height: 1.25;
+  max-width: 700px;
+  margin: 0 auto;
+  letter-spacing: -0.01em;
+}
+.manifesto-text em { color: #B91C1C; font-style: normal; }
+.manifesto-rule {
+  width: 50px; height: 2px; background: #B91C1C;
+  margin: 44px auto;
+}
+.manifesto-sub {
+  font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
+  color: #F2F0EC; opacity: 0.3;
+}
+
+/* CTA */
+.cta-section {
+  padding: 120px 48px;
+  text-align: center;
+  border-top: 3px solid #1A1A1A;
+  background: #F2F0EC;
+}
+.cta-section h2 {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  margin-bottom: 12px; color: #1A1A1A;
+  font-family: 'ChoperDisplay', serif;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.cta-section p { font-size: 14px; opacity: 0.45; margin-bottom: 40px; letter-spacing: 0.05em; }
+.cta-link {
+  display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 14px 48px; border: 2px solid #1A1A1A; text-decoration: none; color: #1A1A1A;
+  transition: all 0.25s;
+}
+.cta-link:hover { background: #1A1A1A; color: #F2F0EC; }
+.cta-link-alt {
+  display: inline-block; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 14px 48px; border: 2px solid #B91C1C; text-decoration: none; color: #B91C1C;
+  transition: all 0.25s; margin-left: 16px;
+}
+.cta-link-alt:hover { background: #B91C1C; color: #F2F0EC; }
+
+/* FOOTER */
+footer {
+  padding: 32px 48px;
+  border-top: 1px solid rgba(26,26,26,0.1);
+  display: flex; justify-content: space-between; align-items: center;
+  background: #F2F0EC;
+}
+footer .ft-left { font-size: 11px; letter-spacing: 0.15em; opacity: 0.3; text-transform: uppercase; color: #1A1A1A; }
+footer .ft-right { font-size: 11px; letter-spacing: 0.1em; opacity: 0.25; color: #1A1A1A; }
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.85s ease, transform 0.85s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* NUMBER PANEL */
+.num-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #E8E4DC;
+  padding: 60px;
+  display: flex;
+  gap: 1px;
+  border-top: 1px solid rgba(26,26,26,0.08);
+  border-bottom: 1px solid rgba(26,26,26,0.08);
+}
+.num-item {
+  flex: 1; padding: 0 24px;
+  border-right: 1px solid rgba(26,26,26,0.1);
+}
+.num-item:first-child { padding-left: 0; }
+.num-item:last-child { border-right: none; }
+.num-big {
+  font-family: 'ChoperDisplay', serif;
+  font-size: 52px; color: #1A1A1A; letter-spacing: -0.02em; line-height: 1;
+  margin-bottom: 8px;
+}
+.num-big em { color: #B91C1C; font-style: normal; }
+.num-desc { font-size: 12px; color: #1A1A1A; opacity: 0.45; letter-spacing: 0.05em; line-height: 1.5; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav, nav.site-nav { padding: 14px 24px !important; }
+  .page-header, header.page-header { padding: 48px 24px 36px !important; }
+  .text-section { grid-template-columns: 1fr !important; gap: 12px !important; padding: 32px 24px !important; }
+  .g-panel, .g-full, .mockup-panel, .panel, .brand-panel { width: 100% !important; }
+  .palette-row, .palette-col-container { flex-wrap: wrap !important; }
+  .swatch { flex: 0 0 33.33% !important; min-height: 130px !important; }
+  .typo-panel { padding: 48px 24px !important; }
+  .typo-row { flex-wrap: wrap !important; gap: 6px !important; }
+  .typo-meta, .typo-label { width: auto !important; }
+  .typo-sample { font-size: clamp(1.4rem, 9vw, 4rem) !important; overflow: hidden !important; max-width: 100% !important; }
+  .lockup-grid, .logo-grid { grid-template-columns: 1fr 1fr !important; }
+  .lockup-cell, .logo-cell { min-height: 200px !important; }
+  .voice-panel, .manifesto-panel { padding: 60px 24px !important; gap: 16px !important; min-height: auto !important; }
+  .voice-line, .voice-phrase { font-size: clamp(1.1rem, 5vw, 2.8rem) !important; }
+  .closing-panel { padding: 48px 24px !important; }
+  .cta-section { padding: 80px 24px !important; }
+  footer { padding: 24px !important; flex-direction: column !important; gap: 8px !important; text-align: center !important; }
+  .hero-panel, .panel-hero { min-height: 80vh !important; }
+  .hero-wordmark, .hero-logo-text { font-size: clamp(3rem, 14vw, 7rem) !important; }
+}
+@media (max-width: 600px) {
+  nav, nav.site-nav { padding: 12px 16px !important; }
+  .nav-type, .nav-right { display: none !important; }
+  .page-header, header.page-header { padding: 36px 16px 24px !important; }
+  .text-section { padding: 24px 16px !important; }
+  .swatch { flex: 0 0 50% !important; min-height: 110px !important; }
+  .typo-panel { padding: 36px 16px !important; }
+  .palette-panel { padding: 32px 16px !important; }
+  .voice-panel { padding: 40px 16px !important; }
+  .cta-section { padding: 60px 16px !important; }
+  footer { padding: 20px 16px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <span class="nav-brand">AURUM Cinema</span>
+  <span class="nav-right">Brand Identity — Choper Display</span>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header reveal">
+  <h1>AURUM.<br><em>Apenas isso.</em></h1>
+  <p class="meta">Impactante · Editorial · Manifesto · Sem Concessões — Tipografia Choper Display</p>
+</header>
+
+<!-- ABOUT -->
+<section class="text-section reveal">
+  <div class="section-label">Sobre</div>
+  <div class="section-content">
+    <p>Existem cinemas que sussurram. O AURUM, na voz da Choper, grita. Com elegância. Com intenção. Com o peso de quem sabe o que vale. Esta não é uma identidade suave — é uma declaração. E declarações não pedem desculpas.</p>
+  </div>
+</section>
+
+<!-- CATEGORY -->
+<section class="text-section reveal">
+  <div class="section-label">Conceito</div>
+  <div class="section-content">
+    <ul>
+      <li>Impactante — presença que não pede licença</li>
+      <li>Editorial — rigor gráfico como linguagem</li>
+      <li>Manifesto — cada elemento é uma declaração</li>
+      <li>Sem concessões — nenhum detalhe é acidente</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+  <!-- 1. HERO PANEL: AURUM massive on off-white, left-aligned, brutal -->
+  <div class="panel-hero reveal">
+    <div class="hero-logo-wrap">
+      <div class="hero-wordmark">AURUM</div>
+      <div class="hero-tagline">Cinema que não pede licença para existir.</div>
+      <div class="hero-dash"></div>
+    </div>
+  </div>
+
+  <!-- 2. Logo on near-black bg -->
+  <div class="brand-panel reveal" style="background:#1A1A1A; width:68%; margin:0 auto 1px;">
+    <div class="brand-wordmark" style="color:#F2F0EC;">AURUM</div>
+    <div class="brand-cinema-label" style="color:#F2F0EC; opacity:0.4;">Cinema</div>
+  </div>
+
+  <!-- 3. CONSTRUCTION GRID 1 — Off-white paper bg -->
+  <div class="svg-panel reveal">
+    <svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif">
+      <defs>
+        <pattern id="dotgrid-ch" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="1" fill="#8C7B6B" opacity="0.25"/>
+        </pattern>
+        <marker id="arr-ch-up" markerWidth="7" markerHeight="7" refX="3" refY="0" orient="auto">
+          <path d="M3,0 L0,6 L6,6 Z" fill="#6B9DC2"/>
+        </marker>
+        <marker id="arr-ch-dn" markerWidth="7" markerHeight="7" refX="3" refY="6" orient="auto">
+          <path d="M3,6 L0,0 L6,0 Z" fill="#6B9DC2"/>
+        </marker>
+      </defs>
+
+      <!-- Background -->
+      <rect width="1400" height="700" fill="#F2F0EC"/>
+      <rect width="1400" height="700" fill="url(#dotgrid-ch)"/>
+
+      <!-- Corner registration marks -->
+      <line x1="52" y1="40" x2="92" y2="40" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <line x1="52" y1="40" x2="52" y2="80" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <circle cx="52" cy="40" r="4" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <line x1="1348" y1="40" x2="1308" y2="40" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <line x1="1348" y1="40" x2="1348" y2="80" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <circle cx="1348" cy="40" r="4" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <line x1="52" y1="660" x2="92" y2="660" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <line x1="52" y1="660" x2="52" y2="620" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <circle cx="52" cy="660" r="4" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <line x1="1348" y1="660" x2="1308" y2="660" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <line x1="1348" y1="660" x2="1348" y2="620" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+      <circle cx="1348" cy="660" r="4" fill="none" stroke="#1A1A1A" stroke-width="1" opacity="0.3"/>
+
+      <!-- Horizontal guide lines -->
+      <line x1="115" y1="148" x2="1285" y2="148" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="7,5" opacity="0.65"/>
+      <line x1="115" y1="520" x2="1285" y2="520" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="7,5" opacity="0.65"/>
+      <line x1="115" y1="335" x2="1285" y2="335" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="5,7" opacity="0.38"/>
+
+      <!-- Vertical center axis -->
+      <line x1="700" y1="52" x2="700" y2="648" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="9,6" opacity="0.45"/>
+
+      <!-- Red baseline accent line -->
+      <line x1="115" y1="520" x2="440" y2="520" stroke="#B91C1C" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- AURUM wordmark — massive Choper -->
+      <text x="700" y="520" font-family="'ChoperDisplay', serif" font-size="305" fill="#1A1A1A" text-anchor="middle" dominant-baseline="auto" opacity="0.92" letter-spacing="-5">AURUM</text>
+
+      <!-- Construction circles -->
+      <circle cx="272" cy="240" r="115" fill="none" stroke="#E8804A" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.48"/>
+      <circle cx="700" cy="375" r="88" fill="none" stroke="#E8804A" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.44"/>
+      <circle cx="1100" cy="260" r="102" fill="none" stroke="#E8804A" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.48"/>
+
+      <!-- Crosshair marks × -->
+      <line x1="270" y1="146" x2="280" y2="156" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="280" y1="146" x2="270" y2="156" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="185" y1="518" x2="195" y2="528" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="195" y1="518" x2="185" y2="528" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="358" y1="518" x2="368" y2="528" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="368" y1="518" x2="358" y2="528" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="697" y1="465" x2="707" y2="475" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="707" y1="465" x2="697" y2="475" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="898" y1="328" x2="908" y2="338" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="908" y1="328" x2="898" y2="338" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="1155" y1="146" x2="1165" y2="156" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+      <line x1="1165" y1="146" x2="1155" y2="156" stroke="#1A1A1A" stroke-width="1.3" opacity="0.42"/>
+
+      <!-- Dimension arrow -->
+      <line x1="96" y1="148" x2="96" y2="520" stroke="#6B9DC2" stroke-width="0.8" marker-start="url(#arr-ch-up)" marker-end="url(#arr-ch-dn)"/>
+      <line x1="84" y1="148" x2="110" y2="148" stroke="#6B9DC2" stroke-width="0.8" opacity="0.6"/>
+      <line x1="84" y1="520" x2="110" y2="520" stroke="#6B9DC2" stroke-width="0.8" opacity="0.6"/>
+
+      <!-- Labels -->
+      <text x="124" y="153" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif">CAP HEIGHT</text>
+      <text x="124" y="524" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif">BASELINE</text>
+      <text x="124" y="339" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif" opacity="0.5">MIDLINE</text>
+      <text x="706" y="72" font-size="9" fill="#6B9DC2" letter-spacing="3" font-family="'DM Sans', sans-serif" text-anchor="middle">EIXO CENTRAL</text>
+      <text x="78" y="338" font-size="9" fill="#6B9DC2" text-anchor="middle" font-family="'DM Sans', sans-serif" transform="rotate(-90, 78, 338)">372 px</text>
+
+      <!-- Bottom font label -->
+      <text x="700" y="638" font-size="9" fill="#1A1A1A" text-anchor="middle" letter-spacing="4" font-family="'DM Sans', sans-serif" opacity="0.28">CHOPER DISPLAY — BOLD EDITORIAL — LOGOTIPO PRINCIPAL</text>
+    </svg>
+  </div>
+
+  <!-- 4. COLOR PALETTE -->
+  <div class="palette-panel reveal">
+    <div class="swatch" style="background:#F2F0EC; border:1px solid rgba(26,26,26,0.1);">
+      <div class="swatch-name" style="color:#1A1A1A;">Primary</div>
+      <div class="swatch-hex" style="color:#1A1A1A;">#F2F0EC</div>
+      <div class="swatch-role" style="color:#1A1A1A;">Off-White</div>
+    </div>
+    <div class="swatch" style="background:#1A1A1A;">
+      <div class="swatch-name" style="color:#F2F0EC;">Accent</div>
+      <div class="swatch-hex" style="color:#F2F0EC;">#1A1A1A</div>
+      <div class="swatch-role" style="color:#F2F0EC;">Near-Black</div>
+    </div>
+    <div class="swatch" style="background:#B91C1C;">
+      <div class="swatch-name" style="color:#F2F0EC;">Red</div>
+      <div class="swatch-hex" style="color:#F2F0EC;">#B91C1C</div>
+      <div class="swatch-role" style="color:#F2F0EC;">Deep Crimson</div>
+    </div>
+    <div class="swatch" style="background:#8C7B6B;">
+      <div class="swatch-name" style="color:#F2F0EC;">Stone</div>
+      <div class="swatch-hex" style="color:#F2F0EC;">#8C7B6B</div>
+      <div class="swatch-role" style="color:#F2F0EC;">Warm Stone</div>
+    </div>
+    <div class="swatch" style="background:#E8E4DC;">
+      <div class="swatch-name" style="color:#1A1A1A;">Paper</div>
+      <div class="swatch-hex" style="color:#1A1A1A;">#E8E4DC</div>
+      <div class="swatch-role" style="color:#1A1A1A;">Warm Paper</div>
+    </div>
+  </div>
+
+  <!-- 5. CONSTRUCTION GRID 2 — Near-black, clear space zone -->
+  <div class="svg-panel reveal">
+    <svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', sans-serif">
+      <defs>
+        <pattern id="dotgrid-ch2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="0.8" fill="#F2F0EC" opacity="0.06"/>
+        </pattern>
+        <marker id="arrend-ch" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#F2F0EC" opacity="0.6"/>
+        </marker>
+      </defs>
+
+      <rect width="1400" height="700" fill="#1A1A1A"/>
+      <rect width="1400" height="700" fill="url(#dotgrid-ch2)"/>
+
+      <!-- Horizontal red accent lines at top and bottom -->
+      <line x1="0" y1="0" x2="1400" y2="0" stroke="#B91C1C" stroke-width="2.5" opacity="0.7"/>
+      <line x1="0" y1="700" x2="1400" y2="700" stroke="#B91C1C" stroke-width="2.5" opacity="0.7"/>
+
+      <!-- AURUM in off-white -->
+      <text x="700" y="432" font-family="'ChoperDisplay', serif" font-size="225" fill="#F2F0EC" text-anchor="middle" dominant-baseline="auto" opacity="0.92" letter-spacing="-4">AURUM</text>
+
+      <!-- Tight logo bounding box -->
+      <rect x="172" y="212" width="1056" height="235" fill="none" stroke="#F2F0EC" stroke-width="0.9" stroke-dasharray="6,4" opacity="0.45"/>
+
+      <!-- Clear space outer box -->
+      <rect x="50" y="90" width="1300" height="475" fill="none" stroke="#F2F0EC" stroke-width="0.8" stroke-dasharray="10,6" opacity="0.2"/>
+
+      <!-- Red clear space indicators (corners only) -->
+      <!-- Top-left corner bracket -->
+      <line x1="50" y1="90" x2="130" y2="90" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+      <line x1="50" y1="90" x2="50" y2="170" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+      <!-- Top-right -->
+      <line x1="1350" y1="90" x2="1270" y2="90" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+      <line x1="1350" y1="90" x2="1350" y2="170" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+      <!-- Bottom-left -->
+      <line x1="50" y1="565" x2="130" y2="565" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+      <line x1="50" y1="565" x2="50" y2="485" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+      <!-- Bottom-right -->
+      <line x1="1350" y1="565" x2="1270" y2="565" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+      <line x1="1350" y1="565" x2="1350" y2="485" stroke="#B91C1C" stroke-width="1" opacity="0.55"/>
+
+      <!-- Arrows and 1X labels -->
+      <line x1="700" y1="90" x2="700" y2="212" stroke="#F2F0EC" stroke-width="0.8" opacity="0.4"/>
+      <text x="716" y="158" font-size="11" fill="#F2F0EC" letter-spacing="2" opacity="0.55" font-family="'DM Sans', sans-serif">1X</text>
+      <line x1="700" y1="447" x2="700" y2="565" stroke="#F2F0EC" stroke-width="0.8" opacity="0.4"/>
+      <text x="716" y="512" font-size="11" fill="#F2F0EC" letter-spacing="2" opacity="0.55" font-family="'DM Sans', sans-serif">1X</text>
+      <line x1="50" y1="329" x2="172" y2="329" stroke="#F2F0EC" stroke-width="0.8" opacity="0.4"/>
+      <text x="86" y="322" font-size="11" fill="#F2F0EC" letter-spacing="2" opacity="0.55" font-family="'DM Sans', sans-serif">1X</text>
+      <line x1="1228" y1="329" x2="1350" y2="329" stroke="#F2F0EC" stroke-width="0.8" opacity="0.4"/>
+      <text x="1264" y="322" font-size="11" fill="#F2F0EC" letter-spacing="2" opacity="0.55" font-family="'DM Sans', sans-serif">1X</text>
+
+      <!-- ÁREA DE PROTEÇÃO -->
+      <text x="700" y="600" font-size="9" fill="#F2F0EC" text-anchor="middle" letter-spacing="5" font-family="'DM Sans', sans-serif" opacity="0.35">ÁREA DE PROTEÇÃO</text>
+
+      <!-- Minimum size — bottom right -->
+      <text x="1125" y="668" font-family="'ChoperDisplay', serif" font-size="50" fill="#F2F0EC" text-anchor="middle" opacity="0.35" letter-spacing="-1">AURUM</text>
+      <text x="1125" y="683" font-size="8" fill="#F2F0EC" text-anchor="middle" letter-spacing="3" font-family="'DM Sans', sans-serif" opacity="0.28">TAMANHO MÍN.</text>
+
+      <!-- Corner registration marks -->
+      <line x1="52" y1="38" x2="92" y2="38" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+      <line x1="52" y1="38" x2="52" y2="78" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+      <line x1="1348" y1="38" x2="1308" y2="38" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+      <line x1="1348" y1="38" x2="1348" y2="78" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+      <line x1="52" y1="662" x2="92" y2="662" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+      <line x1="52" y1="662" x2="52" y2="622" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+      <line x1="1348" y1="662" x2="1308" y2="662" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+      <line x1="1348" y1="662" x2="1348" y2="622" stroke="#F2F0EC" stroke-width="0.7" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <!-- 6. TYPOGRAPHY SHOWCASE -->
+  <div class="typo-panel reveal">
+    <div class="typo-header">Tipografia — Sistema Editorial</div>
+    <div class="typo-row">
+      <div class="typo-label">Display<br>96 px<br>Choper</div>
+      <div class="typo-sample typo-display">Aa</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Title<br>48 px<br>Choper</div>
+      <div class="typo-sample typo-title">AURUM Cinema</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Heading<br>28 px<br>Choper</div>
+      <div class="typo-sample typo-heading">Apenas isso.</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Body<br>15 px<br>DM Sans Light</div>
+      <div class="typo-sample-alt typo-body-sz">Cinema que não pede licença para existir. Uma declaração gráfica sem concessões.</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-label">Caption<br>11 px<br>DM Sans</div>
+      <div class="typo-sample-alt typo-caption-sz" style="color:#B91C1C; opacity:0.7;">Brand Identity · Editorial · Cinema · 2025</div>
+    </div>
+  </div>
+
+  <!-- 7. BRAND VOICE PANEL -->
+  <div class="voice-panel reveal">
+    <div class="voice-header">Voz da Marca</div>
+    <div class="voice-phrase">AURUM. <em>Apenas isso.</em></div>
+    <div class="voice-phrase">Cinema que não pede<br>licença para <em>existir</em>.</div>
+    <div class="voice-phrase">Uma declaração.<br>Declarações não<br><em>pedem desculpas</em>.</div>
+    <div class="voice-phrase">O peso de quem<br>sabe o que <em>vale</em>.</div>
+  </div>
+
+  <!-- RED STATEMENT PANEL -->
+  <div class="statement-panel reveal">
+    <div class="statement-text">
+      Existem cinemas que sussurram.<br>
+      O AURUM grita.
+    </div>
+    <div class="statement-aside">Com elegância. Com intenção.</div>
+  </div>
+
+  <!-- NUMBERS PANEL -->
+  <div class="num-panel reveal">
+    <div class="num-item">
+      <div class="num-big">01<em>.</em></div>
+      <div class="num-desc">Identidade visual<br>sem compromissos</div>
+    </div>
+    <div class="num-item">
+      <div class="num-big"><em>∅</em></div>
+      <div class="num-desc">Zero concessões<br>no design</div>
+    </div>
+    <div class="num-item">
+      <div class="num-big">100<em>%</em></div>
+      <div class="num-desc">Intenção em<br>cada detalhe</div>
+    </div>
+  </div>
+
+  <!-- ═══ MOCKUPS CINEMA ═══ -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/CINEMA-SCREEN-1.png" alt="Tela AURUM Choper">
+    <div class="mockup-overlay" style="top:10%;left:15%;width:70%;height:65%;">
+      <span class="overlay-logo" style="font-size:clamp(2rem,5vw,4.5rem);mix-blend-mode:screen;text-shadow:0 0 60px rgba(26,26,26,0.55);">AURUM</span>
+      <span class="overlay-tagline" style="mix-blend-mode:screen;">Cinema</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Popcorn-Bucket-Mockup.png" alt="Balde de pipoca AURUM Choper">
+    <div class="mockup-overlay" style="top:22%;left:25%;width:50%;height:50%;">
+      <span class="overlay-logo" style="font-size:clamp(1.2rem,3.5vw,2.8rem);color:#1A1A1A;mix-blend-mode:multiply;">AURUM</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Psd-01.png" alt="Ingressos AURUM Choper">
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Billboard-Mockup.png" alt="Billboard AURUM Choper">
+    <div class="mockup-overlay" style="top:15%;left:12%;width:76%;height:65%;">
+      <span class="overlay-logo" style="font-size:clamp(1.5rem,4vw,3.5rem);mix-blend-mode:screen;text-shadow:0 0 40px rgba(185,28,28,0.45);">AURUM</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Signage-Mockup.png" alt="Sinalização AURUM Choper">
+    <div class="mockup-overlay" style="top:20%;left:15%;width:70%;height:55%;">
+      <span class="overlay-logo" style="font-size:clamp(1.2rem,3.5vw,2.8rem);color:#1A1A1A;mix-blend-mode:multiply;">AURUM</span>
+    </div>
+  </div>
+  <div class="mockup-panel reveal">
+    <img src="./mockups/UNIFORME_MOCKUP.png" alt="Uniforme AURUM Choper">
+  </div>
+
+  <!-- 12. LOGO LOCKUP VARIATIONS -->
+  <div class="logo-grid reveal">
+    <div class="logo-cell" style="background:#F2F0EC;">
+      <div class="brand-wordmark-sm" style="color:#1A1A1A;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#8C7B6B; opacity:0.7;">Cinema</div>
+    </div>
+    <div class="logo-cell" style="background:#1A1A1A;">
+      <div class="brand-wordmark-sm" style="color:#F2F0EC;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#F2F0EC; opacity:0.4;">Cinema</div>
+    </div>
+    <div class="logo-cell" style="background:#B91C1C;">
+      <div class="brand-wordmark-sm" style="color:#F2F0EC;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#F2F0EC; opacity:0.6;">Cinema</div>
+    </div>
+    <div class="logo-cell" style="background:#8C7B6B;">
+      <div class="brand-wordmark-sm" style="color:#F2F0EC;">AURUM</div>
+      <div class="brand-cinema-label" style="color:#F2F0EC; opacity:0.5;">Cinema</div>
+    </div>
+  </div>
+
+  <!-- 13. BRAND MANIFESTO -->
+  <div class="manifesto-panel reveal">
+    <div class="manifesto-rule"></div>
+    <p class="manifesto-text">
+      "Não é uma identidade suave.<br>
+      É uma <em>declaração</em>."
+    </p>
+    <div class="manifesto-rule"></div>
+    <div class="manifesto-sub">AURUM. Apenas isso. · Choper Display · 2025</div>
+  </div>
+
+</div><!-- /gallery -->
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <h2>Quer criar uma experiência assim?</h2>
+  <p>Identidade visual editorial para marcas que não pedem licença para existir.</p>
+  <a href="mailto:contato@aurum.cinema" class="cta-link">Entre em contato</a>
+  <a href="mailto:contato@aurum.cinema" class="cta-link-alt">Ver outros projetos</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-left">AURUM Cinema — Identidade Visual 2025</div>
+  <div class="ft-right">Tipografia: Choper Display · Editorial · Manifesto</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURUM Cinema — Brand Identity System</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --cream:  #F2EFEA;
+      --gold:   #C2A875;
+      --green:  #041B15;
+      --wine:   #250106;
+      --ink:    #111111;
+    }
+
+    body {
+      background: #0A0A0A;
+      color: #F2EFEA;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.92);
+      border-bottom: 1px solid rgba(194,168,117,0.12);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.18em;
+      color: var(--gold);
+    }
+    .nav-right {
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(242,239,234,0.35);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(194,168,117,0.08) 0%, transparent 65%);
+    }
+    .hero-eyebrow {
+      font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
+      color: rgba(194,168,117,0.5);
+      margin-bottom: 40px;
+      display: block;
+    }
+    .hero-title {
+      font-size: clamp(4rem, 12vw, 11rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      line-height: 1;
+      position: relative;
+    }
+    .hero-sub {
+      display: block;
+      font-size: clamp(0.9rem, 2vw, 1.3rem);
+      letter-spacing: 0.1em;
+      color: rgba(242,239,234,0.4);
+      margin-top: 16px;
+    }
+    .hero-rule {
+      width: 80px; height: 1px;
+      background: var(--gold);
+      margin: 32px auto;
+    }
+    .hero-tagline {
+      font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(242,239,234,0.3);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      opacity: 0.3;
+    }
+    .hero-scroll span { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; }
+    .scroll-bar {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: bar 2s ease-in-out infinite;
+    }
+    @keyframes bar { 0%,100%{opacity:.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
+
+    /* ── INTRO TEXT ── */
+    .intro-section {
+      padding: 100px 48px;
+      border-top: 1px solid rgba(194,168,117,0.1);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .intro-label {
+      font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(194,168,117,0.45); margin-bottom: 20px; display: block;
+    }
+    .intro-heading {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 300; line-height: 1.25;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .intro-body {
+      font-size: 14px; line-height: 1.9;
+      color: rgba(242,239,234,0.6);
+    }
+
+    /* ── GRID HEADER ── */
+    .grid-header {
+      padding: 60px 48px 40px;
+      border-top: 1px solid rgba(194,168,117,0.1);
+    }
+    .grid-header h2 {
+      font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase;
+      color: rgba(194,168,117,0.45);
+    }
+
+    /* ── BRAND GRID ── */
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(194,168,117,0.08);
+      padding: 0 0 1px;
+    }
+
+    .brand-card {
+      position: relative;
+      background: #0A0A0A;
+      padding: 56px 48px;
+      text-decoration: none;
+      display: flex; flex-direction: column;
+      min-height: 340px;
+      overflow: hidden;
+      transition: background 0.4s ease;
+    }
+    .brand-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--card-accent, rgba(194,168,117,0.04));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .brand-card:hover::before { opacity: 1; }
+    .brand-card:hover .card-arrow { transform: translateX(6px); opacity: 1; }
+
+    .card-num {
+      font-size: 10px; letter-spacing: 0.3em;
+      color: rgba(194,168,117,0.25);
+      margin-bottom: 40px;
+    }
+    .card-logo {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      color: var(--card-color, var(--gold));
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin-bottom: 8px;
+      position: relative; z-index: 1;
+    }
+    .card-font-name {
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(242,239,234,0.25);
+      margin-bottom: 20px;
+    }
+    .card-divider {
+      width: 40px; height: 1px;
+      background: var(--card-color, var(--gold));
+      opacity: 0.4;
+      margin-bottom: 20px;
+    }
+    .card-concept {
+      font-size: 13px; line-height: 1.7;
+      color: rgba(242,239,234,0.45);
+      flex: 1;
+    }
+    .card-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .card-palette {
+      display: flex; gap: 5px; align-items: center;
+    }
+    .card-swatch {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .card-arrow {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--card-color, var(--gold));
+      opacity: 0.5;
+      transition: all 0.3s;
+    }
+    .card-tagline {
+      font-size: 11px; font-style: italic;
+      color: rgba(242,239,234,0.3);
+      margin-top: 6px;
+    }
+
+    /* Card color accents */
+    .card-calgone    { --card-color: #C87941; --card-accent: rgba(200,121,65,0.05); }
+    .card-csvision   { --card-color: #2B6BE8; --card-accent: rgba(43,107,232,0.05); }
+    .card-choper     { --card-color: #F2F0EC; --card-accent: rgba(242,240,236,0.03); }
+    .card-cinemate   { --card-color: #D4A840; --card-accent: rgba(212,168,64,0.05); }
+    .card-csthimble  { --card-color: #7BA7BC; --card-accent: rgba(123,167,188,0.05); }
+    .card-eleganto   { --card-color: #B09050; --card-accent: rgba(176,144,80,0.05); }
+    .card-cinematheater { --card-color: #E8A830; --card-accent: rgba(232,168,48,0.05); }
+    .card-rosamone   { --card-color: #C49060; --card-accent: rgba(196,144,96,0.05); }
+    .card-theater    { --card-color: #D4AF37; --card-accent: rgba(212,175,55,0.05); }
+
+    /* ── CLOSING ── */
+    .closing {
+      padding: 140px 48px;
+      text-align: center;
+      border-top: 1px solid rgba(194,168,117,0.1);
+      position: relative; overflow: hidden;
+    }
+    .closing::before {
+      content: '';
+      position: absolute; top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(194,168,117,0.06) 0%, transparent 70%);
+    }
+    .closing-word {
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 300; letter-spacing: 0.12em;
+      color: var(--gold);
+      display: block; line-height: 1;
+      margin-bottom: 20px;
+    }
+    .closing-phrase {
+      font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(242,239,234,0.3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(194,168,117,0.08);
+      font-size: 11px; letter-spacing: 0.12em;
+      color: rgba(242,239,234,0.25);
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.vis { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .intro-section { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+      .brand-grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 60px 24px; }
+    }
+    @media (max-width: 600px) {
+      .brand-grid { grid-template-columns: 1fr; }
+      nav { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">AURUM Cinema</span>
+    <span class="nav-right">Brand Identity System</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-eyebrow">Sistema de Identidade Visual</span>
+    <h1 class="hero-title reveal">AURUM</h1>
+    <span class="hero-sub reveal reveal-d1">Cinema</span>
+    <div class="hero-rule reveal reveal-d2"></div>
+    <span class="hero-tagline reveal reveal-d2">9 variações tipográficas · 9 identidades · 1 essência</span>
+    <div class="hero-scroll">
+      <div class="scroll-bar"></div>
+      <span>Explorar</span>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro-section">
+    <div class="reveal">
+      <span class="intro-label">Sobre o Projeto</span>
+      <h2 class="intro-heading">Nove fontes.<br>Nove formas de<br>ser AURUM.</h2>
+    </div>
+    <div class="reveal reveal-d1">
+      <p class="intro-body">
+        Cada tipografia carrega uma personalidade. Uma forma diferente de enxergar o mesmo espaço, a mesma essência, o mesmo compromisso com a experiência cinematográfica. Este sistema explora como a AURUM Cinema pode se expressar através de nove vozes visuais distintas — cada uma com sua paleta, sua construção de logo e sua identidade própria.
+      </p>
+      <br>
+      <p class="intro-body" style="color:rgba(194,168,117,0.45);">
+        Selecione uma variação para explorar o brandkit completo.
+      </p>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <div class="grid-header reveal">
+    <h2>Variações Tipográficas — 01 / 09</h2>
+  </div>
+
+  <div class="brand-grid">
+
+    <!-- 01 CALGONE -->
+    <a href="./brandkit-calgone.html" class="brand-card card-calgone reveal">
+      <span class="card-num">01</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">Calgone</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Identidade artesanal e orgânica. Cinema íntimo feito com as mãos, para quem sente com o coração.</p>
+      <p class="card-tagline">"Onde a arte toma forma"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#2A1408;"></div>
+          <div class="card-swatch" style="background:#C87941;"></div>
+          <div class="card-swatch" style="background:#F7EDD5;"></div>
+          <div class="card-swatch" style="background:#8B5E3C;"></div>
+          <div class="card-swatch" style="background:#1A0D05;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 02 CS VISION -->
+    <a href="./brandkit-csvision.html" class="brand-card card-csvision reveal reveal-d1">
+      <span class="card-num">02</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">CS Vision</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Luxo digital e precisão técnica. O cinema do futuro, arquitetado com rigor geométrico e tecnologia.</p>
+      <p class="card-tagline">"Uma nova visão do cinema"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#060D1F;"></div>
+          <div class="card-swatch" style="background:#2B6BE8;"></div>
+          <div class="card-swatch" style="background:#E8C84A;"></div>
+          <div class="card-swatch" style="background:#EEF2FF;"></div>
+          <div class="card-swatch" style="background:#0F1F45;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 03 CHOPER -->
+    <a href="./brandkit-choper.html" class="brand-card card-choper reveal reveal-d2">
+      <span class="card-num">03</span>
+      <div class="card-logo" style="color:#1A1A1A;">AURUM</div>
+      <div class="card-font-name">Choper Display</div>
+      <div class="card-divider" style="background:#1A1A1A;"></div>
+      <p class="card-concept">Editorial bold. Manifesto. Cinema que não pede licença para existir. Máximo impacto, zero ornamentos.</p>
+      <p class="card-tagline">"AURUM. Apenas isso."</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#F2F0EC; border-color:rgba(0,0,0,0.15);"></div>
+          <div class="card-swatch" style="background:#1A1A1A;"></div>
+          <div class="card-swatch" style="background:#B91C1C;"></div>
+          <div class="card-swatch" style="background:#8C7B6B;"></div>
+          <div class="card-swatch" style="background:#E8E4DC; border-color:rgba(0,0,0,0.1);"></div>
+        </div>
+        <span class="card-arrow" style="color:#F2F0EC;">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 04 CINEMATE -->
+    <a href="./brandkit-cinemate.html" class="brand-card card-cinemate reveal">
+      <span class="card-num">04</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">Cinemate</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Identidade mais cinematográfica das nove. Marquise dourada, presença absoluta, glamour atemporal.</p>
+      <p class="card-tagline">"O cinema que o tempo não esquece"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#0C0A06;"></div>
+          <div class="card-swatch" style="background:#D4A840;"></div>
+          <div class="card-swatch" style="background:#F5ECD8;"></div>
+          <div class="card-swatch" style="background:#5C1515;"></div>
+          <div class="card-swatch" style="background:#2A2218;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 05 CS THIMBLE -->
+    <a href="./brandkit-csthimble.html" class="brand-card card-csthimble reveal reveal-d1">
+      <span class="card-num">05</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">CS Thimble</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Cinema como literatura. Refinado, contemplativo, intelectual. Para quem lê as legendas e guarda os ingressos.</p>
+      <p class="card-tagline">"Cada cena, uma memória"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#1E2A35;"></div>
+          <div class="card-swatch" style="background:#7BA7BC;"></div>
+          <div class="card-swatch" style="background:#F6F4F0; border-color:rgba(0,0,0,0.1);"></div>
+          <div class="card-swatch" style="background:#C4A882;"></div>
+          <div class="card-swatch" style="background:#0D1620;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 06 ELEGANTO SANS -->
+    <a href="./brandkit-eleganto.html" class="brand-card card-eleganto reveal reveal-d2">
+      <span class="card-num">06</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">Eleganto Sans</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Arquitetura tipográfica. Sistema preciso com 4 pesos. Design suíço aplicado ao luxo cinematográfico.</p>
+      <p class="card-tagline">"Elegância em cada quadro"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#F9F8F5; border-color:rgba(0,0,0,0.1);"></div>
+          <div class="card-swatch" style="background:#1B3020;"></div>
+          <div class="card-swatch" style="background:#B09050;"></div>
+          <div class="card-swatch" style="background:#E8E3D8; border-color:rgba(0,0,0,0.08);"></div>
+          <div class="card-swatch" style="background:#111111;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 07 CINEMATHEATER -->
+    <a href="./brandkit-cinematheater.html" class="brand-card card-cinematheater reveal">
+      <span class="card-num">07</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">CinemaTheater</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Vintage Hollywood. O glamour da era dourada do cinema reencarnado. Film noir, veludo e luz âmbar.</p>
+      <p class="card-tagline">"O glamour de uma outra era"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#120A04;"></div>
+          <div class="card-swatch" style="background:#E8A830;"></div>
+          <div class="card-swatch" style="background:#F5EDD0; border-color:rgba(0,0,0,0.1);"></div>
+          <div class="card-swatch" style="background:#7A1E1E;"></div>
+          <div class="card-swatch" style="background:#3A2510;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 08 ROSAMONE -->
+    <a href="./brandkit-rosamone.html" class="brand-card card-rosamone reveal reveal-d1">
+      <span class="card-num">08</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">Rosamone</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Art Nouveau romântico. Cinema como jardim sensorial. Orgânico, fluido, feminino. Histórias que tocam a alma.</p>
+      <p class="card-tagline">"Histórias que tocam a alma"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#2A1020;"></div>
+          <div class="card-swatch" style="background:#C49060;"></div>
+          <div class="card-swatch" style="background:#E8B0A0;"></div>
+          <div class="card-swatch" style="background:#FBF0EE; border-color:rgba(0,0,0,0.08);"></div>
+          <div class="card-swatch" style="background:#6B2535;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+    <!-- 09 THEATER -->
+    <a href="./brandkit-theater.html" class="brand-card card-theater reveal reveal-d2">
+      <span class="card-num">09</span>
+      <div class="card-logo">AURUM</div>
+      <div class="card-font-name">Theater</div>
+      <div class="card-divider"></div>
+      <p class="card-concept">Art Deco grandioso. O grand théâtre do cinema. Majestoso, teatral, arquitetônico. Uma catedral da luz.</p>
+      <p class="card-tagline">"O grand théâtre do cinema"</p>
+      <div class="card-bottom">
+        <div class="card-palette">
+          <div class="card-swatch" style="background:#060606;"></div>
+          <div class="card-swatch" style="background:#D4AF37;"></div>
+          <div class="card-swatch" style="background:#F5F0E8; border-color:rgba(0,0,0,0.1);"></div>
+          <div class="card-swatch" style="background:#0D0D24;"></div>
+          <div class="card-swatch" style="background:#8B6914;"></div>
+        </div>
+        <span class="card-arrow">Ver brandkit →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <span class="closing-word reveal">AURUM</span>
+    <span class="closing-phrase reveal reveal-d1">Onde histórias ganham vida · 9 vozes · 1 essência</span>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>AURUM Cinema — Sistema de Identidade Visual</span>
+    <span>2024</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Hero instant reveal
+    document.querySelector('.hero .reveal').classList.add('vis');
+  </script>
+</body>
+</html>

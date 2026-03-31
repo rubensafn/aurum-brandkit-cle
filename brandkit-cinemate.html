@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURUM Cinema — Identidade Visual · Cinemate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Cinemate';
+  src: url('./fonts/Cinemate.woff2') format('woff2'), url('./fonts/Cinemate.woff') format('woff');
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  background: #F5ECD8;
+  color: #0C0A06;
+}
+
+nav.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px;
+  border-bottom: 1px solid rgba(12,10,6,0.10);
+  background: rgba(245,236,216,0.92);
+  backdrop-filter: blur(8px);
+}
+.nav-brand { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #0C0A06; }
+.nav-type { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.4; color: #0C0A06; }
+
+.page-header { padding: 80px 48px 56px; background: #F5ECD8; }
+.page-header h1 {
+  font-family: 'Cinemate', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  margin-bottom: 18px;
+  color: #0C0A06;
+  letter-spacing: 0.02em;
+}
+.page-header .meta-tags { font-size: 11px; letter-spacing: 0.28em; opacity: 0.4; text-transform: uppercase; }
+
+.text-section {
+  padding: 44px 48px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 48px;
+  border-top: 1px solid rgba(12,10,6,0.08);
+  max-width: 900px;
+  background: #F5ECD8;
+}
+.t-label { font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase; opacity: 0.35; padding-top: 3px; }
+.t-content { font-size: 14px; font-weight: 300; line-height: 1.9; color: #0C0A06; }
+.t-content ul { list-style: none; }
+.t-content ul li { padding: 2px 0; }
+.t-content ul li::before { content: '— '; opacity: 0.4; }
+
+.gallery { background: #F5ECD8; }
+
+.g-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  position: relative;
+  overflow: hidden;
+}
+.g-panel-full {
+  width: 100%;
+  margin: 0 0 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* HERO PANEL */
+.hero-panel {
+  width: 100%;
+  min-height: 100vh;
+  background: #0C0A06;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,64,0.08) 0%, transparent 70%);
+}
+.hero-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+.hero-logo-main {
+  font-family: 'Cinemate', serif;
+  font-size: clamp(5rem, 14vw, 13rem);
+  color: #D4A840;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.hero-logo-sub {
+  font-size: 11px;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(212,168,64,0.55);
+  font-weight: 400;
+}
+.hero-tagline {
+  position: absolute;
+  bottom: 52px;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(245,236,216,0.28);
+}
+.hero-corner-tl, .hero-corner-br {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.18;
+}
+.hero-corner-tl { top: 40px; left: 40px; border-top: 1px solid #D4A840; border-left: 1px solid #D4A840; }
+.hero-corner-br { bottom: 40px; right: 40px; border-bottom: 1px solid #D4A840; border-right: 1px solid #D4A840; }
+
+/* COLOR PALETTE PANEL */
+.palette-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: flex;
+  height: 200px;
+}
+.swatch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px 18px;
+  position: relative;
+}
+.swatch-name { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; }
+.swatch-hex { font-size: 10px; letter-spacing: 0.12em; font-family: 'DM Sans', monospace; opacity: 0.85; }
+
+/* TYPOGRAPHY PANEL */
+.typo-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #F5ECD8;
+  padding: 64px 60px;
+  border-top: 1px solid rgba(12,10,6,0.08);
+  border-bottom: 1px solid rgba(12,10,6,0.08);
+}
+.typo-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(12,10,6,0.07);
+  padding: 18px 0;
+}
+.typo-row:last-child { border-bottom: none; }
+.typo-sample {
+  font-family: 'Cinemate', serif;
+  color: #0C0A06;
+  line-height: 1;
+}
+.typo-meta { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.35; }
+
+/* BRAND VOICE PANEL */
+.voice-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #0C0A06;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.voice-phrase {
+  font-family: 'Cinemate', serif;
+  color: #D4A840;
+  line-height: 1.15;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(212,168,64,0.15);
+}
+.voice-phrase:last-child { border-bottom: none; }
+.voice-phrase.large { font-size: clamp(2rem, 4vw, 3.2rem); }
+.voice-phrase.medium { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+.voice-phrase.small { font-size: clamp(1rem, 1.8vw, 1.4rem); color: rgba(212,168,64,0.55); letter-spacing: 0.08em; }
+
+/* MOCKUP PANELS */
+.mockup-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  position: relative;
+  overflow: hidden;
+  background: #0C0A06;
+}
+.mockup-panel img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.mockup-overlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.mk-logo {
+  font-family: 'Cinemate', serif;
+  display: block;
+  line-height: 1;
+  color: #D4A840;
+}
+.mk-sub {
+  font-size: 9px;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(212,168,64,0.7);
+  display: block;
+  margin-top: 4px;
+}
+
+/* LOGO LOCKUP 2×2 */
+.lockup-grid {
+  width: 68%;
+  margin: 0 auto 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.lockup-cell {
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+.lockup-cell .lk-logo {
+  font-family: 'Cinemate', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+.lockup-cell .lk-sub {
+  font-size: 9px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.lk-label {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.3;
+}
+
+/* MANIFESTO / CLOSING */
+.closing-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  background: #2A2218;
+  padding: 100px 60px;
+  text-align: center;
+}
+.closing-panel .c-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(212,168,64,0.5);
+  margin-bottom: 32px;
+  display: block;
+}
+.closing-panel .c-statement {
+  font-family: 'Cinemate', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: #D4A840;
+  line-height: 1.3;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+.closing-panel .c-sub {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(245,236,216,0.3);
+}
+
+/* SECTION LABEL PANEL */
+.section-label-panel {
+  width: 68%;
+  margin: 0 auto 1px;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #F5ECD8;
+}
+.section-label-panel .sl-num {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  opacity: 0.25;
+  font-weight: 400;
+}
+.section-label-panel .sl-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(12,10,6,0.10);
+}
+.section-label-panel .sl-text {
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.3;
+}
+
+.cta-section {
+  padding: 110px 48px;
+  text-align: center;
+  border-top: 1px solid rgba(12,10,6,0.07);
+  background: #F5ECD8;
+}
+.cta-section p {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 40px;
+  color: #0C0A06;
+}
+.cta-btn {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  padding: 14px 44px;
+  border: 1px solid #0C0A06;
+  text-decoration: none;
+  color: #0C0A06;
+  transition: background 0.3s, color 0.3s;
+}
+.cta-btn:hover { background: #0C0A06; color: #D4A840; }
+
+footer {
+  padding: 40px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(12,10,6,0.07);
+  background: #F5ECD8;
+}
+.f-brand { font-size: 11px; letter-spacing: 0.2em; opacity: 0.4; }
+.f-year { font-size: 11px; opacity: 0.3; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav, nav.site-nav { padding: 14px 24px !important; }
+  .page-header, header.page-header { padding: 48px 24px 36px !important; }
+  .text-section { grid-template-columns: 1fr !important; gap: 12px !important; padding: 32px 24px !important; }
+  .g-panel, .g-full, .mockup-panel, .panel, .brand-panel { width: 100% !important; }
+  .palette-row, .palette-col-container { flex-wrap: wrap !important; }
+  .swatch { flex: 0 0 33.33% !important; min-height: 130px !important; }
+  .typo-panel { padding: 48px 24px !important; }
+  .typo-row { flex-wrap: wrap !important; gap: 6px !important; }
+  .typo-meta, .typo-label { width: auto !important; }
+  .typo-sample { font-size: clamp(1.4rem, 9vw, 4rem) !important; overflow: hidden !important; max-width: 100% !important; }
+  .lockup-grid, .logo-grid { grid-template-columns: 1fr 1fr !important; }
+  .lockup-cell, .logo-cell { min-height: 200px !important; }
+  .voice-panel, .manifesto-panel { padding: 60px 24px !important; gap: 16px !important; min-height: auto !important; }
+  .voice-line, .voice-phrase { font-size: clamp(1.1rem, 5vw, 2.8rem) !important; }
+  .closing-panel { padding: 48px 24px !important; }
+  .cta-section { padding: 80px 24px !important; }
+  footer { padding: 24px !important; flex-direction: column !important; gap: 8px !important; text-align: center !important; }
+  .hero-panel, .panel-hero { min-height: 80vh !important; }
+  .hero-wordmark, .hero-logo-text { font-size: clamp(3rem, 14vw, 7rem) !important; }
+}
+@media (max-width: 600px) {
+  nav, nav.site-nav { padding: 12px 16px !important; }
+  .nav-type, .nav-right { display: none !important; }
+  .page-header, header.page-header { padding: 36px 16px 24px !important; }
+  .text-section { padding: 24px 16px !important; }
+  .swatch { flex: 0 0 50% !important; min-height: 110px !important; }
+  .typo-panel { padding: 36px 16px !important; }
+  .palette-panel { padding: 32px 16px !important; }
+  .voice-panel { padding: 40px 16px !important; }
+  .cta-section { padding: 60px 16px !important; }
+  footer { padding: 20px 16px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <span class="nav-brand">AURUM Cinema</span>
+  <span class="nav-type">Brand Identity — Cinemate</span>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <h1>AURUM Cinema<br>Identidade Visual</h1>
+  <p class="meta-tags">Tipografia Cinemate &nbsp;·&nbsp; Glamour de Marquise &nbsp;·&nbsp; Prestígio Atemporal &nbsp;·&nbsp; 2026</p>
+</header>
+
+<!-- ABOUT -->
+<section class="text-section reveal">
+  <span class="t-label">Sobre</span>
+  <div class="t-content">
+    <p>Antes de existir uma tela, existe uma luz. Antes de existir uma experiência, existe uma escolha. O AURUM, na voz da Cinemate, é um convite para o cinema na sua forma mais pura — a que faz o tempo parar, a que cria memória, a que deixa saudade.</p>
+  </div>
+</section>
+
+<section class="text-section reveal" style="border-top:none; padding-top:0;">
+  <span class="t-label">Conceito</span>
+  <div class="t-content">
+    <p>A identidade mais direta do cinema. Glamour de marquise. Prestígio intemporal. Este é o AURUM em sua forma mais cinematográfica — onde cada letra carrega o peso de uma sala cheia e o silêncio que antecede o primeiro quadro.</p>
+  </div>
+</section>
+
+<section class="text-section reveal" style="border-top:none; padding-top:0;">
+  <span class="t-label">Personalidade</span>
+  <div class="t-content">
+    <ul>
+      <li>Clássico</li>
+      <li>Atemporal</li>
+      <li>Luminoso</li>
+      <li>Presença absoluta</li>
+    </ul>
+  </div>
+</section>
+
+<section class="text-section reveal" style="border-top:none; padding-top: 0; margin-bottom: 56px;">
+  <span class="t-label">Tagline</span>
+  <div class="t-content">
+    <p style="font-family:'Cinemate',serif; font-size:1.15rem; letter-spacing:0.04em;">"O cinema que o tempo não esquece"</p>
+    <p style="margin-top:8px; opacity:0.5; font-size:13px;">Luz. Tela. Experiência.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<main class="gallery">
+
+  <!-- PANEL 1: Logo on primary brand color -->
+  <div class="g-panel reveal">
+    <div style="background:#0C0A06; min-height:560px; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; padding:80px 40px;">
+      <div style="position:absolute; top:32px; left:32px; width:44px; height:44px; border-top:1px solid rgba(212,168,64,0.25); border-left:1px solid rgba(212,168,64,0.25);"></div>
+      <div style="position:absolute; top:32px; right:32px; width:44px; height:44px; border-top:1px solid rgba(212,168,64,0.25); border-right:1px solid rgba(212,168,64,0.25);"></div>
+      <div style="position:absolute; bottom:32px; left:32px; width:44px; height:44px; border-bottom:1px solid rgba(212,168,64,0.25); border-left:1px solid rgba(212,168,64,0.25);"></div>
+      <div style="position:absolute; bottom:32px; right:32px; width:44px; height:44px; border-bottom:1px solid rgba(212,168,64,0.25); border-right:1px solid rgba(212,168,64,0.25);"></div>
+      <div style="position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212,168,64,0.06) 0%, transparent 70%);"></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:12px; position:relative; z-index:1;">
+        <span style="font-family:'Cinemate',serif; font-size:clamp(5rem,13vw,11rem); color:#D4A840; letter-spacing:0.16em; line-height:1; display:block;">AURUM</span>
+        <span style="font-size:10px; letter-spacing:0.6em; text-transform:uppercase; color:rgba(212,168,64,0.45); font-weight:400;">C I N E M A</span>
+      </div>
+      <span style="position:absolute; bottom:36px; font-size:9px; letter-spacing:0.45em; text-transform:uppercase; color:rgba(245,236,216,0.18);">VERSÃO POSITIVA — FUNDO ESCURO</span>
+    </div>
+  </div>
+
+  <!-- PANEL 2: Logo on secondary brand color -->
+  <div class="g-panel reveal">
+    <div style="background:#5C1515; min-height:480px; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; padding:70px 40px;">
+      <div style="position:absolute; inset:0; background:radial-gradient(ellipse 50% 50% at 50% 50%, rgba(212,168,64,0.05) 0%, transparent 70%);"></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:10px; position:relative; z-index:1;">
+        <span style="font-family:'Cinemate',serif; font-size:clamp(3.5rem,9vw,8rem); color:#F5ECD8; letter-spacing:0.14em; line-height:1;">AURUM</span>
+        <div style="width:100%; height:1px; background:rgba(245,236,216,0.2); margin:8px 0;"></div>
+        <span style="font-size:9px; letter-spacing:0.55em; text-transform:uppercase; color:rgba(245,236,216,0.4);">C I N E M A</span>
+      </div>
+      <span style="position:absolute; bottom:32px; font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:rgba(245,236,216,0.18);">VERSÃO SOBRE BORGONHA</span>
+    </div>
+  </div>
+
+  <!-- PANEL 3: Construction Grid SVG 1 (light bg) -->
+  <div class="g-panel reveal">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 680" width="100%" style="display:block;">
+      <defs>
+        <pattern id="dot-grid-c" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="1.1" fill="#BBA882" opacity="0.45"/>
+        </pattern>
+      </defs>
+      <!-- Background -->
+      <rect width="1400" height="680" fill="#F5ECD8"/>
+      <rect width="1400" height="680" fill="url(#dot-grid-c)"/>
+
+      <!-- Corner registration marks -->
+      <g stroke="#0C0A06" stroke-width="0.75" fill="none" opacity="0.55">
+        <line x1="32" y1="32" x2="64" y2="32"/><line x1="32" y1="32" x2="32" y2="64"/>
+        <circle cx="32" cy="32" r="4"/>
+        <line x1="1368" y1="32" x2="1336" y2="32"/><line x1="1368" y1="32" x2="1368" y2="64"/>
+        <circle cx="1368" cy="32" r="4"/>
+        <line x1="32" y1="648" x2="64" y2="648"/><line x1="32" y1="648" x2="32" y2="616"/>
+        <circle cx="32" cy="648" r="4"/>
+        <line x1="1368" y1="648" x2="1336" y2="648"/><line x1="1368" y1="648" x2="1368" y2="616"/>
+        <circle cx="1368" cy="648" r="4"/>
+      </g>
+
+      <!-- Horizontal guide lines (dashed, steel blue) -->
+      <g stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="6,5" fill="none" opacity="0.75">
+        <!-- Baseline -->
+        <line x1="100" y1="448" x2="1300" y2="448"/>
+        <!-- Cap height -->
+        <line x1="100" y1="188" x2="1300" y2="188"/>
+        <!-- Midline (x-height) -->
+        <line x1="100" y1="348" x2="1300" y2="348"/>
+      </g>
+
+      <!-- Vertical center axis -->
+      <line x1="700" y1="60" x2="700" y2="620" stroke="#6B9DC2" stroke-width="0.8" stroke-dasharray="6,5" opacity="0.6"/>
+
+      <!-- Main logo text -->
+      <text x="700" y="448" font-family="Cinemate, serif" font-size="260" fill="#0C0A06" text-anchor="middle" dominant-baseline="auto" opacity="0.88" letter-spacing="28">AURUM</text>
+
+      <!-- Construction circles around rounded elements (orange, dashed) -->
+      <circle cx="316" cy="318" r="140" fill="none" stroke="#E8804A" stroke-width="0.7" stroke-dasharray="5,4" opacity="0.45"/>
+      <circle cx="700" cy="318" r="100" fill="none" stroke="#E8804A" stroke-width="0.7" stroke-dasharray="5,4" opacity="0.35"/>
+      <circle cx="1084" cy="318" r="130" fill="none" stroke="#E8804A" stroke-width="0.7" stroke-dasharray="5,4" opacity="0.4"/>
+
+      <!-- Crosshair marks (×) at letter anchor points -->
+      <g stroke="#E8804A" stroke-width="1.1" opacity="0.72">
+        <!-- A left -->
+        <line x1="226" y1="444" x2="236" y2="454"/><line x1="236" y1="444" x2="226" y2="454"/>
+        <!-- A apex -->
+        <line x1="316" y1="184" x2="326" y2="194"/><line x1="326" y1="184" x2="316" y2="194"/>
+        <!-- U baseline left -->
+        <line x1="489" y1="444" x2="499" y2="454"/><line x1="499" y1="444" x2="489" y2="454"/>
+        <!-- U baseline right -->
+        <line x1="596" y1="444" x2="606" y2="454"/><line x1="606" y1="444" x2="596" y2="454"/>
+        <!-- R midbar -->
+        <line x1="735" y1="344" x2="745" y2="354"/><line x1="745" y1="344" x2="735" y2="354"/>
+        <!-- U2 left base -->
+        <line x1="900" y1="444" x2="910" y2="454"/><line x1="910" y1="444" x2="900" y2="454"/>
+        <!-- M left -->
+        <line x1="1080" y1="444" x2="1090" y2="454"/><line x1="1090" y1="444" x2="1080" y2="454"/>
+        <!-- M apex center -->
+        <line x1="1174" y1="184" x2="1184" y2="194"/><line x1="1184" y1="184" x2="1174" y2="194"/>
+      </g>
+
+      <!-- Left-side dimension arrows (cap height) -->
+      <g stroke="#6B9DC2" stroke-width="0.8" fill="none" opacity="0.75">
+        <line x1="110" y1="188" x2="110" y2="448"/>
+        <line x1="104" y1="188" x2="116" y2="188"/>
+        <line x1="104" y1="448" x2="116" y2="448"/>
+      </g>
+      <!-- Midline dimension -->
+      <g stroke="#6B9DC2" stroke-width="0.8" fill="none" opacity="0.55">
+        <line x1="130" y1="348" x2="130" y2="448"/>
+        <line x1="124" y1="348" x2="136" y2="348"/>
+        <line x1="124" y1="448" x2="136" y2="448"/>
+      </g>
+
+      <!-- Annotations -->
+      <text x="80" y="322" font-family="DM Sans, sans-serif" font-size="9" fill="#6B9DC2" letter-spacing="3" text-anchor="middle" transform="rotate(-90, 80, 322)" opacity="0.8">CAP HEIGHT</text>
+      <text x="148" y="402" font-family="DM Sans, sans-serif" font-size="9" fill="#6B9DC2" letter-spacing="3" text-anchor="middle" transform="rotate(-90, 148, 402)" opacity="0.6">X-HEIGHT</text>
+
+      <text x="700" y="476" font-family="DM Sans, sans-serif" font-size="9" fill="#6B9DC2" letter-spacing="5" text-anchor="middle" opacity="0.7">BASELINE</text>
+      <text x="700" y="175" font-family="DM Sans, sans-serif" font-size="9" fill="#6B9DC2" letter-spacing="5" text-anchor="middle" opacity="0.7">ALTURA DE CAIXA ALTA</text>
+      <text x="1340" y="318" font-family="DM Sans, sans-serif" font-size="9" fill="#6B9DC2" letter-spacing="3" text-anchor="middle" transform="rotate(90, 1340, 318)" opacity="0.6">EIXO CENTRAL</text>
+
+      <!-- Bottom font label -->
+      <text x="700" y="640" font-family="DM Sans, sans-serif" font-size="9" fill="#0C0A06" letter-spacing="5" text-anchor="middle" opacity="0.3">CINEMATE — TIPOGRAFIA PRINCIPAL AURUM CINEMA</text>
+
+      <!-- Top annotation bar -->
+      <line x1="100" y1="108" x2="1300" y2="108" stroke="#0C0A06" stroke-width="0.4" opacity="0.12"/>
+      <text x="100" y="100" font-family="DM Sans, sans-serif" font-size="9" fill="#0C0A06" letter-spacing="3" opacity="0.25">AURUM CINEMA — GRID DE CONSTRUÇÃO TIPOGRÁFICA</text>
+      <text x="1300" y="100" font-family="DM Sans, sans-serif" font-size="9" fill="#0C0A06" letter-spacing="2" text-anchor="end" opacity="0.25">REV. 01 · 2026</text>
+    </svg>
+  </div>
+
+  <!-- PANEL 4: Color Palette -->
+  <div class="palette-panel reveal">
+    <div class="swatch" style="background:#0C0A06;">
+      <span class="swatch-name" style="color:#D4A840;">Cinema Black</span>
+      <span class="swatch-hex" style="color:#D4A840;">#0C0A06</span>
+    </div>
+    <div class="swatch" style="background:#D4A840;">
+      <span class="swatch-name" style="color:#0C0A06;">Marquee Gold</span>
+      <span class="swatch-hex" style="color:#0C0A06;">#D4A840</span>
+    </div>
+    <div class="swatch" style="background:#F5ECD8;">
+      <span class="swatch-name" style="color:#0C0A06;">Warm Ivory</span>
+      <span class="swatch-hex" style="color:#0C0A06;">#F5ECD8</span>
+    </div>
+    <div class="swatch" style="background:#5C1515;">
+      <span class="swatch-name" style="color:#F5ECD8;">Deep Burgundy</span>
+      <span class="swatch-hex" style="color:#F5ECD8;">#5C1515</span>
+    </div>
+    <div class="swatch" style="background:#2A2218;">
+      <span class="swatch-name" style="color:#D4A840;">Dark Warm Brown</span>
+      <span class="swatch-hex" style="color:#D4A840;">#2A2218</span>
+    </div>
+  </div>
+
+  <!-- PANEL 5: Construction Grid SVG 2 (dark bg — clear space) -->
+  <div class="g-panel reveal">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 680" width="100%" style="display:block;">
+      <defs>
+        <pattern id="dot-grid-c2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="0.9" fill="#D4A840" opacity="0.12"/>
+        </pattern>
+      </defs>
+      <!-- Background -->
+      <rect width="1400" height="680" fill="#0C0A06"/>
+      <rect width="1400" height="680" fill="url(#dot-grid-c2)"/>
+
+      <!-- Corner reg marks -->
+      <g stroke="#D4A840" stroke-width="0.7" fill="none" opacity="0.3">
+        <line x1="32" y1="32" x2="60" y2="32"/><line x1="32" y1="32" x2="32" y2="60"/>
+        <circle cx="32" cy="32" r="3"/>
+        <line x1="1368" y1="32" x2="1340" y2="32"/><line x1="1368" y1="32" x2="1368" y2="60"/>
+        <circle cx="1368" cy="32" r="3"/>
+        <line x1="32" y1="648" x2="60" y2="648"/><line x1="32" y1="648" x2="32" y2="620"/>
+        <circle cx="32" cy="648" r="3"/>
+        <line x1="1368" y1="648" x2="1340" y2="648"/><line x1="1368" y1="648" x2="1368" y2="620"/>
+        <circle cx="1368" cy="648" r="3"/>
+      </g>
+
+      <!-- Logo (centered, in gold) -->
+      <text x="700" y="400" font-family="Cinemate, serif" font-size="180" fill="#D4A840" text-anchor="middle" dominant-baseline="auto" opacity="0.95" letter-spacing="24">AURUM</text>
+
+      <!-- Logo bounding box (tight) -->
+      <rect x="188" y="200" width="1024" height="222" fill="none" stroke="#D4A840" stroke-width="0.9" stroke-dasharray="6,4" opacity="0.55"/>
+
+      <!-- Clear space outer box (1/4 logo height padding each side ≈ 55px) -->
+      <rect x="133" y="145" width="1134" height="332" fill="none" stroke="#D4A840" stroke-width="0.7" stroke-dasharray="4,6" opacity="0.35"/>
+
+      <!-- "1X" labels with arrows -->
+      <g stroke="#D4A840" stroke-width="0.7" fill="none" opacity="0.65">
+        <!-- Top arrow -->
+        <line x1="700" y1="145" x2="700" y2="200"/>
+        <line x1="694" y1="152" x2="700" y2="145"/><line x1="706" y1="152" x2="700" y2="145"/>
+        <line x1="694" y1="193" x2="700" y2="200"/><line x1="706" y1="193" x2="700" y2="200"/>
+        <!-- Bottom arrow -->
+        <line x1="700" y1="422" x2="700" y2="477"/>
+        <line x1="694" y1="429" x2="700" y2="422"/><line x1="706" y1="429" x2="700" y2="422"/>
+        <line x1="694" y1="470" x2="700" y2="477"/><line x1="706" y1="470" x2="700" y2="477"/>
+        <!-- Left arrow -->
+        <line x1="133" y1="311" x2="188" y2="311"/>
+        <line x1="140" y1="305" x2="133" y2="311"/><line x1="140" y1="317" x2="133" y2="311"/>
+        <line x1="181" y1="305" x2="188" y2="311"/><line x1="181" y1="317" x2="188" y2="311"/>
+        <!-- Right arrow -->
+        <line x1="1212" y1="311" x2="1267" y2="311"/>
+        <line x1="1219" y1="305" x2="1212" y2="311"/><line x1="1219" y1="317" x2="1212" y2="311"/>
+        <line x1="1260" y1="305" x2="1267" y2="311"/><line x1="1260" y1="317" x2="1267" y2="311"/>
+      </g>
+
+      <!-- 1X labels text -->
+      <text x="700" y="175" font-family="DM Sans, sans-serif" font-size="10" fill="#D4A840" text-anchor="middle" letter-spacing="2" opacity="0.75">1X</text>
+      <text x="700" y="500" font-family="DM Sans, sans-serif" font-size="10" fill="#D4A840" text-anchor="middle" letter-spacing="2" opacity="0.75">1X</text>
+      <text x="103" y="314" font-family="DM Sans, sans-serif" font-size="10" fill="#D4A840" text-anchor="middle" letter-spacing="2" opacity="0.75">1X</text>
+      <text x="1297" y="314" font-family="DM Sans, sans-serif" font-size="10" fill="#D4A840" text-anchor="middle" letter-spacing="2" opacity="0.75">1X</text>
+
+      <!-- ÁREA DE PROTEÇÃO label -->
+      <text x="700" y="556" font-family="DM Sans, sans-serif" font-size="9" fill="#D4A840" letter-spacing="5" text-anchor="middle" opacity="0.4">ÁREA DE PROTEÇÃO DA MARCA — ESPAÇO MÍNIMO OBRIGATÓRIO</text>
+
+      <!-- Small AURUM minimum size -->
+      <text x="1200" y="620" font-family="Cinemate, serif" font-size="28" fill="#D4A840" text-anchor="middle" opacity="0.35" letter-spacing="4">AURUM</text>
+      <text x="1200" y="640" font-family="DM Sans, sans-serif" font-size="8" fill="#D4A840" text-anchor="middle" letter-spacing="3" opacity="0.3">TAMANHO MÍN.</text>
+
+      <!-- Title top -->
+      <text x="100" y="96" font-family="DM Sans, sans-serif" font-size="9" fill="#D4A840" letter-spacing="3" opacity="0.3">AURUM CINEMA — ÁREA DE PROTEÇÃO E VERSÃO REDUZIDA</text>
+    </svg>
+  </div>
+
+  <!-- PANEL 6: Typography -->
+  <div class="typo-panel reveal">
+    <div style="margin-bottom:32px;">
+      <span style="font-size:9px; letter-spacing:0.4em; text-transform:uppercase; opacity:0.3;">Sistema Tipográfico — Cinemate</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-sample" style="font-size:clamp(3.5rem,8vw,6.5rem);">AURUM</span>
+      <span class="typo-meta">Display / 96pt</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-sample" style="font-size:clamp(2.2rem,5vw,4rem);">O cinema que o tempo não esquece</span>
+      <span class="typo-meta">Headline / 56pt</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-sample" style="font-size:clamp(1.4rem,3vw,2.4rem);">Luz. Tela. Experiência.</span>
+      <span class="typo-meta">Subhead / 34pt</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-sample" style="font-size:clamp(1rem,2vw,1.5rem);">Uma sala cheia de memórias inesquecíveis.</span>
+      <span class="typo-meta">Body Display / 21pt</span>
+    </div>
+    <div class="typo-row">
+      <span class="typo-sample" style="font-size:0.95rem; letter-spacing:0.06em;">A arte de fazer o extraordinário parecer natural. Cinema AURUM.</span>
+      <span class="typo-meta">Caption / 13pt</span>
+    </div>
+    <div style="margin-top:28px; padding-top:20px; border-top:1px solid rgba(12,10,6,0.06); display:flex; gap:48px;">
+      <div>
+        <span style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; opacity:0.3; display:block; margin-bottom:8px;">Tipografia Principal</span>
+        <span style="font-family:'Cinemate',serif; font-size:1.1rem; letter-spacing:0.08em;">Cinemate</span>
+      </div>
+      <div>
+        <span style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; opacity:0.3; display:block; margin-bottom:8px;">Tipografia de Apoio</span>
+        <span style="font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:300; letter-spacing:0.05em;">DM Sans Light</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 7: Brand Voice / Manifesto -->
+  <div class="voice-panel reveal">
+    <div style="margin-bottom:16px;">
+      <span style="font-size:9px; letter-spacing:0.5em; text-transform:uppercase; color:rgba(212,168,64,0.35);">Voz da Marca</span>
+    </div>
+    <div class="voice-phrase large">"O cinema que o tempo não esquece"</div>
+    <div class="voice-phrase medium">Luz. Tela. Experiência.</div>
+    <div class="voice-phrase medium">Cada luz acesa conta uma história.</div>
+    <div class="voice-phrase medium">Onde a memória começa antes da tela.</div>
+    <div class="voice-phrase small">A grandeza não se anuncia — ela simplesmente se revela.<br>No silêncio que antecede o primeiro plano. Na luz que corta o escuro.<br>No instante em que tudo para e o cinema começa.</div>
+  </div>
+
+  <!-- ═══ MOCKUPS CINEMA ═══ -->
+  <div class="g-panel reveal" style="position:relative;">
+    <img src="./mockups/CINEMA-SCREEN-1.png" alt="Tela AURUM Cinemate" style="width:100%;display:block;">
+    <div style="position:absolute;top:10%;left:15%;width:70%;height:65%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;pointer-events:none;">
+      <div style="font-family:'Cinemate',serif;font-size:clamp(2rem,5vw,4.5rem);color:#D4A840;letter-spacing:0.3em;mix-blend-mode:screen;text-shadow:0 0 60px rgba(212,168,64,0.55);">AURUM</div>
+      <div style="font-size:clamp(0.5rem,1vw,0.7rem);color:#F5ECD8;letter-spacing:0.5em;text-transform:uppercase;opacity:0.65;mix-blend-mode:screen;">Cinemate</div>
+    </div>
+  </div>
+  <div class="g-panel reveal">
+    <img src="./mockups/Popcorn-Bucket-Mockup.png" alt="Balde de pipoca AURUM" style="width:100%;display:block;">
+    <div style="position:absolute;top:22%;left:25%;width:50%;height:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none;">
+      <div style="font-family:'Cinemate',serif;font-size:clamp(1.2rem,3.5vw,2.8rem);color:#D4A840;letter-spacing:0.25em;mix-blend-mode:multiply;">AURUM</div>
+    </div>
+  </div>
+  <div class="g-panel reveal">
+    <img src="./mockups/Psd-01.png" alt="Ingressos AURUM Cinemate" style="width:100%;display:block;">
+  </div>
+  <div class="g-panel reveal" style="position:relative;">
+    <img src="./mockups/Billboard-Mockup.png" alt="Billboard AURUM Cinemate" style="width:100%;display:block;">
+    <div style="position:absolute;top:15%;left:12%;width:76%;height:65%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;">
+      <div style="font-family:'Cinemate',serif;font-size:clamp(1.5rem,4vw,3.5rem);color:#D4A840;letter-spacing:0.35em;mix-blend-mode:screen;text-shadow:0 0 40px rgba(212,168,64,0.45);">AURUM</div>
+      <div style="font-size:clamp(0.4rem,0.9vw,0.6rem);color:#F5ECD8;letter-spacing:0.45em;text-transform:uppercase;opacity:0.55;mix-blend-mode:screen;">O cinema que o tempo não esquece</div>
+    </div>
+  </div>
+  <div class="g-panel reveal" style="position:relative;">
+    <img src="./mockups/Signage-Mockup.png" alt="Sinalização AURUM Cinemate" style="width:100%;display:block;">
+    <div style="position:absolute;top:20%;left:15%;width:70%;height:55%;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+      <div style="font-family:'Cinemate',serif;font-size:clamp(1.2rem,3.5vw,2.8rem);color:#D4A840;letter-spacing:0.3em;mix-blend-mode:screen;text-shadow:0 0 30px rgba(212,168,64,0.4);">AURUM</div>
+    </div>
+  </div>
+  <div class="g-panel reveal">
+    <img src="./mockups/UNIFORME_MOCKUP.png" alt="Uniforme AURUM Cinemate" style="width:100%;display:block;">
+  </div>
+
+  <!-- PANEL 12: Logo Lockup 2×2 -->
+  <div class="lockup-grid reveal">
+    <div class="lockup-cell" style="background:#0C0A06;">
+      <span class="lk-logo" style="color:#D4A840;">AURUM</span>
+      <span class="lk-sub" style="color:rgba(212,168,64,0.5);">CINEMA</span>
+      <span class="lk-label" style="color:rgba(212,168,64,0.3);">Preto + Ouro</span>
+    </div>
+    <div class="lockup-cell" style="background:#D4A840;">
+      <span class="lk-logo" style="color:#0C0A06;">AURUM</span>
+      <span class="lk-sub" style="color:rgba(12,10,6,0.5);">CINEMA</span>
+      <span class="lk-label" style="color:rgba(12,10,6,0.3);">Ouro + Preto</span>
+    </div>
+    <div class="lockup-cell" style="background:#F5ECD8;">
+      <span class="lk-logo" style="color:#0C0A06;">AURUM</span>
+      <span class="lk-sub" style="color:rgba(12,10,6,0.4);">CINEMA</span>
+      <span class="lk-label" style="color:rgba(12,10,6,0.25);">Creme + Preto</span>
+    </div>
+    <div class="lockup-cell" style="background:#5C1515;">
+      <span class="lk-logo" style="color:#F5ECD8;">AURUM</span>
+      <span class="lk-sub" style="color:rgba(245,236,216,0.5);">CINEMA</span>
+      <span class="lk-label" style="color:rgba(245,236,216,0.25);">Borgonha + Creme</span>
+    </div>
+  </div>
+
+  <!-- PANEL 13: Brand Closing Statement -->
+  <div class="closing-panel reveal">
+    <span class="c-eyebrow">AURUM CINEMA · IDENTIDADE VISUAL · 2026</span>
+    <p class="c-statement">"Antes de existir uma tela, existe uma luz. Esta é a luz do AURUM."</p>
+    <span class="c-sub">Cinemate · O cinema que o tempo não esquece</span>
+  </div>
+
+</main>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <p>Construído para durar.<br>Desenhado para ser lembrado.</p>
+  <a href="#" class="cta-btn">Explorar a Identidade</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-brand">AURUM CINEMA · BRAND IDENTITY · CINEMATE</span>
+  <span class="f-year">2026</span>
+</footer>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+}), {threshold: 0.08});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

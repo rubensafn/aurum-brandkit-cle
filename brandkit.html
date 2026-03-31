@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURUM Cinema — Brand Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #f2efea;
+      --gold:    #c2a875;
+      --gold-lt: #d4bc96;
+      --green:   #041b15;
+      --maroon:  #250106;
+      --charcoal:#2d2d2d;
+      --white:   #ffffff;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── FILM GRAIN OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.34s; }
+    .reveal-delay-4 { transition-delay: 0.46s; }
+
+    /* ─── TYPOGRAPHY HELPERS ─── */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .display-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: var(--gold);
+      line-height: 1.1;
+    }
+
+    .body-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.85;
+    }
+
+    /* ─── GOLD LINE ─── */
+    .gold-line {
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 01 — HERO
+    ═══════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Spotlight beam top-left */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse at 40% 30%, rgba(194,168,117,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Subtle vignette */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(2,12,10,0.6) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    /* ── LOGO SVG-style in CSS ── */
+    .hero-logo {
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    .logo-aurum {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 14vw, 11rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+
+    .logo-rule-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0;
+      padding-right: 0;
+    }
+    .logo-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+      margin-right: 16px;
+    }
+    .logo-cinema {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+    }
+
+    .hero-tagline {
+      display: block;
+      font-family: var(--font-body);
+      font-size: clamp(10px, 1.4vw, 13px);
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(242,239,234,0.55);
+      margin-top: 28px;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.45;
+    }
+    .hero-scroll-hint span {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--cream);
+      font-family: var(--font-body);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 02 — ESSÊNCIA
+    ═══════════════════════════════════════════ */
+    #essencia {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+
+    .essencia-left {
+      background: var(--cream);
+      padding: clamp(60px, 8vw, 120px) clamp(40px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .essencia-right {
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .essencia-right::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(194,168,117,0.15) 0%, transparent 65%);
+    }
+
+    .dna-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+    .dna-list li {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--charcoal);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(194,168,117,0.18);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .dna-list li::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .essencia-wordmark {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 03 — STORY
+    ═══════════════════════════════════════════ */
+    #story {
+      background: var(--green);
+      padding: clamp(80px, 10vw, 140px) clamp(40px, 8vw, 120px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #story::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(ellipse at 80% 20%, rgba(194,168,117,0.09) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+
+    .story-label {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 700;
+      line-height: 0.9;
+      color: var(--gold);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .story-body p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(242,239,234,0.78);
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 04 — VISÃO & MISSÃO
+    ═══════════════════════════════════════════ */
+    #vision {
+      padding: 0;
+    }
+
+    .vision-banner {
+      background: var(--green);
+      padding: clamp(40px, 5vw, 70px) clamp(40px, 6vw, 80px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .vision-banner .banner-text {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+    }
+
+    .vision-cards {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      background: var(--cream);
+      padding: clamp(60px, 7vw, 100px) clamp(40px, 6vw, 80px);
+      gap: clamp(40px, 5vw, 80px);
+    }
+    .vision-divider {
+      background: rgba(194,168,117,0.3);
+    }
+    .vision-card h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .vision-card p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--charcoal);
+      font-weight: 300;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 05 — PALETA DE CORES
+    ═══════════════════════════════════════════ */
+    #cores {
+      padding: clamp(80px, 10vw, 140px) clamp(40px, 6vw, 80px);
+      background: var(--cream);
+    }
+
+    .cores-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(194,168,117,0.2);
+      margin-top: 60px;
+      overflow: hidden;
+    }
+
+    .color-swatch {
+      padding: clamp(40px, 5vw, 80px) 30px clamp(40px, 5vw, 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      min-height: 220px;
+      position: relative;
+    }
+
+    .color-swatch + .color-swatch {
+      border-left: 1px solid rgba(194,168,117,0.12);
+    }
+
+    .color-swatch .swatch-hex {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+    .color-swatch .swatch-name {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      opacity: 0.6;
+    }
+
+    .swatch-cream  { background: var(--cream); }
+    .swatch-cream .swatch-hex, .swatch-cream .swatch-name { color: var(--maroon); }
+
+    .swatch-gold   { background: var(--gold); }
+    .swatch-gold .swatch-hex, .swatch-gold .swatch-name { color: var(--green); }
+
+    .swatch-green  { background: var(--green); }
+    .swatch-green .swatch-hex, .swatch-green .swatch-name { color: var(--gold); }
+
+    .swatch-maroon { background: var(--maroon); }
+    .swatch-maroon .swatch-hex, .swatch-maroon .swatch-name { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 06 — TIPOGRAFIA
+    ═══════════════════════════════════════════ */
+    #tipografia {
+      background: var(--green);
+      padding: clamp(80px, 10vw, 140px) clamp(40px, 6vw, 80px);
+    }
+
+    .typo-showcase {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px 80px;
+    }
+
+    .typo-block .typo-role {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(194,168,117,0.55);
+      font-family: var(--font-body);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .typo-display {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1.05;
+    }
+    .typo-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+    .typo-body-sample {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(242,239,234,0.7);
+      line-height: 2;
+    }
+    .typo-label-sample {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 07 — LOGO VARIATIONS
+    ═══════════════════════════════════════════ */
+    #logo-variations {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 140px) clamp(40px, 6vw, 80px);
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .logo-card {
+      padding: clamp(50px, 5vw, 80px) 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-card.on-green  { background: var(--green); }
+    .logo-card.on-maroon { background: var(--maroon); }
+    .logo-card.on-cream  { background: var(--cream); border: 1px solid rgba(194,168,117,0.2); }
+    .logo-card.on-dark   { background: var(--charcoal); }
+
+    .logo-card-text {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-align: center;
+    }
+    .logo-card-sub {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 1.8vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      margin-top: 4px;
+    }
+    .logo-card-rule {
+      width: 60%;
+      height: 1px;
+      background: var(--gold);
+      margin: 8px 0 4px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 08 — ELEMENTOS GRÁFICOS
+    ═══════════════════════════════════════════ */
+    #elementos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+
+    .elementos-left {
+      background: var(--cream);
+      padding: clamp(60px, 8vw, 120px) clamp(40px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .elementos-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .elem-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .light-orb-green {
+      background: var(--green);
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .light-orb-green::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 15%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(ellipse at 40% 30%, rgba(255,255,200,0.9) 0%, rgba(194,168,117,0.6) 25%, rgba(100,130,80,0.2) 60%, transparent 80%);
+      border-radius: 50%;
+    }
+
+    .light-orb-maroon {
+      background: var(--maroon);
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .light-orb-maroon::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 75%;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.85) 0%, rgba(255,200,180,0.4) 30%, transparent 70%);
+    }
+
+    .elem-bottom {
+      background: var(--charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .elem-divider-line {
+      width: 240px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 09 — MOCKUPS 3D
+    ═══════════════════════════════════════════ */
+    #mockups {
+      background: var(--green);
+      padding: clamp(80px, 10vw, 140px) clamp(40px, 6vw, 80px);
+      overflow: hidden;
+    }
+
+    .mockup-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-top: 80px;
+      perspective: 1200px;
+    }
+
+    /* ── MOCKUP 1: TICKET ── */
+    .mockup-ticket-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+    }
+
+    .ticket-3d {
+      width: 240px;
+      height: 380px;
+      transform: rotateY(-18deg) rotateX(8deg);
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      position: relative;
+    }
+    .ticket-3d:hover { transform: rotateY(-4deg) rotateX(2deg) scale(1.04); }
+
+    .ticket-front, .ticket-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      backface-visibility: hidden;
+    }
+
+    .ticket-front {
+      background: linear-gradient(145deg, var(--cream) 0%, #e8e4de 100%);
+      box-shadow: -20px 20px 60px rgba(0,0,0,0.6), 4px 4px 0 rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .ticket-header {
+      background: var(--green);
+      padding: 24px 20px 20px;
+      position: relative;
+    }
+    .ticket-header::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0; right: 0;
+      height: 20px;
+      background: var(--green);
+      clip-path: polygon(0 0, 100% 0, 100% 40%, 97% 100%, 94% 40%, 91% 100%, 88% 40%, 85% 100%, 82% 40%, 79% 100%, 76% 40%, 73% 100%, 70% 40%, 67% 100%, 64% 40%, 61% 100%, 58% 40%, 55% 100%, 52% 40%, 49% 100%, 46% 40%, 43% 100%, 40% 40%, 37% 100%, 34% 40%, 31% 100%, 28% 40%, 25% 100%, 22% 40%, 19% 100%, 16% 40%, 13% 100%, 10% 40%, 7% 100%, 4% 40%, 1% 100%, 0 40%);
+    }
+    .ticket-logo-sm {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+    }
+    .ticket-cinema-sm {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      color: var(--cream);
+      letter-spacing: 0.1em;
+    }
+
+    .ticket-body {
+      padding: 28px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .ticket-film-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.05em;
+    }
+    .ticket-info {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(4,27,21,0.5);
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+    .ticket-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px dashed rgba(194,168,117,0.4);
+      padding-top: 10px;
+    }
+    .ticket-field label {
+      display: block;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: var(--font-body);
+    }
+    .ticket-field span {
+      font-size: 11px;
+      color: var(--green);
+      font-family: var(--font-display);
+      font-weight: 500;
+    }
+
+    .ticket-separator {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
+      margin: 4px 0;
+    }
+    .ticket-sep-line {
+      flex: 1;
+      height: 1px;
+      border-top: 1px dashed rgba(194,168,117,0.4);
+    }
+    .ticket-sep-circle-l, .ticket-sep-circle-r {
+      width: 16px;
+      height: 16px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .ticket-bottom {
+      padding: 10px 20px 20px;
+    }
+    .ticket-barcode {
+      display: flex;
+      gap: 2px;
+      height: 32px;
+      align-items: flex-end;
+      margin-bottom: 6px;
+    }
+    .barcode-bar {
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .ticket-number {
+      font-size: 7px;
+      letter-spacing: 0.2em;
+      color: rgba(4,27,21,0.4);
+      font-family: var(--font-body);
+    }
+
+    /* ── MOCKUP 2: LOYALTY CARD ── */
+    .mockup-card-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+    }
+
+    .card-3d {
+      width: 300px;
+      height: 190px;
+      transform: rotateY(12deg) rotateX(-6deg);
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      position: relative;
+    }
+    .card-3d:hover { transform: rotateY(2deg) rotateX(-1deg) scale(1.04); }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      backface-visibility: hidden;
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, var(--green) 0%, #072a20 60%, var(--green) 100%);
+      box-shadow: 20px 20px 60px rgba(0,0,0,0.7), -4px 4px 0 rgba(0,0,0,0.2);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .card-front::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(ellipse, rgba(194,168,117,0.12) 0%, transparent 70%);
+    }
+
+    .card-chip {
+      width: 34px;
+      height: 26px;
+      background: linear-gradient(145deg, var(--gold) 0%, #d4bc96 50%, #a08548 100%);
+      border-radius: 4px;
+      position: relative;
+    }
+    .card-chip::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid rgba(4,27,21,0.3);
+      border-radius: 2px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      line-height: 1;
+    }
+    .card-member {
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(194,168,117,0.55);
+      font-family: var(--font-body);
+    }
+    .card-number-text {
+      font-family: var(--font-body);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: rgba(242,239,234,0.35);
+    }
+
+    /* ── MOCKUP 3: FILM REEL ── */
+    .mockup-reel-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+    }
+
+    .reel-scene {
+      position: relative;
+      width: 280px;
+      height: 280px;
+    }
+
+    .reel-outer {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+      border: 3px solid rgba(194,168,117,0.3);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotateX(30deg) rotateY(-20deg);
+      box-shadow:
+        8px 12px 40px rgba(0,0,0,0.8),
+        inset 0 0 60px rgba(0,0,0,0.5),
+        0 0 0 8px rgba(30,30,30,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: reelSpin 20s linear infinite;
+    }
+
+    @keyframes reelSpin {
+      from { transform: translate(-50%, -50%) rotateX(30deg) rotateY(-20deg) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotateX(30deg) rotateY(-20deg) rotate(360deg); }
+    }
+
+    .reel-inner {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #2a2a2a 0%, #111 70%);
+      border: 2px solid rgba(194,168,117,0.4);
+      position: relative;
+      z-index: 2;
+    }
+    .reel-inner::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(194,168,117,0.2);
+    }
+
+    /* reel spokes */
+    .reel-spoke {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(to right, rgba(194,168,117,0.5), transparent);
+      transform-origin: 0 50%;
+      margin-left: 40px;
+      margin-top: -1px;
+    }
+
+    .reel-holes {
+      position: absolute;
+      inset: 0;
+    }
+    .reel-hole {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #0a0a0a;
+      border: 1px solid rgba(194,168,117,0.2);
+    }
+
+    .reel-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      font-weight: 300;
+      z-index: 3;
+    }
+
+    /* ── MOCKUP 4: FILM STRIP ── */
+    .mockup-strip-wrap {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .film-strip {
+      display: flex;
+      gap: 0;
+      width: 100%;
+    }
+
+    .film-frame {
+      flex: 1;
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      border-right: 3px solid #0a0a0a;
+    }
+    .film-frame:last-child { border-right: none; }
+
+    .film-frame-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .film-frame-holes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-around;
+      padding: 4px 6px;
+      background: rgba(0,0,0,0.5);
+      z-index: 2;
+    }
+    .film-frame-holes-bottom {
+      top: auto;
+      bottom: 0;
+    }
+    .film-hole {
+      width: 8px;
+      height: 6px;
+      background: #0a0a0a;
+      border-radius: 1px;
+    }
+
+    .ff-green {
+      background: radial-gradient(ellipse at 40% 30%, rgba(194,168,117,0.2) 0%, var(--green) 70%);
+    }
+    .ff-maroon {
+      background: radial-gradient(ellipse at 60% 40%, rgba(255,100,80,0.15) 0%, var(--maroon) 70%);
+    }
+    .ff-dark {
+      background: radial-gradient(ellipse at 50% 20%, rgba(255,220,150,0.2) 0%, #0a0a0a 70%);
+    }
+    .ff-mixed {
+      background: linear-gradient(145deg, var(--green), var(--maroon));
+    }
+
+    .ff-text {
+      font-family: var(--font-display);
+      font-size: clamp(0.6rem, 1.5vw, 1rem);
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-align: center;
+      padding: 12px;
+    }
+
+    /* ── MOCKUP 5: PHONE ── */
+    .mockup-phone-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+    }
+
+    .phone-3d {
+      width: 180px;
+      height: 360px;
+      transform: rotateY(-15deg) rotateX(5deg);
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      position: relative;
+    }
+    .phone-3d:hover { transform: rotateY(-2deg) rotateX(1deg) scale(1.03); }
+
+    .phone-body {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+      border-radius: 28px;
+      box-shadow: 18px 18px 60px rgba(0,0,0,0.8), -4px -4px 20px rgba(255,255,255,0.03);
+      overflow: hidden;
+    }
+
+    .phone-screen {
+      position: absolute;
+      top: 10px;
+      left: 6px;
+      right: 6px;
+      bottom: 10px;
+      border-radius: 22px;
+      background: var(--green);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .phone-screen::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: -20px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(ellipse, rgba(194,168,117,0.2) 0%, transparent 70%);
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 4px;
+      background: #0a0a0a;
+      border-radius: 2px;
+      z-index: 10;
+    }
+
+    .phone-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      position: relative;
+      z-index: 2;
+    }
+    .phone-rule {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      position: relative;
+      z-index: 2;
+    }
+    .phone-tagline {
+      font-size: 7px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,239,234,0.5);
+      font-family: var(--font-body);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── MOCKUP 6: POSTER ── */
+    .mockup-poster-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+    }
+
+    .poster-3d {
+      width: 200px;
+      height: 300px;
+      transform: rotateY(18deg) rotateX(-5deg);
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      position: relative;
+    }
+    .poster-3d:hover { transform: rotateY(3deg) rotateX(-1deg) scale(1.04); }
+
+    .poster-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      background: var(--maroon);
+      box-shadow: -18px 18px 60px rgba(0,0,0,0.8), 4px 0 0 rgba(0,0,0,0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 20px 24px;
+    }
+
+    .poster-face::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 200px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,220,150,0.25) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .poster-top-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin-bottom: 20px;
+    }
+    .poster-event-label {
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(194,168,117,0.6);
+      font-family: var(--font-body);
+      text-align: center;
+    }
+    .poster-title-big {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-align: center;
+      margin: 12px 0;
+    }
+    .poster-cinema-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      color: var(--cream);
+      letter-spacing: 0.12em;
+      text-align: center;
+    }
+    .poster-mid {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .poster-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(194,168,117,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .poster-circle::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(194,168,117,0.2);
+    }
+    .poster-play {
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 18px solid var(--gold);
+      margin-left: 4px;
+      opacity: 0.7;
+    }
+    .poster-bottom-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .poster-date {
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      color: rgba(194,168,117,0.55);
+      font-family: var(--font-body);
+    }
+    .poster-bot-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin-top: 14px;
+    }
+
+    /* ── MOCKUP 7: CINEMA SCREEN ── */
+    .mockup-screen-wrap {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0 0;
+      perspective: 1000px;
+    }
+
+    .cinema-room {
+      width: 100%;
+      max-width: 800px;
+      height: 360px;
+      position: relative;
+      transform: rotateX(8deg);
+      transform-origin: bottom center;
+    }
+
+    .cinema-screen-frame {
+      position: absolute;
+      top: 0; left: 5%; right: 5%;
+      height: 62%;
+      background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+      border: 2px solid rgba(194,168,117,0.2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(194,168,117,0.06), 0 10px 40px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .cinema-screen-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(194,168,117,0.12) 0%, transparent 60%);
+    }
+
+    .screen-content {
+      text-align: center;
+      z-index: 2;
+    }
+    .screen-logo {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      opacity: 0.9;
+    }
+    .screen-tagline {
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(242,239,234,0.4);
+      font-family: var(--font-body);
+      margin-top: 8px;
+    }
+
+    /* Seats rows */
+    .seats-area {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 42%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 6px;
+      padding: 0 0 8px;
+    }
+
+    .seat-row {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .seat {
+      width: 22px;
+      height: 16px;
+      background: var(--maroon);
+      border-radius: 3px 3px 0 0;
+      position: relative;
+      opacity: 0.85;
+    }
+    .seat::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 2px; right: 2px;
+      height: 3px;
+      background: #1a0104;
+      border-radius: 0 0 2px 2px;
+    }
+    .seat.gold-seat { background: rgba(194,168,117,0.6); }
+    .seat.empty { background: rgba(37,1,6,0.4); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 10 — TOM DE VOZ
+    ═══════════════════════════════════════════ */
+    #tom-de-voz {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 140px) clamp(40px, 6vw, 80px);
+    }
+
+    .tom-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 400;
+      color: var(--maroon);
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .pill {
+      padding: 18px 44px;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .pill-outline { background: transparent; border: 1.5px solid var(--maroon); color: var(--maroon); }
+    .pill-gold    { background: var(--gold); color: var(--green); border: 1.5px solid var(--gold); }
+    .pill-maroon  { background: var(--maroon); color: var(--cream); border: 1.5px solid var(--maroon); }
+    .pill-green   { background: var(--green); color: var(--cream); border: 1.5px solid var(--green); }
+    .pill-gold-lt { background: var(--gold); color: var(--maroon); border: 1.5px solid var(--gold); opacity: 0.75; }
+
+    /* ═══════════════════════════════════════════
+       SECTION 11 — POSICIONAMENTO
+    ═══════════════════════════════════════════ */
+    #posicionamento {
+      background: var(--cream);
+      padding: clamp(60px, 8vw, 120px) clamp(40px, 6vw, 80px);
+      border-top: 1px solid rgba(194,168,117,0.15);
+    }
+
+    .pos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 60px;
+      margin-top: 60px;
+    }
+
+    .pos-divider { background: rgba(194,168,117,0.25); }
+
+    .pos-block h3 {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .personality-list {
+      list-style: none;
+    }
+    .personality-list li {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(194,168,117,0.15);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .personality-list li.positive::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .personality-list li.negative {
+      color: rgba(4,27,21,0.4);
+      text-decoration: line-through;
+      text-decoration-color: rgba(37,1,6,0.3);
+    }
+    .personality-list li.negative::before {
+      content: '×';
+      color: rgba(37,1,6,0.5);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 12 — PROPOSTA DE VALOR
+    ═══════════════════════════════════════════ */
+    #valor {
+      background: var(--green);
+      padding: clamp(80px, 10vw, 140px) clamp(40px, 6vw, 80px);
+    }
+
+    .valor-intro {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+      font-weight: 300;
+      color: rgba(242,239,234,0.65);
+      max-width: 700px;
+      line-height: 1.6;
+      margin-bottom: 80px;
+    }
+    .valor-intro strong {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .valor-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(194,168,117,0.15);
+      border: 1px solid rgba(194,168,117,0.15);
+    }
+
+    .valor-pillar {
+      background: var(--green);
+      padding: clamp(40px, 4vw, 60px) clamp(28px, 3vw, 40px);
+    }
+
+    .pillar-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(194,168,117,0.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .pillar-title {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .pillar-desc {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(242,239,234,0.7);
+      line-height: 1.7;
+    }
+
+    .pillar-tagline {
+      display: block;
+      margin-top: 20px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 13 — CLOSING
+    ═══════════════════════════════════════════ */
+    #closing {
+      background: var(--maroon);
+      padding: clamp(100px, 12vw, 180px) clamp(40px, 6vw, 80px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #closing::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 300px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(194,168,117,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .closing-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(194,168,117,0.5);
+      font-family: var(--font-body);
+      display: block;
+      margin-bottom: 32px;
+    }
+
+    .closing-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: rgba(242,239,234,0.7);
+      line-height: 1.5;
+      max-width: 640px;
+      margin: 0 auto 24px;
+    }
+    .closing-headline em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .closing-statement {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      display: block;
+      margin-top: 40px;
+    }
+
+    .closing-tagline {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(242,239,234,0.35);
+      margin-top: 14px;
+      font-family: var(--font-body);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      #essencia, #elementos { grid-template-columns: 1fr; }
+      .essencia-right { min-height: 300px; }
+      .elementos-right { grid-template-rows: auto; }
+      .elem-top { grid-template-columns: 1fr 1fr; }
+
+      .story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .vision-cards { grid-template-columns: 1fr; }
+      .vision-divider { display: none; }
+
+      .cores-grid { grid-template-columns: 1fr 1fr; }
+      .typo-showcase { grid-template-columns: 1fr; }
+      .logo-grid { grid-template-columns: 1fr 1fr; }
+
+      .mockup-gallery { grid-template-columns: 1fr 1fr; }
+      .mockup-strip-wrap, .mockup-screen-wrap { grid-column: 1 / -1; }
+
+      .pos-grid { grid-template-columns: 1fr; }
+      .pos-divider { display: none; }
+
+      .valor-pillars { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .cores-grid { grid-template-columns: 1fr 1fr; }
+      .logo-grid { grid-template-columns: 1fr; }
+      .mockup-gallery { grid-template-columns: 1fr; }
+      .pills-grid { gap: 12px; }
+      .pill { padding: 14px 28px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner reveal">
+      <div class="hero-logo">
+        <span class="logo-aurum">AURUM</span>
+        <div class="logo-rule-wrap">
+          <div class="logo-rule"></div>
+          <span class="logo-cinema">cinema</span>
+        </div>
+      </div>
+      <span class="hero-tagline">Onde histórias ganham vida</span>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       ESSÊNCIA
+  ════════════════════════════════════════ -->
+  <section id="essencia">
+    <div class="essencia-left">
+      <span class="section-label reveal">01 — Essência da Marca</span>
+      <h2 class="display-title reveal reveal-delay-1">Essência<br>da marca</h2>
+      <span class="gold-line reveal reveal-delay-2"></span>
+      <p class="body-text reveal reveal-delay-2">
+        AURUM é uma casa de experiências.<br>
+        Um espaço onde a luz e o conforto se encontram para criar um mundo à parte.
+      </p>
+      <ul class="dna-list reveal reveal-delay-3">
+        <li>Luz</li>
+        <li>Ouro (valor)</li>
+        <li>Silêncio</li>
+        <li>Imersão</li>
+        <li>Sofisticação</li>
+      </ul>
+    </div>
+    <div class="essencia-right">
+      <span class="essencia-wordmark reveal">AURUM</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       STORYTELLING
+  ════════════════════════════════════════ -->
+  <section id="story">
+    <div class="story-grid">
+      <div class="reveal">
+        <span class="section-label" style="color:rgba(194,168,117,0.5);">02 — Narrativa</span>
+        <div class="story-label">STORY<br>TELLING</div>
+      </div>
+      <div class="story-body reveal reveal-delay-2">
+        <p>Antes de qualquer história existir, existe a luz. É ela que revela formas, cria mundos e transforma o invisível em algo que pode ser sentido.</p>
+        <p>O Aurum Cinema nasce desse princípio. Inspirado no valor do ouro — <em style="color:var(--gold-lt); font-style:italic; font-family:var(--font-display);">aurum</em> — e na força simbólica da luz, o Aurum foi criado para ir além do cinema como conhecemos.</p>
+        <p>Ao atravessar suas portas, o ritmo muda. A luz se torna mais suave. O ambiente acolhe. O silêncio ganha significado.</p>
+        <p>Das poltronas ao som, da iluminação ao atendimento, tudo foi desenhado para criar momentos únicos, confortáveis e memoráveis.</p>
+        <p style="color:rgba(194,168,117,0.85); font-family:var(--font-display); font-size:1.05rem;">No Aurum Cinema, assistir é um ritual.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       VISÃO & MISSÃO
+  ════════════════════════════════════════ -->
+  <section id="vision">
+    <div class="vision-banner reveal">
+      <span class="banner-text">AURUM</span>
+    </div>
+    <div class="vision-cards">
+      <div class="vision-card reveal">
+        <h3>Visão</h3>
+        <p>Ser referência em experiências cinematográficas no Brasil, reconhecida por criar mundos onde histórias ganham vida, elevando o ato de assistir a um ritual de conforto, encantamento e memória.</p>
+      </div>
+      <div class="vision-divider"></div>
+      <div class="vision-card reveal reveal-delay-2">
+        <h3>Missão</h3>
+        <p>Criar experiências únicas, momentos marcantes e confortáveis, onde cada visita ao Aurum se transforma em uma imersão completa — um mundo à parte, feito para desacelerar, sentir e se encantar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       PALETA DE CORES
+  ════════════════════════════════════════ -->
+  <section id="cores">
+    <span class="section-label reveal">03 — Identidade Visual</span>
+    <h2 class="display-title reveal reveal-delay-1">Paleta<br>de cores</h2>
+
+    <div class="cores-grid reveal reveal-delay-2">
+      <div class="color-swatch swatch-cream">
+        <span class="swatch-hex">#f2efea</span>
+        <span class="swatch-name">Creme</span>
+      </div>
+      <div class="color-swatch swatch-gold">
+        <span class="swatch-hex">#c2a875</span>
+        <span class="swatch-name">Ouro</span>
+      </div>
+      <div class="color-swatch swatch-green">
+        <span class="swatch-hex">#041b15</span>
+        <span class="swatch-name">Verde Escuro</span>
+      </div>
+      <div class="color-swatch swatch-maroon">
+        <span class="swatch-hex">#250106</span>
+        <span class="swatch-name">Vinho</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       TIPOGRAFIA
+  ════════════════════════════════════════ -->
+  <section id="tipografia">
+    <span class="section-label reveal" style="color:rgba(194,168,117,0.5);">04 — Tipografia</span>
+    <h2 class="display-title reveal reveal-delay-1" style="color:var(--gold);">Tipografia</h2>
+
+    <div class="typo-showcase">
+      <div class="typo-block reveal">
+        <span class="typo-role">Principal — Títulos & Display</span>
+        <div class="typo-display">Cormorant<br>Garamond</div>
+        <span style="display:block;margin-top:12px;font-family:var(--font-display);font-size:0.85rem;font-weight:300;font-style:italic;color:rgba(194,168,117,0.6);">Light · Regular · Italic</span>
+      </div>
+      <div class="typo-block reveal reveal-delay-2">
+        <span class="typo-role">Secundária — Corpo & Interface</span>
+        <div class="typo-heading">DM Sans</div>
+        <span style="display:block;margin-top:12px;font-family:var(--font-body);font-size:0.85rem;font-weight:300;color:rgba(242,239,234,0.5);">Light · Regular · Medium</span>
+      </div>
+      <div class="typo-block reveal reveal-delay-1">
+        <span class="typo-role">Escala — Corpo de texto</span>
+        <p class="typo-body-sample">Um cinema premium que transforma o ato de assistir em um ritual sensorial e memorável. Cada detalhe é intencional, cada espaço foi pensado para criar momentos únicos.</p>
+      </div>
+      <div class="typo-block reveal reveal-delay-3">
+        <span class="typo-role">Escala — Labels & Tags</span>
+        <span class="typo-label-sample">Onde histórias ganham vida</span>
+        <br><br>
+        <span style="font-family:var(--font-body);font-size:13px;letter-spacing:0.2em;color:rgba(242,239,234,0.4);text-transform:uppercase;">AURUM CINEMA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       LOGO VARIATIONS
+  ════════════════════════════════════════ -->
+  <section id="logo-variations">
+    <span class="section-label reveal">05 — Nossa Logo</span>
+    <h2 class="display-title reveal reveal-delay-1">Variações<br>da logo</h2>
+
+    <div class="logo-grid reveal reveal-delay-2">
+      <div class="logo-card on-green">
+        <span class="logo-card-text">AURUM</span>
+      </div>
+      <div class="logo-card on-maroon">
+        <div style="text-align:center;">
+          <span class="logo-card-text">AURUM</span>
+          <div class="logo-card-rule" style="margin:8px auto 6px;"></div>
+          <span class="logo-card-sub">cinema</span>
+        </div>
+      </div>
+      <div class="logo-card on-cream">
+        <span class="logo-card-text" style="color:rgba(194,168,117,0.7);">AURUM</span>
+      </div>
+      <div class="logo-card on-dark">
+        <span class="logo-card-text">AURUM</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       ELEMENTOS GRÁFICOS
+  ════════════════════════════════════════ -->
+  <section id="elementos">
+    <div class="elementos-left">
+      <span class="section-label reveal">06 — Elementos Gráficos</span>
+      <h2 class="display-title reveal reveal-delay-1">Elementos<br>Gráficos</h2>
+      <span class="gold-line reveal reveal-delay-2"></span>
+      <p class="body-text reveal reveal-delay-2">
+        A luz é o principal elemento gráfico da marca. Orbes de luz suave, raios de spotlight e linhas douradas compõem a linguagem visual do AURUM.
+      </p>
+    </div>
+    <div class="elementos-right">
+      <div class="elem-top">
+        <div class="light-orb-green reveal"></div>
+        <div class="light-orb-maroon reveal reveal-delay-1"></div>
+      </div>
+      <div class="elem-bottom reveal reveal-delay-2">
+        <div class="elem-divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       MOCKUPS 3D
+  ════════════════════════════════════════ -->
+  <section id="mockups">
+    <span class="section-label reveal" style="color:rgba(194,168,117,0.5);">07 — Aplicações</span>
+    <h2 class="display-title reveal reveal-delay-1" style="color:var(--gold);">Mockups<br>3D</h2>
+
+    <div class="mockup-gallery">
+
+      <!-- TICKET -->
+      <div class="mockup-ticket-wrap reveal">
+        <div class="ticket-3d">
+          <div class="ticket-front">
+            <div class="ticket-header">
+              <div class="ticket-logo-sm">AURUM</div>
+              <div class="ticket-cinema-sm">cinema</div>
+            </div>
+            <div class="ticket-body">
+              <div class="ticket-info">Ingresso de Sessão</div>
+              <div class="ticket-film-title">A Última Luz</div>
+              <div class="ticket-row">
+                <div class="ticket-field">
+                  <label>Data</label>
+                  <span>14 ABR</span>
+                </div>
+                <div class="ticket-field">
+                  <label>Horário</label>
+                  <span>20h30</span>
+                </div>
+                <div class="ticket-field">
+                  <label>Sala</label>
+                  <span>01</span>
+                </div>
+              </div>
+              <div class="ticket-row">
+                <div class="ticket-field">
+                  <label>Poltrona</label>
+                  <span>F-12</span>
+                </div>
+                <div class="ticket-field">
+                  <label>Tipo</label>
+                  <span>VIP</span>
+                </div>
+              </div>
+            </div>
+            <div class="ticket-separator">
+              <div class="ticket-sep-circle-l"></div>
+              <div class="ticket-sep-line"></div>
+              <div class="ticket-sep-circle-r"></div>
+            </div>
+            <div class="ticket-bottom">
+              <div class="ticket-barcode">
+                <div class="barcode-bar" style="width:2px;height:30px;"></div>
+                <div class="barcode-bar" style="width:3px;height:26px;"></div>
+                <div class="barcode-bar" style="width:1px;height:32px;"></div>
+                <div class="barcode-bar" style="width:2px;height:28px;"></div>
+                <div class="barcode-bar" style="width:4px;height:24px;"></div>
+                <div class="barcode-bar" style="width:1px;height:30px;"></div>
+                <div class="barcode-bar" style="width:3px;height:32px;"></div>
+                <div class="barcode-bar" style="width:2px;height:22px;"></div>
+                <div class="barcode-bar" style="width:1px;height:28px;"></div>
+                <div class="barcode-bar" style="width:3px;height:30px;"></div>
+                <div class="barcode-bar" style="width:2px;height:24px;"></div>
+                <div class="barcode-bar" style="width:1px;height:32px;"></div>
+                <div class="barcode-bar" style="width:4px;height:26px;"></div>
+                <div class="barcode-bar" style="width:2px;height:30px;"></div>
+                <div class="barcode-bar" style="width:1px;height:28px;"></div>
+                <div class="barcode-bar" style="width:3px;height:32px;"></div>
+              </div>
+              <div class="ticket-number">AUR · 2024 · 0487621</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOYALTY CARD -->
+      <div class="mockup-card-wrap reveal reveal-delay-1">
+        <div class="card-3d">
+          <div class="card-face card-front">
+            <div class="card-chip"></div>
+            <div class="card-bottom">
+              <div>
+                <div class="card-name">AURUM</div>
+                <div class="card-member">Membro Premium</div>
+              </div>
+              <div class="card-number-text">•••• •••• •••• 4821</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILM REEL -->
+      <div class="mockup-reel-wrap reveal reveal-delay-2">
+        <div class="reel-scene">
+          <div class="reel-outer">
+            <div class="reel-spoke" style="transform: rotate(0deg) translateY(-1px);"></div>
+            <div class="reel-spoke" style="transform: rotate(60deg) translateY(-1px);"></div>
+            <div class="reel-spoke" style="transform: rotate(120deg) translateY(-1px);"></div>
+            <div class="reel-spoke" style="transform: rotate(180deg) translateY(-1px);"></div>
+            <div class="reel-spoke" style="transform: rotate(240deg) translateY(-1px);"></div>
+            <div class="reel-spoke" style="transform: rotate(300deg) translateY(-1px);"></div>
+            <div class="reel-inner">
+              <span class="reel-logo">AUR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILM STRIP -->
+      <div class="mockup-strip-wrap reveal">
+        <div class="film-strip">
+          <div class="film-frame ff-dark">
+            <div class="film-frame-holes">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-holes film-frame-holes-bottom">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-inner">
+              <div class="ff-text">AURUM</div>
+            </div>
+          </div>
+          <div class="film-frame ff-green">
+            <div class="film-frame-holes">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-holes film-frame-holes-bottom">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-inner">
+              <div class="ff-text" style="font-size:0.7rem;opacity:0.7;">Onde Histórias<br>Ganham Vida</div>
+            </div>
+          </div>
+          <div class="film-frame ff-maroon">
+            <div class="film-frame-holes">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-holes film-frame-holes-bottom">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-inner">
+              <div class="ff-text" style="font-size:0.7rem;opacity:0.7;">cinema</div>
+            </div>
+          </div>
+          <div class="film-frame ff-mixed">
+            <div class="film-frame-holes">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-holes film-frame-holes-bottom">
+              <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            </div>
+            <div class="film-frame-inner">
+              <div class="ff-text" style="font-size:0.65rem;opacity:0.6;">2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHONE -->
+      <div class="mockup-phone-wrap reveal reveal-delay-1">
+        <div class="phone-3d">
+          <div class="phone-body">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <span class="phone-logo">AURUM</span>
+              <div class="phone-rule"></div>
+              <span class="phone-tagline">Onde histórias<br>ganham vida</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POSTER -->
+      <div class="mockup-poster-wrap reveal reveal-delay-2">
+        <div class="poster-3d">
+          <div class="poster-face">
+            <div class="poster-top-rule"></div>
+            <div class="poster-event-label">Sessão Especial</div>
+            <div class="poster-title-big">AURUM</div>
+            <div class="poster-cinema-label">cinema</div>
+            <div class="poster-mid">
+              <div class="poster-circle">
+                <div class="poster-play"></div>
+              </div>
+            </div>
+            <div class="poster-bottom-info">
+              <span class="poster-date">14 · ABR · 2024</span>
+              <span class="poster-date">20h30</span>
+            </div>
+            <div class="poster-bot-rule"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CINEMA SCREEN -->
+      <div class="mockup-screen-wrap reveal">
+        <div class="cinema-room">
+          <div class="cinema-screen-frame">
+            <div class="screen-content">
+              <div class="screen-logo">AURUM</div>
+              <div class="screen-tagline">Onde histórias ganham vida</div>
+            </div>
+          </div>
+          <div class="seats-area">
+            <div class="seat-row" style="opacity:0.3;">
+              <div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div>
+            </div>
+            <div class="seat-row" style="opacity:0.5;">
+              <div class="seat empty"></div><div class="seat empty"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat empty"></div><div class="seat"></div><div class="seat"></div><div class="seat empty"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat empty"></div><div class="seat empty"></div><div class="seat empty"></div>
+            </div>
+            <div class="seat-row" style="opacity:0.7;">
+              <div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div>
+            </div>
+            <div class="seat-row">
+              <div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat gold-seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       TOM DE VOZ
+  ════════════════════════════════════════ -->
+  <section id="tom-de-voz">
+    <span class="section-label reveal" style="color:var(--gold);">08 — Personalidade</span>
+    <h2 class="tom-title reveal reveal-delay-1">Tom de Voz</h2>
+    <div class="pills-grid reveal reveal-delay-2">
+      <div class="pill pill-outline">Calmo</div>
+      <div class="pill pill-gold">Poético</div>
+      <div class="pill pill-maroon">Refinado</div>
+      <div class="pill pill-green">Elegante</div>
+      <div class="pill pill-gold-lt">Discreta</div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       POSICIONAMENTO
+  ════════════════════════════════════════ -->
+  <section id="posicionamento">
+    <span class="section-label reveal">09 — Posicionamento</span>
+    <h2 class="display-title reveal reveal-delay-1">Posicionamento<br>&amp; Personalidade</h2>
+
+    <p class="body-text reveal reveal-delay-2" style="margin-top:24px;max-width:560px;">
+      Um cinema premium que transforma o ato de assistir em um ritual sensorial e memorável.<br>
+      <strong style="color:var(--green);">AURUM não é entretenimento. É experiência.</strong>
+    </p>
+
+    <div class="pos-grid">
+      <div class="pos-block reveal">
+        <h3>A marca é</h3>
+        <ul class="personality-list">
+          <li class="positive">Elegante</li>
+          <li class="positive">Discreta</li>
+          <li class="positive">Sensorial</li>
+          <li class="positive">Contemplativa</li>
+          <li class="positive">Cultural</li>
+        </ul>
+      </div>
+      <div class="pos-divider"></div>
+      <div class="pos-block reveal reveal-delay-2">
+        <h3>A marca nunca é</h3>
+        <ul class="personality-list">
+          <li class="negative">Barulhenta</li>
+          <li class="negative">Popular</li>
+          <li class="negative">Agressiva</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       PROPOSTA DE VALOR
+  ════════════════════════════════════════ -->
+  <section id="valor">
+    <span class="section-label reveal" style="color:rgba(194,168,117,0.5);">10 — Proposta de Valor</span>
+    <h2 class="display-title reveal reveal-delay-1" style="margin-bottom:32px;">Proposta<br>de Valor</h2>
+    <p class="valor-intro reveal reveal-delay-2">
+      AURUM transforma o cinema em uma experiência <strong>confortável, imersiva e memorável</strong> — onde cada sessão vale o tempo e o momento vivido.
+    </p>
+
+    <div class="valor-pillars reveal reveal-delay-3">
+      <div class="valor-pillar">
+        <div class="pillar-number">01</div>
+        <div class="pillar-title">Conforto</div>
+        <div class="pillar-desc">Poltronas superiores, mais espaço, menos pessoas. Um ambiente pensado para o seu corpo descansar enquanto sua mente viaja.</div>
+        <span class="pillar-tagline">Mais conforto do que você está acostumado.</span>
+      </div>
+      <div class="valor-pillar">
+        <div class="pillar-number">02</div>
+        <div class="pillar-title">Atmosfera</div>
+        <div class="pillar-desc">Luz, silêncio e ambiente cuidadosamente construídos. Um espaço pensado para você se desconectar do mundo exterior.</div>
+        <span class="pillar-tagline">Um ambiente pensado para você se desconectar.</span>
+      </div>
+      <div class="valor-pillar">
+        <div class="pillar-number">03</div>
+        <div class="pillar-title">Tempo</div>
+        <div class="pillar-desc">O argumento mais poderoso. Cada momento no AURUM é uma escolha consciente de viver o presente com intensidade e plenitude.</div>
+        <span class="pillar-tagline">Seu tempo merece ser bem vivido.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       CLOSING
+  ════════════════════════════════════════ -->
+  <section id="closing">
+    <span class="closing-eyebrow reveal">Aurum Cinema — Brand Identity</span>
+    <p class="closing-headline reveal reveal-delay-1">
+      Porque no final, não é o filme que fica.<br>
+      É a <em>experiência</em>.
+    </p>
+    <span class="closing-statement reveal reveal-delay-2">AURUM</span>
+    <span class="closing-tagline reveal reveal-delay-3">Onde histórias ganham vida</span>
+  </section>
+
+  <script>
+    // ── SCROLL REVEAL ──
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // Hero auto-reveal
+    document.querySelector('#hero .reveal').classList.add('visible');
+  </script>
+</body>
+</html>
