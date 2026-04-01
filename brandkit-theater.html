@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURUM — Theater Brand Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Theater';
+  src: url('./fonts/THEATER.woff2') format('woff2'), url('./fonts/THEATER.woff') format('woff');
+  font-weight: normal; font-style: normal;
+}
+
+:root {
+  --noir:    #060606;
+  --navy:    #0D0D24;
+  --gold:    #D4AF37;
+  --ivory:   #F5F0E8;
+  --antique: #8B6914;
+  --brand-font: 'Theater', serif;
+  --body-font:  'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body-font); background: var(--noir); color: var(--ivory); }
+
+nav.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px; border-bottom: 1px solid rgba(212,175,55,0.15);
+  background: rgba(6,6,6,0.95); backdrop-filter: blur(10px);
+}
+.nav-brand { font-family: var(--brand-font); font-size: 1.1rem; letter-spacing: 0.28em; color: var(--gold); }
+.nav-type  { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.4; color: var(--ivory); }
+
+.page-header { padding: 80px 48px 56px; border-bottom: 1px solid rgba(212,175,55,0.1); }
+.page-header h1 { font-size: clamp(1.8rem, 3.8vw, 3rem); font-weight: normal; line-height: 1.1; margin-bottom: 14px; font-family: var(--brand-font); letter-spacing: 0.1em; color: var(--gold); }
+.page-header .meta { font-size: 11px; letter-spacing: 0.3em; opacity: 0.35; text-transform: uppercase; color: var(--ivory); }
+
+.text-section {
+  padding: 44px 48px; border-top: 1px solid rgba(212,175,55,0.1);
+  display: grid; grid-template-columns: 160px 1fr; gap: 48px; max-width: 900px;
+}
+.t-label { font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase; opacity: 0.3; padding-top: 2px; color: var(--gold); }
+.t-content { font-size: 14px; font-weight: 300; line-height: 1.9; color: var(--ivory); opacity: 0.8; }
+.t-content ul { list-style: none; }
+.t-content li::before { content: '—  '; opacity: 0.4; }
+
+.gallery {}
+.g-panel { width: 68%; margin: 0 auto 1px; position: relative; overflow: hidden; }
+.g-full  { width: 100%; margin-bottom: 1px; }
+
+.mockup-panel { width: 68%; margin: 0 auto 1px; position: relative; overflow: hidden; }
+.mockup-panel img { width: 100%; display: block; }
+.mk-overlay {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px; pointer-events: none;
+}
+.mk-logo { letter-spacing: 0.1em; line-height: 1; }
+.mk-sub  { letter-spacing: 0.25em; opacity: 0.8; }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.85s ease, transform 0.85s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+
+.cta-section { padding: 120px 48px; text-align: center; border-top: 1px solid rgba(212,175,55,0.12); }
+.cta-section h2 { font-size: clamp(1.4rem, 2.8vw, 2.4rem); font-weight: normal; line-height: 1.5; margin-bottom: 36px; font-family: var(--brand-font); letter-spacing: 0.08em; color: var(--gold); }
+.cta-btn {
+  display: inline-block; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+  padding: 13px 42px; border: 1px solid var(--gold); text-decoration: none; transition: 0.3s;
+  color: var(--gold);
+}
+.cta-btn:hover { background: var(--gold); color: var(--noir); border-color: var(--gold); }
+
+footer { padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(212,175,55,0.1); opacity: 0.45; font-size: 11px; letter-spacing: 0.12em; color: var(--ivory); }
+
+/* Panel styles */
+.panel-logo-noir {
+  background: var(--noir);
+  min-height: 600px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px;
+  border: 1px solid rgba(212,175,55,0.08);
+}
+.panel-logo-navy {
+  background: var(--navy);
+  min-height: 540px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px;
+}
+.hero-logo-text {
+  font-family: var(--brand-font);
+  font-size: clamp(4rem, 10vw, 8rem);
+  letter-spacing: 0.3em; line-height: 1;
+}
+.hero-tagline { font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 300; }
+
+.palette-panel {
+  background: #0a0a0a;
+  padding: 60px 48px;
+  border-top: 1px solid rgba(212,175,55,0.1);
+  border-bottom: 1px solid rgba(212,175,55,0.1);
+}
+.palette-label { font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase; opacity: 0.35; margin-bottom: 24px; color: var(--gold); }
+.swatch {
+  width: 100%;
+  min-height: 190px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 16px 18px;
+}
+.swatch-hex  { font-size: 10px; letter-spacing: 0.15em; margin-bottom: 4px; opacity: 0.75; font-family: monospace; }
+.swatch-name { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.9; }
+
+.typo-panel {
+  background: var(--navy);
+  padding: 70px 60px;
+  overflow: hidden;
+}
+.typo-row {
+  display: flex; align-items: baseline; gap: 32px;
+  border-bottom: 1px solid rgba(212,175,55,0.07);
+  padding: 22px 0;
+}
+.typo-meta { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.3; width: 180px; flex-shrink: 0; color: var(--ivory); }
+.typo-sample { font-family: var(--brand-font); line-height: 1; }
+
+.manifesto-panel {
+  background: var(--navy);
+  padding: 100px 80px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; min-height: 660px; gap: 28px;
+  position: relative; overflow: hidden;
+}
+.manifesto-quote {
+  font-family: var(--brand-font);
+  line-height: 1.35;
+  color: var(--gold);
+  position: relative; z-index: 1;
+}
+.manifesto-attr {
+  font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--ivory); opacity: 0.3; margin-top: 20px;
+  position: relative; z-index: 1;
+}
+
+.voice-panel {
+  background: var(--noir);
+  padding: 80px 60px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px; min-height: 520px; text-align: center;
+  border-top: 1px solid rgba(212,175,55,0.08);
+  border-bottom: 1px solid rgba(212,175,55,0.08);
+}
+.voice-line {
+  font-family: var(--brand-font);
+  color: var(--gold);
+  letter-spacing: 0.06em; line-height: 1.2;
+}
+
+.lockup-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: rgba(212,175,55,0.15);
+}
+.lockup-cell {
+  min-height: 300px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 10px;
+}
+.lockup-logo {
+  font-family: var(--brand-font);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  letter-spacing: 0.28em; line-height: 1;
+}
+
+.closing-panel {
+  background: var(--navy);
+  min-height: 360px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px; text-align: center; padding: 60px 48px;
+  border-top: 1px solid rgba(212,175,55,0.15);
+  border-bottom: 1px solid rgba(212,175,55,0.15);
+  position: relative; overflow: hidden;
+}
+.closing-text {
+  font-family: var(--brand-font);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 0.18em;
+  color: var(--gold); line-height: 1.2;
+  position: relative; z-index: 1;
+}
+.closing-sub {
+  font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--ivory); opacity: 0.35;
+  position: relative; z-index: 1;
+}
+
+.separator-thin { height: 1px; background: rgba(212,175,55,0.1); margin: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav.site-nav { padding: 14px 24px; }
+  .page-header { padding: 48px 24px 36px; }
+  .text-section { grid-template-columns: 1fr; gap: 12px; padding: 32px 24px; }
+  .g-panel, .g-full, .mockup-panel { width: 100%; }
+  .palette-panel { padding: 40px 24px; }
+  .swatch { min-height: 130px; }
+  .typo-panel { padding: 48px 24px; }
+  .typo-row { flex-wrap: wrap; gap: 6px; }
+  .typo-meta { width: auto; }
+  .typo-sample { font-size: clamp(1.4rem, 9vw, 4rem) !important; overflow: hidden; max-width: 100%; }
+  .lockup-grid { grid-template-columns: 1fr; }
+  .lockup-cell { min-height: 200px; }
+  .manifesto-panel { padding: 60px 24px; min-height: auto; }
+  .voice-panel { padding: 60px 24px; gap: 16px; min-height: auto; }
+  .voice-line { font-size: clamp(1.1rem, 5vw, 2.8rem) !important; }
+  .closing-panel { padding: 48px 24px; }
+  .cta-section { padding: 80px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+}
+@media (max-width: 600px) {
+  nav.site-nav { padding: 12px 16px; }
+  .nav-type { display: none; }
+  .page-header { padding: 36px 16px 24px; }
+  .text-section { padding: 24px 16px; }
+  .typo-panel { padding: 36px 16px; }
+  .palette-panel { padding: 32px 16px; }
+  .voice-panel { padding: 40px 16px; }
+  .cta-section { padding: 60px 16px; }
+  footer { padding: 20px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <span class="nav-brand">AURUM</span>
+  <span class="nav-type">Brand Identity — Theater</span>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <h1>AURUM<br>Theater</h1>
+  <p class="meta">Identidade Visual · Art Deco · Grand Théâtre · Majestoso · 2025</p>
+</header>
+
+<!-- ABOUT -->
+<section class="text-section reveal">
+  <div class="t-label">Sobre</div>
+  <div class="t-content">
+    O grand théâtre do cinema. O AURUM na voz Theater é arquitetura dourada e cortinas de veludo. É a grandiosidade dos palácios de cinema dos anos 1920 — fachadas com chevrons em mosaico, lustre de cristal, arabescos geométricos. Cada detalhe é uma declaração de que o cinema é a arte mais sublime do século.
+  </div>
+</section>
+
+<!-- PERSONALITY -->
+<section class="text-section reveal">
+  <div class="t-label">Personalidade</div>
+  <div class="t-content">
+    <ul>
+      <li>Art Deco</li>
+      <li>Grandioso</li>
+      <li>Teatral</li>
+      <li>Arquitetônico</li>
+      <li>Majestoso</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+  <!-- PANEL: Logo noir com ornamentos Art Deco -->
+  <div class="g-panel reveal">
+    <div class="panel-logo-noir">
+      <!-- Art Deco radial ornament SVG -->
+      <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" style="width:min(500px,80%);margin-bottom:4px;">
+        <!-- Chevron rays top -->
+        <g fill="none" stroke="#D4AF37" stroke-width="0.7" opacity="0.35">
+          <line x1="300" y1="20" x2="240" y2="60"/><line x1="300" y1="20" x2="260" y2="60"/>
+          <line x1="300" y1="20" x2="280" y2="60"/><line x1="300" y1="20" x2="300" y2="60"/>
+          <line x1="300" y1="20" x2="320" y2="60"/><line x1="300" y1="20" x2="340" y2="60"/>
+          <line x1="300" y1="20" x2="360" y2="60"/>
+        </g>
+        <!-- Horizontal double rule -->
+        <line x1="80" y1="72" x2="520" y2="72" stroke="#D4AF37" stroke-width="1.2" opacity="0.6"/>
+        <line x1="80" y1="76" x2="520" y2="76" stroke="#D4AF37" stroke-width="0.4" opacity="0.4"/>
+        <!-- Diamond ornaments -->
+        <polygon points="300,64 308,72 300,80 292,72" fill="#D4AF37" opacity="0.5"/>
+        <polygon points="120,72 126,78 120,84 114,78" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.45"/>
+        <polygon points="480,72 486,78 480,84 474,78" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.45"/>
+        <!-- Chevron bottom rule -->
+        <line x1="80" y1="120" x2="520" y2="120" stroke="#D4AF37" stroke-width="1.2" opacity="0.6"/>
+        <line x1="80" y1="124" x2="520" y2="124" stroke="#D4AF37" stroke-width="0.4" opacity="0.4"/>
+        <!-- Corner brackets -->
+        <polyline points="80,68 72,68 72,128 80,128" stroke="#D4AF37" stroke-width="0.9" fill="none" opacity="0.5"/>
+        <polyline points="520,68 528,68 528,128 520,128" stroke="#D4AF37" stroke-width="0.9" fill="none" opacity="0.5"/>
+        <!-- Chevron rays bottom -->
+        <line x1="300" y1="164" x2="240" y2="124"/><line x1="300" y1="164" x2="260" y2="124"/>
+        <line x1="300" y1="164" x2="280" y2="124"/><line x1="300" y1="164" x2="300" y2="124"/>
+        <line x1="300" y1="164" x2="320" y2="124"/><line x1="300" y1="164" x2="340" y2="124"/>
+        <line x1="300" y1="164" x2="360" y2="124"/>
+      </svg>
+      <div class="hero-logo-text" style="color:var(--gold);">AURUM</div>
+      <div class="hero-tagline" style="color:var(--ivory);opacity:0.45;margin-top:10px;">O grand théâtre do cinema</div>
+      <div style="font-size:10px;color:var(--gold);opacity:0.25;letter-spacing:0.38em;text-transform:uppercase;margin-top:6px;">Theater · Art Deco · Grandioso</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- PANEL: Logo em marfim/navy -->
+  <div class="g-panel reveal">
+    <div class="panel-logo-navy">
+      <!-- Art Deco geometric header -->
+      <svg viewBox="0 0 500 60" xmlns="http://www.w3.org/2000/svg" style="width:min(440px,80%);margin-bottom:8px;opacity:0.45;">
+        <line x1="0" y1="30" x2="175" y2="30" stroke="#D4AF37" stroke-width="1"/>
+        <line x1="325" y1="30" x2="500" y2="30" stroke="#D4AF37" stroke-width="1"/>
+        <polygon points="250,10 262,30 250,50 238,30" fill="#D4AF37" opacity="0.8"/>
+        <polygon points="190,20 200,30 190,40 180,30" fill="none" stroke="#D4AF37" stroke-width="0.8"/>
+        <polygon points="310,20 320,30 310,40 300,30" fill="none" stroke="#D4AF37" stroke-width="0.8"/>
+      </svg>
+      <div class="hero-logo-text" style="color:var(--ivory);">AURUM</div>
+      <div class="hero-tagline" style="color:var(--gold);opacity:0.5;margin-top:10px;">O grand théâtre do cinema</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- PANEL: SVG Construction Grid Art Deco (Light bg) -->
+  <div class="g-panel reveal" style="background:#0e0e0e;">
+    <svg viewBox="0 0 1400 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+      <defs>
+        <!-- Art Deco chevron pattern -->
+        <pattern id="deco-chevron" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
+          <polyline points="0,20 20,0 40,20" fill="none" stroke="#D4AF37" stroke-width="0.3" opacity="0.18"/>
+        </pattern>
+        <!-- Deco fan pattern -->
+        <pattern id="deco-fan" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M30,30 L30,0" stroke="#D4AF37" stroke-width="0.25" opacity="0.15"/>
+          <path d="M30,30 L56,15" stroke="#D4AF37" stroke-width="0.25" opacity="0.15"/>
+          <path d="M30,30 L56,45" stroke="#D4AF37" stroke-width="0.25" opacity="0.15"/>
+          <path d="M30,30 L30,60" stroke="#D4AF37" stroke-width="0.25" opacity="0.15"/>
+          <path d="M30,30 L4,45" stroke="#D4AF37" stroke-width="0.25" opacity="0.15"/>
+          <path d="M30,30 L4,15" stroke="#D4AF37" stroke-width="0.25" opacity="0.15"/>
+        </pattern>
+      </defs>
+      <rect width="1400" height="680" fill="#0a0a0a"/>
+      <rect width="1400" height="680" fill="url(#deco-chevron)"/>
+
+      <!-- AURUM ghost -->
+      <text x="700" y="420" font-family="Theater, serif" font-size="200" fill="#D4AF37" opacity="0.07" text-anchor="middle" letter-spacing="0.16em">AURUM</text>
+      <!-- AURUM main -->
+      <text x="700" y="420" font-family="Theater, serif" font-size="200" fill="#D4AF37" opacity="0.72" text-anchor="middle" letter-spacing="0.16em">AURUM</text>
+
+      <!-- Baseline -->
+      <line x1="60" y1="428" x2="1340" y2="428" stroke="#D4AF37" stroke-width="1" stroke-dasharray="8,5" opacity="0.5"/>
+      <!-- Cap height -->
+      <line x1="60" y1="210" x2="1340" y2="210" stroke="#D4AF37" stroke-width="1" stroke-dasharray="8,5" opacity="0.5"/>
+      <!-- Vertical center -->
+      <line x1="700" y1="50" x2="700" y2="620" stroke="#D4AF37" stroke-width="0.7" stroke-dasharray="6,4" opacity="0.3"/>
+
+      <!-- Art Deco double rules -->
+      <line x1="60" y1="432" x2="1340" y2="432" stroke="#D4AF37" stroke-width="0.4" opacity="0.3"/>
+      <line x1="60" y1="206" x2="1340" y2="206" stroke="#D4AF37" stroke-width="0.4" opacity="0.3"/>
+
+      <!-- Diamond accent marks -->
+      <polygon points="700,200 710,210 700,220 690,210" fill="#D4AF37" opacity="0.45"/>
+      <polygon points="700,418 710,428 700,438 690,428" fill="#D4AF37" opacity="0.45"/>
+
+      <!-- Left dimension -->
+      <g stroke="#D4AF37" stroke-width="0.8" opacity="0.5">
+        <line x1="44" y1="210" x2="44" y2="428"/>
+        <line x1="38" y1="210" x2="50" y2="210"/>
+        <line x1="38" y1="428" x2="50" y2="428"/>
+      </g>
+      <text x="30" y="322" font-family="DM Sans, sans-serif" font-size="9" fill="#D4AF37" text-anchor="middle" letter-spacing="0.12em" transform="rotate(-90,30,322)" opacity="0.55">CAP HEIGHT</text>
+
+      <!-- Art Deco crosshair markers -->
+      <g stroke="#D4AF37" stroke-width="1" opacity="0.55">
+        <line x1="210" y1="428" x2="226" y2="428"/><line x1="218" y1="420" x2="218" y2="436"/>
+        <line x1="382" y1="428" x2="398" y2="428"/><line x1="390" y1="420" x2="390" y2="436"/>
+        <line x1="580" y1="428" x2="596" y2="428"/><line x1="588" y1="420" x2="588" y2="436"/>
+        <line x1="804" y1="428" x2="820" y2="428"/><line x1="812" y1="420" x2="812" y2="436"/>
+        <line x1="1002" y1="428" x2="1018" y2="428"/><line x1="1010" y1="420" x2="1010" y2="436"/>
+        <line x1="1174" y1="428" x2="1190" y2="428"/><line x1="1182" y1="420" x2="1182" y2="436"/>
+      </g>
+
+      <!-- Corner marks Art Deco style -->
+      <g stroke="#D4AF37" stroke-width="1" opacity="0.3">
+        <polyline points="78,65 65,65 65,78" fill="none"/>
+        <polyline points="1322,65 1335,65 1335,78" fill="none"/>
+        <polyline points="78,615 65,615 65,602" fill="none"/>
+        <polyline points="1322,615 1335,615 1335,602" fill="none"/>
+      </g>
+
+      <!-- Labels -->
+      <text x="1350" y="432" font-family="DM Sans, sans-serif" font-size="9" fill="#D4AF37" letter-spacing="0.2em" opacity="0.5">BASELINE</text>
+      <text x="1350" y="214" font-family="DM Sans, sans-serif" font-size="9" fill="#D4AF37" letter-spacing="0.2em" opacity="0.5">CAP HEIGHT</text>
+      <text x="716" y="64" font-family="DM Sans, sans-serif" font-size="9" fill="#D4AF37" letter-spacing="0.2em" opacity="0.45">EIXO CENTRAL</text>
+
+      <!-- Width span -->
+      <line x1="212" y1="468" x2="212" y2="508" stroke="#D4AF37" stroke-width="0.8" opacity="0.35"/>
+      <line x1="1188" y1="468" x2="1188" y2="508" stroke="#D4AF37" stroke-width="0.8" opacity="0.35"/>
+      <line x1="212" y1="488" x2="1188" y2="488" stroke="#D4AF37" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.3"/>
+      <text x="700" y="524" font-family="DM Sans, sans-serif" font-size="9" fill="#D4AF37" text-anchor="middle" letter-spacing="0.2em" opacity="0.45">LARGURA DA MARCA</text>
+
+      <text x="700" y="650" font-family="DM Sans, sans-serif" font-size="9" fill="#D4AF37" text-anchor="middle" letter-spacing="0.3em" opacity="0.3">THEATER · ART DECO · GRAND THÉÂTRE · CINEMA DE LUXO</text>
+    </svg>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- PANEL: Color Palette -->
+  <div class="g-panel reveal">
+    <div class="palette-panel">
+      <p class="palette-label">Paleta Cromática</p>
+      <div style="display:flex; gap:0;">
+        <div class="swatch" style="background:#060606;border:1px solid rgba(212,175,55,0.15);">
+          <div class="swatch-hex" style="color:#F5F0E8;">#060606</div>
+          <div class="swatch-name" style="color:#F5F0E8;">Noir</div>
+        </div>
+        <div class="swatch" style="background:#0D0D24;">
+          <div class="swatch-hex" style="color:#F5F0E8;">#0D0D24</div>
+          <div class="swatch-name" style="color:#F5F0E8;">Navy Profundo</div>
+        </div>
+        <div class="swatch" style="background:#D4AF37;">
+          <div class="swatch-hex" style="color:#060606;">#D4AF37</div>
+          <div class="swatch-name" style="color:#060606;">Ouro Art Deco</div>
+        </div>
+        <div class="swatch" style="background:#F5F0E8;">
+          <div class="swatch-hex" style="color:#060606;">#F5F0E8</div>
+          <div class="swatch-name" style="color:#060606;">Marfim</div>
+        </div>
+        <div class="swatch" style="background:#8B6914;">
+          <div class="swatch-hex" style="color:#F5F0E8;">#8B6914</div>
+          <div class="swatch-name" style="color:#F5F0E8;">Ouro Antigo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- PANEL: SVG Dark Grid — Exclusion zone Art Deco -->
+  <div class="g-panel reveal" style="background:var(--navy);">
+    <svg viewBox="0 0 1400 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+      <defs>
+        <pattern id="deco-dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+          <circle cx="14" cy="14" r="1.2" fill="#D4AF37" opacity="0.12"/>
+        </pattern>
+      </defs>
+      <rect width="1400" height="680" fill="#0D0D24"/>
+      <rect width="1400" height="680" fill="url(#deco-dots)"/>
+
+      <!-- AURUM text -->
+      <text x="700" y="415" font-family="Theater, serif" font-size="200" fill="#D4AF37" opacity="0.55" text-anchor="middle" letter-spacing="0.16em">AURUM</text>
+
+      <!-- Logo bounding box -->
+      <rect x="180" y="195" width="1040" height="240" fill="none" stroke="#D4AF37" stroke-width="1.1" stroke-dasharray="6,4" opacity="0.7"/>
+      <!-- Exclusion zone -->
+      <rect x="110" y="125" width="1180" height="380" fill="none" stroke="#D4AF37" stroke-width="0.8" stroke-dasharray="4,6" opacity="0.32"/>
+
+      <!-- Art Deco ornament at top center -->
+      <g opacity="0.4">
+        <polygon points="700,115 712,128 700,141 688,128" fill="#D4AF37"/>
+        <line x1="700" y1="105" x2="700" y2="115" stroke="#D4AF37" stroke-width="1.5"/>
+        <line x1="680" y1="128" x2="690" y2="128" stroke="#D4AF37" stroke-width="1"/>
+        <line x1="710" y1="128" x2="720" y2="128" stroke="#D4AF37" stroke-width="1"/>
+      </g>
+      <!-- Art Deco ornament at bottom center -->
+      <g opacity="0.4">
+        <polygon points="700,565 712,552 700,539 688,552" fill="#D4AF37"/>
+        <line x1="700" y1="575" x2="700" y2="565" stroke="#D4AF37" stroke-width="1.5"/>
+        <line x1="680" y1="552" x2="690" y2="552" stroke="#D4AF37" stroke-width="1"/>
+        <line x1="710" y1="552" x2="720" y2="552" stroke="#D4AF37" stroke-width="1"/>
+      </g>
+
+      <!-- 1X arrows -->
+      <line x1="700" y1="125" x2="700" y2="195" stroke="#D4AF37" stroke-width="0.9" opacity="0.52"/>
+      <polygon points="700,125 694,143 706,143" fill="#D4AF37" opacity="0.52"/>
+      <text x="718" y="164" font-family="DM Sans, sans-serif" font-size="12" fill="#D4AF37" opacity="0.62" letter-spacing="0.2em">1X</text>
+
+      <line x1="700" y1="505" x2="700" y2="435" stroke="#D4AF37" stroke-width="0.9" opacity="0.52"/>
+      <polygon points="700,505 694,487 706,487" fill="#D4AF37" opacity="0.52"/>
+      <text x="718" y="474" font-family="DM Sans, sans-serif" font-size="12" fill="#D4AF37" opacity="0.62" letter-spacing="0.2em">1X</text>
+
+      <line x1="110" y1="315" x2="180" y2="315" stroke="#D4AF37" stroke-width="0.9" opacity="0.52"/>
+      <polygon points="110,315 128,309 128,321" fill="#D4AF37" opacity="0.52"/>
+      <text x="118" y="304" font-family="DM Sans, sans-serif" font-size="12" fill="#D4AF37" opacity="0.62" letter-spacing="0.2em">1X</text>
+
+      <line x1="1290" y1="315" x2="1220" y2="315" stroke="#D4AF37" stroke-width="0.9" opacity="0.52"/>
+      <polygon points="1290,315 1272,309 1272,321" fill="#D4AF37" opacity="0.52"/>
+      <text x="1234" y="304" font-family="DM Sans, sans-serif" font-size="12" fill="#D4AF37" opacity="0.62" letter-spacing="0.2em">1X</text>
+
+      <!-- Corner marks -->
+      <g stroke="#D4AF37" stroke-width="0.9" opacity="0.28">
+        <polyline points="72,72 60,72 60,84" fill="none"/>
+        <polyline points="1328,72 1340,72 1340,84" fill="none"/>
+        <polyline points="72,608 60,608 60,596" fill="none"/>
+        <polyline points="1328,608 1340,608 1340,596" fill="none"/>
+      </g>
+
+      <!-- Minimum size -->
+      <text x="1180" y="622" font-family="Theater, serif" font-size="72" fill="#D4AF37" opacity="0.28" text-anchor="middle" letter-spacing="0.12em">AURUM</text>
+      <text x="1180" y="642" font-family="DM Sans, sans-serif" font-size="9" fill="#D4AF37" text-anchor="middle" letter-spacing="0.3em" opacity="0.38">TAMANHO MÍN.</text>
+
+      <text x="700" y="650" font-family="DM Sans, sans-serif" font-size="10" fill="#D4AF37" text-anchor="middle" letter-spacing="0.35em" opacity="0.42">ÁREA DE PROTEÇÃO DA MARCA</text>
+    </svg>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- PANEL: Typography -->
+  <div class="g-panel reveal">
+    <div class="typo-panel">
+      <div class="typo-row">
+        <div class="typo-meta">120px · Display Principal</div>
+        <div class="typo-sample" style="font-size:120px;color:var(--gold);">AURUM</div>
+      </div>
+      <div class="typo-row">
+        <div class="typo-meta">70px · Título Grand Théâtre</div>
+        <div class="typo-sample" style="font-size:70px;color:var(--ivory);">Theater</div>
+      </div>
+      <div class="typo-row">
+        <div class="typo-meta">32px · Subtítulo</div>
+        <div class="typo-sample" style="font-size:32px;color:var(--ivory);opacity:0.7;">O grand théâtre do cinema</div>
+      </div>
+      <div class="typo-row">
+        <div class="typo-meta">18px · Corpo de Texto</div>
+        <div class="typo-sample" style="font-size:18px;color:var(--ivory);opacity:0.5;font-family:var(--body-font);font-weight:300;letter-spacing:0.03em;">Cada sessão, uma abertura de cortinas. Cada cena, uma revelação arquitetônica.</div>
+      </div>
+      <div class="typo-row" style="border-bottom:none;">
+        <div class="typo-meta">10px · Caption / Legenda</div>
+        <div class="typo-sample" style="font-size:10px;color:var(--gold);opacity:0.3;font-family:var(--body-font);letter-spacing:0.38em;text-transform:uppercase;">Identidade Visual · AURUM Cinema · Theater · 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- PANEL: Manifesto com raios Art Deco -->
+  <div class="g-full reveal">
+    <div class="manifesto-panel">
+      <!-- Decorative Art Deco radial background -->
+      <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"
+           style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06;pointer-events:none;">
+        <g stroke="#D4AF37" stroke-width="1" transform="translate(400,200)">
+          <line x1="0" y1="-200" x2="0" y2="200"/>
+          <line x1="-400" y1="0" x2="400" y2="0"/>
+          <line x1="-283" y1="-141" x2="283" y2="141"/>
+          <line x1="283" y1="-141" x2="-283" y2="141"/>
+          <line x1="-155" y1="-191" x2="155" y2="191"/>
+          <line x1="155" y1="-191" x2="-155" y2="191"/>
+          <line x1="-382" y1="-78" x2="382" y2="78"/>
+          <line x1="382" y1="-78" x2="-382" y2="78"/>
+          <circle cx="0" cy="0" r="80" fill="none"/>
+          <circle cx="0" cy="0" r="160" fill="none"/>
+        </g>
+      </svg>
+      <div class="manifesto-quote" style="font-size:clamp(1.8rem,3.8vw,3.2rem);max-width:900px;">
+        "O cinema não é entretenimento —<br>
+        é a catedral do século XX.<br>
+        E o AURUM é o seu altar dourado."
+      </div>
+      <div class="manifesto-attr">Manifesto AURUM · Theater · Art Deco · Grand Théâtre</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- PANEL: Brand Voice -->
+  <div class="g-panel reveal">
+    <div class="voice-panel">
+      <!-- Art Deco diamond divider -->
+      <svg viewBox="0 0 400 24" xmlns="http://www.w3.org/2000/svg" style="width:min(360px,80%);">
+        <line x1="0" y1="12" x2="172" y2="12" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/>
+        <polygon points="200,2 212,12 200,22 188,12" fill="#D4AF37" opacity="0.5"/>
+        <line x1="228" y1="12" x2="400" y2="12" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/>
+      </svg>
+      <div class="voice-line" style="font-size:54px;color:var(--gold);">Majestade.</div>
+      <div class="voice-line" style="font-size:40px;opacity:0.75;">Grandiosidade.</div>
+      <div class="voice-line" style="font-size:28px;opacity:0.55;color:var(--ivory);">A cortina se abre. A arte começa.</div>
+      <div class="voice-line" style="font-size:18px;opacity:0.32;color:var(--ivory);letter-spacing:0.15em;text-transform:uppercase;">O théâtre eterno do cinema.</div>
+      <svg viewBox="0 0 400 24" xmlns="http://www.w3.org/2000/svg" style="width:min(360px,80%);">
+        <line x1="0" y1="12" x2="172" y2="12" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/>
+        <polygon points="200,2 212,12 200,22 188,12" fill="#D4AF37" opacity="0.5"/>
+        <line x1="228" y1="12" x2="400" y2="12" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- ═══ MOCKUPS CINEMA ═══ -->
+
+  <!-- MOCKUP 1: Tela do Cinema -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/CINEMA-SCREEN-GEN.png" alt="Tela AURUM Theater">
+    <div class="mk-overlay" style="left:15%;top:10%;width:70%;height:65%;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(2rem,5vw,4.5rem);color:var(--gold);letter-spacing:0.3em;mix-blend-mode:screen;text-shadow:0 0 80px rgba(212,175,55,0.65);">AURUM</div>
+      <div class="mk-sub" style="font-size:clamp(0.5rem,1vw,0.7rem);color:var(--ivory);letter-spacing:0.5em;text-transform:uppercase;opacity:0.55;mix-blend-mode:screen;margin-top:8px;">Theater</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP 2: Balde de Pipoca -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/POPCORN-BUCKET-GEN.png" alt="Balde de pipoca AURUM Theater">
+    <div class="mk-overlay" style="left:25%;top:22%;width:50%;height:50%;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(1.2rem,3.5vw,2.8rem);color:var(--gold);letter-spacing:0.3em;mix-blend-mode:multiply;">AURUM</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP 3: Ingressos -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/TICKETS-GEN.png" alt="Ingressos AURUM Theater">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP 4: Billboard -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/BILLBOARD-GEN.png" alt="Billboard AURUM Theater">
+    <div class="mk-overlay" style="left:12%;top:15%;width:76%;height:65%;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(1.5rem,4vw,3.5rem);color:var(--gold);letter-spacing:0.3em;mix-blend-mode:screen;text-shadow:0 0 50px rgba(212,175,55,0.55);">AURUM</div>
+      <div class="mk-sub" style="font-size:clamp(0.4rem,0.9vw,0.6rem);color:var(--ivory);letter-spacing:0.45em;text-transform:uppercase;opacity:0.45;mix-blend-mode:screen;margin-top:10px;">O grand théâtre do cinema</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP 5: Sinalização -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/SIGNAGE-GEN.png" alt="Sinalização AURUM Theater">
+    <div class="mk-overlay" style="left:15%;top:20%;width:70%;height:55%;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(1.2rem,3.5vw,2.8rem);color:var(--gold);letter-spacing:0.3em;mix-blend-mode:screen;text-shadow:0 0 40px rgba(212,175,55,0.45);">AURUM</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP 6: Uniforme -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/UNIFORME-GEN.png" alt="Uniforme AURUM Theater">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP: Coaster -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Coaster-Mockup.png" alt="Porta-copo AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP: Caneca -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Enamel-Mug.png" alt="Caneca AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP: Gift Box -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Gift-Box-Mockup.png" alt="Caixa Presente AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP: Chaveiro -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Keychain-Mockup.png" alt="Chaveiro AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP: Placa -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Plate-Mockup.png" alt="Placa AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUP: Camiseta -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/T-Shirt-Mockup.png" alt="Camiseta AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- LOCKUP GRID 2×2 -->
+  <div class="g-full reveal">
+    <div class="lockup-grid">
+      <div class="lockup-cell" style="background:var(--noir);">
+        <div class="lockup-logo" style="color:var(--gold);">AURUM</div>
+        <div style="font-size:9px;letter-spacing:0.28em;color:var(--ivory);opacity:0.25;text-transform:uppercase;margin-top:10px;">Noir</div>
+      </div>
+      <div class="lockup-cell" style="background:var(--navy);">
+        <div class="lockup-logo" style="color:var(--gold);">AURUM</div>
+        <div style="font-size:9px;letter-spacing:0.28em;color:var(--ivory);opacity:0.25;text-transform:uppercase;margin-top:10px;">Navy Profundo</div>
+      </div>
+      <div class="lockup-cell" style="background:var(--gold);">
+        <div class="lockup-logo" style="color:var(--noir);">AURUM</div>
+        <div style="font-size:9px;letter-spacing:0.28em;color:var(--noir);opacity:0.45;text-transform:uppercase;margin-top:10px;">Ouro Art Deco</div>
+      </div>
+      <div class="lockup-cell" style="background:var(--ivory);">
+        <div class="lockup-logo" style="color:var(--navy);">AURUM</div>
+        <div style="font-size:9px;letter-spacing:0.28em;color:var(--navy);opacity:0.4;text-transform:uppercase;margin-top:10px;">Marfim</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- CLOSING STATEMENT com ornamento Art Deco -->
+  <div class="g-full reveal">
+    <div class="closing-panel">
+      <!-- Art Deco radial rays background -->
+      <svg viewBox="0 0 1400 360" xmlns="http://www.w3.org/2000/svg"
+           style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07;pointer-events:none;">
+        <g stroke="#D4AF37" stroke-width="1.5" transform="translate(700,180)">
+          <line x1="0" y1="-180" x2="0" y2="180"/>
+          <line x1="-700" y1="0" x2="700" y2="0"/>
+          <line x1="-495" y1="-127" x2="495" y2="127"/>
+          <line x1="495" y1="-127" x2="-495" y2="127"/>
+          <line x1="-274" y1="-170" x2="274" y2="170"/>
+          <line x1="274" y1="-170" x2="-274" y2="170"/>
+          <line x1="-679" y1="-71" x2="679" y2="71"/>
+          <line x1="679" y1="-71" x2="-679" y2="71"/>
+          <circle cx="0" cy="0" r="90" fill="none"/>
+          <circle cx="0" cy="0" r="180" fill="none"/>
+        </g>
+      </svg>
+      <!-- Diamond ornament top -->
+      <svg viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg" style="width:min(200px,50%);margin-bottom:12px;position:relative;z-index:1;">
+        <line x1="0" y1="14" x2="80" y2="14" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
+        <polygon points="100,2 114,14 100,26 86,14" fill="#D4AF37" opacity="0.6"/>
+        <line x1="120" y1="14" x2="200" y2="14" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+      <div class="closing-text">O grand théâtre do cinema.</div>
+      <div class="closing-sub">AURUM Cinema · Theater · Identidade Visual</div>
+      <svg viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg" style="width:min(200px,50%);margin-top:12px;position:relative;z-index:1;">
+        <line x1="0" y1="14" x2="80" y2="14" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
+        <polygon points="100,2 114,14 100,26 86,14" fill="#D4AF37" opacity="0.6"/>
+        <line x1="120" y1="14" x2="200" y2="14" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+
+</div><!-- end gallery -->
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <h2>Uma identidade tão majestosa<br>quanto o cinema merece.</h2>
+  <a href="./index.html" class="cta-btn">← Voltar ao Sistema</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>AURUM Cinema — Theater</span>
+  <span>Identidade Visual · 2025</span>
+</footer>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

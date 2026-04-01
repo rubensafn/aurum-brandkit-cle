@@ -2,7 +2,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const API_KEY = process.env.GEMINI_KEY || 'AIzaSyBY1dcufQRtJXWWGHDi3jIaYLG5--YWmXA';
+const API_KEY = process.env.GEMINI_KEY || 'AIzaSyA7a0S6mFUwancudslIempss64_BEN1v7I';
 const MOCKUPS_DIR = path.join(__dirname, 'mockups');
 
 const mockups = [
