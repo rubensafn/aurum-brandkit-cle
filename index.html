@@ -6,6 +6,19 @@
   <title>AURUM Cinema — Brand Identity System</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    /* ── BRAND FONTS ── */
+    @font-face { font-family:'Calgone';       src:url('./fonts/Calgone.woff2') format('woff2'),url('./fonts/Calgone.woff') format('woff'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'CSVision';      src:url('./fonts/CSVision-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'ChoperDisplay'; src:url('./fonts/ChoperDisplay.otf') format('opentype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Cinemate';      src:url('./fonts/Cinemate.woff2') format('woff2'),url('./fonts/Cinemate.woff') format('woff'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'CSThimble';     src:url('./fonts/CSThimble-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'ElegantoSans';  src:url('./fonts/ElegantoSans-Thin.woff') format('woff'); font-weight:100; font-display:swap; }
+    @font-face { font-family:'ElegantoSans';  src:url('./fonts/ElegantoSans-Light.woff') format('woff'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'ElegantoSans';  src:url('./fonts/ElegantoSans-Regular.woff') format('woff'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'CinemaTheater'; src:url('./fonts/CinemaTheater.woff') format('woff'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Rosamone';      src:url('./fonts/ROSAMONE.woff2') format('woff2'),url('./fonts/ROSAMONE.woff') format('woff'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Theater';       src:url('./fonts/THEATER.woff2') format('woff2'),url('./fonts/THEATER.woff') format('woff'); font-weight:400; font-display:swap; }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -147,7 +160,7 @@
       padding: 40px 48px 44px;
       text-decoration: none;
       display: flex; flex-direction: column;
-      min-height: 340px;
+      min-height: 360px;
       overflow: hidden;
       transition: background 0.4s ease;
     }
@@ -168,14 +181,27 @@
       top: 24px; right: 36px;
     }
     .card-logo {
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 300;
+      height: 68px;
+      display: flex; align-items: center;
+      font-size: clamp(1.9rem, 3vw, 2.9rem);
+      font-weight: 400;
       color: var(--card-color, var(--gold));
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       line-height: 1;
       margin-bottom: 8px;
       position: relative; z-index: 1;
     }
+
+    /* ── PER-CARD FONT ── */
+    .card-calgone    .card-logo { font-family:'Calgone', serif;          letter-spacing:0.14em; }
+    .card-csvision   .card-logo { font-family:'CSVision', sans-serif;    letter-spacing:0.18em; font-size:clamp(1.6rem,2.6vw,2.5rem); }
+    .card-choper     .card-logo { font-family:'ChoperDisplay', sans-serif; letter-spacing:0.04em; font-size:clamp(2.2rem,3.6vw,3.4rem); color:var(--card-color); }
+    .card-cinemate   .card-logo { font-family:'Cinemate', serif;         letter-spacing:0.2em; }
+    .card-csthimble  .card-logo { font-family:'CSThimble', serif;        letter-spacing:0.14em; }
+    .card-eleganto   .card-logo { font-family:'ElegantoSans', sans-serif; font-weight:100; letter-spacing:0.32em; }
+    .card-cinematheater .card-logo { font-family:'CinemaTheater', serif; letter-spacing:0.22em; }
+    .card-rosamone   .card-logo { font-family:'Rosamone', serif;         letter-spacing:0.1em; }
+    .card-theater    .card-logo { font-family:'Theater', serif;          letter-spacing:0.22em; }
     .card-font-name {
       font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
       color: rgba(242,239,234,0.25);
@@ -371,9 +397,9 @@
     <!-- 03 CHOPER -->
     <a href="./brandkit-choper.html" class="brand-card card-choper reveal reveal-d2">
       <span class="card-num">03</span>
-      <div class="card-logo" style="color:#1A1A1A;">AURUM</div>
+      <div class="card-logo">AURUM</div>
       <div class="card-font-name">Choper Display</div>
-      <div class="card-divider" style="background:#1A1A1A;"></div>
+      <div class="card-divider"></div>
       <p class="card-concept">Editorial bold. Manifesto. Cinema que não pede licença para existir. Máximo impacto, zero ornamentos.</p>
       <p class="card-tagline">"AURUM. Apenas isso."</p>
       <div class="card-bottom">
