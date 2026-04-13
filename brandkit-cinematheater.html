@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AURUM — CinemaTheater Brand Identity</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 @font-face {
   font-family: 'CinemaTheater';
@@ -20,12 +20,13 @@
   --crimson: #7A1E1E;
   --mid: #3A2510;
   --brand-font: 'CinemaTheater', serif;
-  --body-font: 'DM Sans', sans-serif;
+  --heading-font: 'Old Standard TT', serif;
+  --body-font: 'Lora', serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--body-font); background: #fafafa; color: #111; }
+body { font-family: var(--body-font); font-weight: 400; line-height: 1.8; background: #fafafa; color: #111; }
 
 nav.site-nav {
   position: sticky; top: 0; z-index: 100;
@@ -37,7 +38,7 @@ nav.site-nav {
 .nav-type { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.4; }
 
 .page-header { padding: 80px 48px 56px; }
-.page-header h1 { font-size: clamp(1.8rem, 3.8vw, 3rem); font-weight: 400; line-height: 1.1; margin-bottom: 14px; font-family: var(--brand-font); letter-spacing: 0.05em; }
+.page-header h1 { font-size: clamp(1.8rem, 3.8vw, 3rem); font-weight: 400; line-height: 1.1; margin-bottom: 14px; font-family: var(--heading-font); letter-spacing: 0.01em; }
 .page-header .meta { font-size: 11px; letter-spacing: 0.3em; opacity: 0.38; text-transform: uppercase; }
 
 .text-section {
@@ -176,6 +177,20 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
 
 .separator-thin { height: 1px; background: rgba(0,0,0,0.08); margin: 0; }
 
+/* MAGAZINE PANEL */
+.mag-panel {
+  width: 68%; margin: 0 auto 1px;
+  background: #F5EDD0;
+  padding: 68px 60px;
+  display: grid; grid-template-columns: 1fr 2px 1fr; gap: 48px;
+  border-top: 1px solid rgba(18,10,4,0.07);
+  border-bottom: 1px solid rgba(18,10,4,0.07);
+}
+.mag-col-divider { background: rgba(18,10,4,0.08); }
+.mag-col h3 { font-family: var(--brand-font); font-style: italic; font-size: 1.5rem; color: #120A04; margin-bottom: 16px; line-height: 1.2; }
+.mag-col p { font-size: 13px; line-height: 1.85; color: rgba(18,10,4,0.7); font-family: var(--body-font); font-weight: 300; }
+.mag-col .issue-tag { font-size: 8px; letter-spacing: 0.45em; text-transform: uppercase; opacity: 0.3; display: block; margin-bottom: 12px; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav.site-nav { padding: 14px 24px; }
@@ -208,6 +223,14 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
   .voice-panel { padding: 40px 16px; }
   .cta-section { padding: 60px 16px; }
   footer { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+  .page-header h1 { font-size: clamp(1.5rem, 7vw, 1.9rem) !important; }
+  .hero-wordmark, .hero-logo-text { font-size: clamp(2.5rem, 12vw, 4.5rem) !important; }
+  .lockup-grid { grid-template-columns: 1fr !important; }
+  .typo-display { font-size: clamp(2.5rem, 14vw, 4rem) !important; }
+  .cta-section { padding: 48px 14px !important; }
+  footer { padding: 18px 14px !important; }
 }
 </style>
 </head>
@@ -469,6 +492,23 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
 
   <div class="separator-thin"></div>
 
+  <!-- MAGAZINE PANEL -->
+  <div class="mag-panel reveal">
+    <div class="mag-col">
+      <span class="issue-tag">Manifesto · Vol. I</span>
+      <h3>Para os que carregam ingressos como memórias</h3>
+      <p>O AURUM CinemaTheater homenageia uma era em que o cinema era ritual — o veludo, a luz âmbar, a sombra perfeita antes do primeiro quadro. Nostalgia com presença.</p>
+    </div>
+    <div class="mag-col-divider"></div>
+    <div class="mag-col">
+      <span class="issue-tag">Identidade · CinemaTheater</span>
+      <h3>O serif que narra antes da cortina abrir</h3>
+      <p>A CinemaTheater guarda em cada traço o DNA dos grandes cartazes dos anos dourados — display que carrega o glamour da era clássica com presença intemporal.</p>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
   <!-- PANEL: Brand Voice / Manifesto -->
   <div class="g-panel reveal">
     <div class="voice-panel">
@@ -579,6 +619,43 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
   <!-- MOCKUP: Camiseta -->
   <div class="mockup-panel reveal">
     <img src="./mockups/T-Shirt-Mockup.png" alt="Camiseta AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUPS FIGMA — Dark Style -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Figma3-Billboard-Mockup.jpg" alt="Billboard AURUM" style="width:100%;display:block;">
+    <div class="mk-overlay" style="position:absolute;left:18%;top:29%;width:64%;height:43%;transform:perspective(1800px) rotateY(-4deg);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(1.2rem,3.5vw,2.8rem);color:#E8A830;letter-spacing:0.25em;mix-blend-mode:screen;text-shadow:0 2px 20px rgba(232,168,48,0.4),0 0 60px rgba(232,168,48,0.18);filter:blur(0.2px);">AURUM</div>
+      <div class="mk-sub" style="font-size:clamp(0.4rem,0.9vw,0.65rem);color:#fff;letter-spacing:0.4em;text-transform:uppercase;opacity:0.55;mix-blend-mode:screen;margin-top:8px;filter:blur(0.3px);">Cinema</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <div class="mockup-panel reveal" style="position:relative;">
+    <img src="./mockups/Figma3-Poster-3Sheet.jpg" alt="Poster AURUM" style="width:100%;display:block;">
+    <div class="mk-overlay" style="position:absolute;left:23.4%;top:26.7%;width:20.6%;height:48.6%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(0.55rem,1.35vw,1.2rem);color:#F5EDD0;letter-spacing:0.25em;mix-blend-mode:overlay;text-shadow:0 1px 8px rgba(0,0,0,0.4);filter:blur(0.15px);line-height:1;">AURUM</div>
+      <div style="width:12px;height:1px;background:#E8A830;margin:4px auto;opacity:0.6;mix-blend-mode:overlay;"></div>
+      <div class="mk-sub" style="font-size:clamp(0.22rem,0.45vw,0.38rem);color:rgba(255,255,255,0.8);letter-spacing:0.5em;text-transform:uppercase;mix-blend-mode:overlay;">Cinema</div>
+    </div>
+    <div class="mk-overlay" style="position:absolute;left:59.5%;top:26.7%;width:20.6%;height:48.6%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(0.55rem,1.35vw,1.2rem);color:#F5EDD0;letter-spacing:0.25em;mix-blend-mode:overlay;text-shadow:0 1px 8px rgba(0,0,0,0.4);filter:blur(0.15px);line-height:1;">AURUM</div>
+      <div style="width:12px;height:1px;background:#E8A830;margin:4px auto;opacity:0.6;mix-blend-mode:overlay;"></div>
+      <div class="mk-sub" style="font-size:clamp(0.22rem,0.45vw,0.38rem);color:rgba(255,255,255,0.8);letter-spacing:0.5em;text-transform:uppercase;mix-blend-mode:overlay;">Cinema</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <div class="mockup-panel reveal" style="position:relative;">
+    <img src="./mockups/Figma3-iPad-Mockup.jpg" alt="AURUM Digital" style="width:100%;display:block;">
+    <div class="mk-overlay" style="position:absolute;left:22%;top:17%;width:58.5%;height:68.5%;transform:perspective(700px) rotateX(20deg) rotateY(-6deg) skewX(-1deg);transform-origin:50% 30%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(0.9rem,2.2vw,1.8rem);color:rgba(255,255,255,0.92);letter-spacing:0.25em;mix-blend-mode:screen;text-shadow:0 0 12px rgba(255,255,255,0.3);filter:blur(0.1px);">AURUM</div>
+      <div class="mk-sub" style="font-size:clamp(0.3rem,0.6vw,0.45rem);color:rgba(255,255,255,0.55);letter-spacing:0.55em;text-transform:uppercase;mix-blend-mode:screen;">Cinema</div>
+    </div>
   </div>
 
   <div class="separator-thin"></div>

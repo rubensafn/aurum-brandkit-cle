@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AURUM — Eleganto Brand Identity</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 @font-face { font-family:'ElegantoSans'; src:url('./fonts/ElegantoSans-Thin.woff') format('woff'); font-weight:100; }
 @font-face { font-family:'ElegantoSans'; src:url('./fonts/ElegantoSans-Light.woff') format('woff'); font-weight:300; }
@@ -19,7 +19,8 @@
   --ivory:  #E8E3D8;
   --ink:    #111111;
   --brand-font: 'ElegantoSans', sans-serif;
-  --body-font:  'DM Sans', sans-serif;
+  --heading-font: 'Inter', sans-serif;
+  --body-font:  'Nunito Sans', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,7 +37,7 @@ nav.site-nav {
 .nav-type  { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.4; }
 
 .page-header { padding: 80px 48px 56px; }
-.page-header h1 { font-size: clamp(1.8rem, 3.8vw, 3rem); font-weight: 100; line-height: 1.1; margin-bottom: 14px; font-family: var(--brand-font); letter-spacing: 0.08em; color: var(--forest); }
+.page-header h1 { font-size: clamp(1.8rem, 3.8vw, 3rem); font-weight: 300; line-height: 1.1; margin-bottom: 14px; font-family: var(--heading-font); letter-spacing: -0.02em; color: var(--forest); }
 .page-header .meta { font-size: 11px; letter-spacing: 0.3em; opacity: 0.38; text-transform: uppercase; }
 
 .text-section {
@@ -66,7 +67,7 @@ nav.site-nav {
 .reveal.vis { opacity: 1; transform: none; }
 
 .cta-section { padding: 120px 48px; text-align: center; border-top: 1px solid rgba(0,0,0,0.07); }
-.cta-section h2 { font-size: clamp(1.4rem, 2.8vw, 2.4rem); font-weight: 100; line-height: 1.5; margin-bottom: 36px; font-family: var(--brand-font); letter-spacing: 0.06em; color: var(--forest); }
+.cta-section h2 { font-size: clamp(1.4rem, 2.8vw, 2.4rem); font-weight: 300; line-height: 1.5; margin-bottom: 36px; font-family: var(--heading-font); letter-spacing: -0.01em; color: var(--forest); }
 .cta-btn {
   display: inline-block; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
   padding: 13px 42px; border: 1px solid; text-decoration: none; transition: 0.3s;
@@ -190,6 +191,20 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
 
 .separator-thin { height: 1px; background: rgba(0,0,0,0.08); margin: 0; }
 
+/* MAGAZINE PANEL */
+.mag-panel {
+  width: 68%; margin: 0 auto 1px;
+  background: var(--canvas);
+  padding: 68px 60px;
+  display: grid; grid-template-columns: 1fr 2px 1fr; gap: 48px;
+  border-top: 1px solid rgba(27,48,32,0.07);
+  border-bottom: 1px solid rgba(27,48,32,0.07);
+}
+.mag-col-divider { background: rgba(27,48,32,0.08); }
+.mag-col h3 { font-family: var(--brand-font); font-weight: 100; font-size: 1.5rem; color: var(--forest); margin-bottom: 16px; line-height: 1.2; }
+.mag-col p { font-size: 13px; line-height: 1.85; color: rgba(27,48,32,0.7); font-family: var(--body-font); font-weight: 300; }
+.mag-col .issue-tag { font-size: 8px; letter-spacing: 0.45em; text-transform: uppercase; opacity: 0.3; display: block; margin-bottom: 12px; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav.site-nav { padding: 14px 24px; }
@@ -221,6 +236,13 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
   .voice-panel { padding: 40px 16px; }
   .cta-section { padding: 60px 16px; }
   footer { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+  .page-header h1 { font-size: clamp(1.5rem, 7vw, 1.9rem) !important; }
+  .hero-wordmark, .hero-logo-text { font-size: clamp(2.5rem, 12vw, 4.5rem) !important; }
+  .typo-display { font-size: clamp(2.5rem, 14vw, 4rem) !important; }
+  .cta-section { padding: 48px 14px !important; }
+  footer { padding: 18px 14px !important; }
 }
 </style>
 </head>
@@ -508,6 +530,21 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
     </div>
   </div>
 
+  <!-- MAGAZINE PANEL -->
+  <div class="mag-panel reveal">
+    <div class="mag-col">
+      <span class="issue-tag">Manifesto · Vol. I</span>
+      <h3>Para os que veem arquitetura em cada composição</h3>
+      <p>O AURUM Eleganto nasce do design suíço: onde cada elemento tem função, cada alinhamento é uma decisão, cada espaço em branco é narrativa silenciosa com propósito.</p>
+    </div>
+    <div class="mag-col-divider"></div>
+    <div class="mag-col">
+      <span class="issue-tag">Identidade · Eleganto Sans</span>
+      <h3>O sistema tipográfico que respira com 4 pesos</h3>
+      <p>A ElegantoSans oferece ao cinema de luxo a disciplina de uma grelha suíça — do Thin ao Bold, cada peso comunica uma camada distinta de sofisticação e intenção.</p>
+    </div>
+  </div>
+
   <div class="separator-thin"></div>
 
   <!-- PANEL: Brand Voice -->
@@ -618,6 +655,43 @@ footer { padding: 36px 48px; display: flex; justify-content: space-between; alig
   <!-- MOCKUP: Camiseta -->
   <div class="mockup-panel reveal">
     <img src="./mockups/T-Shirt-Mockup.png" alt="Camiseta AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUPS FIGMA — Dark Style -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Figma3-Billboard-Mockup.jpg" alt="Billboard AURUM" style="width:100%;display:block;">
+    <div class="mk-overlay" style="position:absolute;left:18%;top:29%;width:64%;height:43%;transform:perspective(1800px) rotateY(-4deg);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-weight:100;font-size:clamp(1.2rem,3.5vw,2.8rem);color:#B09050;letter-spacing:0.32em;mix-blend-mode:screen;text-shadow:0 2px 20px rgba(176,144,80,0.4),0 0 60px rgba(176,144,80,0.18);filter:blur(0.2px);">AURUM</div>
+      <div class="mk-sub" style="font-size:clamp(0.4rem,0.9vw,0.65rem);color:#fff;letter-spacing:0.4em;text-transform:uppercase;opacity:0.55;mix-blend-mode:screen;margin-top:8px;filter:blur(0.3px);">Cinema</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <div class="mockup-panel reveal" style="position:relative;">
+    <img src="./mockups/Figma3-Poster-3Sheet.jpg" alt="Poster AURUM" style="width:100%;display:block;">
+    <div class="mk-overlay" style="position:absolute;left:23.4%;top:26.7%;width:20.6%;height:48.6%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-weight:100;font-size:clamp(0.55rem,1.35vw,1.2rem);color:var(--ivory);letter-spacing:0.32em;mix-blend-mode:overlay;text-shadow:0 1px 8px rgba(0,0,0,0.4);filter:blur(0.15px);line-height:1;">AURUM</div>
+      <div style="width:12px;height:1px;background:var(--gold);margin:4px auto;opacity:0.6;mix-blend-mode:overlay;"></div>
+      <div class="mk-sub" style="font-size:clamp(0.22rem,0.45vw,0.38rem);color:rgba(255,255,255,0.8);letter-spacing:0.5em;text-transform:uppercase;mix-blend-mode:overlay;">Cinema</div>
+    </div>
+    <div class="mk-overlay" style="position:absolute;left:59.5%;top:26.7%;width:20.6%;height:48.6%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-weight:100;font-size:clamp(0.55rem,1.35vw,1.2rem);color:var(--ivory);letter-spacing:0.32em;mix-blend-mode:overlay;text-shadow:0 1px 8px rgba(0,0,0,0.4);filter:blur(0.15px);line-height:1;">AURUM</div>
+      <div style="width:12px;height:1px;background:var(--gold);margin:4px auto;opacity:0.6;mix-blend-mode:overlay;"></div>
+      <div class="mk-sub" style="font-size:clamp(0.22rem,0.45vw,0.38rem);color:rgba(255,255,255,0.8);letter-spacing:0.5em;text-transform:uppercase;mix-blend-mode:overlay;">Cinema</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <div class="mockup-panel reveal" style="position:relative;">
+    <img src="./mockups/Figma3-iPad-Mockup.jpg" alt="AURUM Digital" style="width:100%;display:block;">
+    <div class="mk-overlay" style="position:absolute;left:22%;top:17%;width:58.5%;height:68.5%;transform:perspective(700px) rotateX(20deg) rotateY(-6deg) skewX(-1deg);transform-origin:50% 30%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-weight:100;font-size:clamp(0.9rem,2.2vw,1.8rem);color:rgba(255,255,255,0.92);letter-spacing:0.32em;mix-blend-mode:screen;text-shadow:0 0 12px rgba(255,255,255,0.3);filter:blur(0.1px);">AURUM</div>
+      <div class="mk-sub" style="font-size:clamp(0.3rem,0.6vw,0.45rem);color:rgba(255,255,255,0.55);letter-spacing:0.55em;text-transform:uppercase;mix-blend-mode:screen;">Cinema</div>
+    </div>
   </div>
 
   <div class="separator-thin"></div>

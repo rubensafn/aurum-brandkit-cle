@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs><style>
+    @font-face {
+      font-family: 'Eleganto Sans';
+      src: url('../fonts/ElegantoSans-Thin.woff') format('woff');
+      font-style: normal;
+      font-weight: 100;
+    }
+  </style></defs>
+  <rect width="800" height="400" fill="#E8E3D8"/>
+  <text x="400" y="185"
+    style="font-family:'Eleganto Sans',serif; font-size:92px; letter-spacing:0.12em; font-weight:100;"
+    fill="#1B3020" text-anchor="middle" dominant-baseline="middle">AURUM</text>
+  <text x="400" y="256"
+    style="font-family:Arial,sans-serif; font-size:10px; letter-spacing:5px;"
+    fill="#1B3020" text-anchor="middle" dominant-baseline="middle" opacity="0.5">CINEMA</text>
+</svg>

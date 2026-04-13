@@ -6,7 +6,7 @@
 <title>AURUM Cinema — Identidade Visual · CS Thimble</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 @font-face {
   font-family: 'CSThimble';
@@ -21,13 +21,19 @@
   font-style: italic;
 }
 
+:root {
+  --brand-font: 'CSThimble', serif;
+  --heading-font: 'Libre Caslon Text', serif;
+  --body-font: 'Source Serif 4', serif;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: var(--body-font);
   font-weight: 300;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.85;
   background: #F6F4F0;
   color: #1E2A35;
 }
@@ -40,19 +46,19 @@ nav.site-nav {
   background: rgba(246,244,240,0.93);
   backdrop-filter: blur(8px);
 }
-.nav-brand { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1E2A35; }
+.nav-brand { font-family: var(--brand-font); font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: #1E2A35; }
 .nav-type { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.4; color: #1E2A35; }
 
 .page-header { padding: 88px 48px 64px; background: #F6F4F0; }
 .page-header h1 {
-  font-family: 'CSThimble', serif;
+  font-family: var(--heading-font);
   font-style: italic;
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: normal;
-  line-height: 1.05;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.1;
   margin-bottom: 20px;
   color: #1E2A35;
-  letter-spacing: 0.01em;
+  letter-spacing: 0em;
 }
 .page-header h1 em { font-style: normal; }
 .page-header .meta-tags { font-size: 11px; letter-spacing: 0.28em; opacity: 0.38; text-transform: uppercase; }
@@ -508,6 +514,14 @@ footer {
   .cta-section { padding: 60px 16px !important; }
   footer { padding: 20px 16px !important; }
 }
+@media (max-width: 480px) {
+  .page-header h1 { font-size: clamp(1.6rem, 7vw, 2rem) !important; }
+  .hero-wordmark, .hero-logo-text { font-size: clamp(2.5rem, 12vw, 4.5rem) !important; }
+  .lockup-grid, .logo-grid { grid-template-columns: 1fr !important; }
+  .typo-display { font-size: clamp(2.5rem, 14vw, 4rem) !important; }
+  .cta-section { padding: 48px 14px !important; }
+  footer { padding: 18px 14px !important; }
+}
 </style>
 </head>
 <body>
@@ -880,6 +894,29 @@ footer {
   </div>
   <div class="mockup-panel reveal">
     <img src="./mockups/T-Shirt-Mockup.png" alt="Camiseta AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <!-- MOCKUPS FIGMA — Dark Style -->
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Figma-Billboard-Mockup.jpg" alt="Billboard AURUM" style="width:100%;display:block;">
+    <div class="mk-overlay" style="left:18%;top:12%;width:64%;height:70%;">
+      <div class="mk-logo" style="font-family:var(--brand-font);font-size:clamp(1.2rem,3.5vw,2.8rem);color:#7BA7BC;letter-spacing:0.14em;mix-blend-mode:screen;text-shadow:0 0 40px rgba(123,167,188,0.4);">AURUM</div>
+      <div class="mk-sub" style="font-size:clamp(0.4rem,0.9vw,0.65rem);color:#fff;letter-spacing:0.4em;text-transform:uppercase;opacity:0.55;mix-blend-mode:screen;margin-top:8px;">Cinema</div>
+    </div>
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Figma-Poster-3Sheet.jpg" alt="Poster AURUM" style="width:100%;display:block;">
+  </div>
+
+  <div class="separator-thin"></div>
+
+  <div class="mockup-panel reveal">
+    <img src="./mockups/Figma-iPad-Mockup.jpg" alt="AURUM Digital" style="width:100%;display:block;">
   </div>
 
   <!-- PANEL 12: Logo Lockup 2×2 -->

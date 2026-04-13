@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs><style>
+    @font-face {
+      font-family: 'THEATER';
+      src: url('../fonts/THEATER.woff2') format('woff2');
+      font-style: normal;
+      font-weight: normal;
+    }
+  </style></defs>
+  <rect width="800" height="400" fill="#0D0D24"/>
+  <text x="400" y="185"
+    style="font-family:'THEATER',serif; font-size:108px; letter-spacing:0.12em;"
+    fill="#D4AF37" text-anchor="middle" dominant-baseline="middle">AURUM</text>
+  <text x="400" y="256"
+    style="font-family:Arial,sans-serif; font-size:10px; letter-spacing:5px;"
+    fill="#D4AF37" text-anchor="middle" dominant-baseline="middle" opacity="0.5">CINEMA</text>
+</svg>
